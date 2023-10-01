@@ -1,0 +1,37 @@
+|RISCV
+clk => ~NO_FANOUT~
+rst => ~NO_FANOUT~
+instruction[0] => ~NO_FANOUT~
+instruction[1] => ~NO_FANOUT~
+instruction[2] => ~NO_FANOUT~
+instruction[3] => ~NO_FANOUT~
+instruction[4] => ~NO_FANOUT~
+instruction[5] => ~NO_FANOUT~
+instruction[6] => ~NO_FANOUT~
+instruction[7] => ~NO_FANOUT~
+instruction[8] => ~NO_FANOUT~
+instruction[9] => ~NO_FANOUT~
+instruction[10] => ~NO_FANOUT~
+instruction[11] => ~NO_FANOUT~
+instruction[12] => ~NO_FANOUT~
+instruction[13] => ~NO_FANOUT~
+instruction[14] => ~NO_FANOUT~
+instruction[15] => ~NO_FANOUT~
+instruction[16] => ~NO_FANOUT~
+instruction[17] => ~NO_FANOUT~
+instruction[18] => ~NO_FANOUT~
+instruction[19] => ~NO_FANOUT~
+instruction[20] => ~NO_FANOUT~
+instruction[21] => ~NO_FANOUT~
+instruction[22] => ~NO_FANOUT~
+instruction[23] => ~NO_FANOUT~
+instruction[24] => ~NO_FANOUT~
+instruction[25] => ~NO_FANOUT~
+instruction[26] => ~NO_FANOUT~
+instruction[27] => ~NO_FANOUT~
+instruction[28] => ~NO_FANOUT~
+instruction[29] => ~NO_FANOUT~
+instruction[30] => ~NO_FANOUT~
+instruction[31] => ~NO_FANOUT~
+
+

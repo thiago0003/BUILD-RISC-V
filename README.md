@@ -1,6 +1,8 @@
 # Build Game Of Life
 
 Como primeira etapa desse projeto foi desenvolvido o jogo Game Of Life de forma tradicional e efetuado a compilação gerando o conjunto de instruções RISC-V para analisarmos. 
+Para a compilação para a CPU RISC-V foi utilizado o site [Compiler Explorer](https://godbolt.org/).
+
 
 [Start Game Of Life](https://github.com/thiago0003/BUILD-RISC-V/blob/main/Game_of_life/game_of_life_start.c) 
 
@@ -46,6 +48,7 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 | add     | R-Type | `0000000 \| rs2 \| rs1 \| 000 \| rd \| 0110011`                |
 | addi    | I-Type | `imm[11:0] \| rs1 \| 000 \| rd  \| 0010011`                    |
 | slli    | I-Type | `0000000 \| shamt \| rs1 \| 001 \| rd \| 0010011`              |
+| jalr    | I-Type | `imm[11:0] \| rs1 \| 000 \| rd \| 1100111`                     |
 | sw      | S-Type | `imm[11:5] \| rs2 \| rs1 \| 010 \| imm[4:0] \| 0100011`        |
 | lw      | S-Type | `imm[11:0] \| rs1 \| 010 \| rd \| 0000011`                     |
 | bge     | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 101 \| imm[4:1\|11] \| 1100011`|
@@ -54,7 +57,6 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 | bne     | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 001 \| imm[4:1\|11] \| 1100011`|
 | auipc   | U-Type | `imm[31:12] \| rd \| 0010111`                                  |
 | jal     | J-Type | `imm[20\|10:1\|11\|19:12] \| rd \| 1101111`                    |
-| jalr    | J-Type | `imm[11:0] \| rs1 \| 000 \| rd \| 1100111`                     |
 
 ### Pseudo instruções
 * mov: Copy register, para essa intrução utilizamos a instrução `addi rd, rs, 0`
@@ -69,3 +71,6 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 ## Coisas a investigar
 * Foi gerado os arquivos game_of_life_start_report.txt e game_of_life_compact_report.txt, a ideia é analizar os tempos de execução de ambos os programas em x86 e posteriormente (quem sabe) em RISC-V para verificar se há uma melhor otimização no código que não possui as instruções de multiplicação e divisão. Alguma das hipóteses é que com a linearização da matriz obtemos um acesso direto a memória, o que não ocorre na matriz, onde é passado o endereço de um vetor para poder acessar o dado em determinada posição.
 * Outra ideia a se investigar seria a diferença entre uma operação de multiplicação utilizando instrução de processador e uma operação de multiplicação utilizando iterações.  
+
+
+# Build RISC-V
