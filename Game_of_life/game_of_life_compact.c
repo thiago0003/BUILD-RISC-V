@@ -99,8 +99,8 @@ int main(int c, char **v)
 
 	while (i != 100000) {
 		evolve(univ, w, h);
-		//show(univ, w, h);
-		//usleep(20000);
+		show(univ, w, h);
+		usleep(20000);
 		i++;
 	}
 

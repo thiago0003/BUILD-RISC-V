@@ -75,8 +75,8 @@ unsigned univ[30][30] =  {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
 
 	while (i != 100000) {
 		evolve(univ, w, h);
-		//show(univ, w, h);
-		//usleep(20000);
+		show(univ, w, h);
+		usleep(20000);
 		i++;
 	}
 
