@@ -30,7 +30,7 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 |:---------------:|:----------------:|:-------:|:-------:|:-------:|:------------:|:------:|
 | R-Type          |funct7            | rs2     | rs1     | funct3  | rd           |opcode  |
 | S-Type          |imm\[11:5\]       | rs2     | rs1     | funct3  | mm\[4:0\]    |opcode  |
-| B-Type          |imm\[\12\|10:5\]  | rs2     | rs1     | funct3  | mm\[4:1\|11\]|opcode  |
+| B-Type          |imm\[12\|10:5\]  | rs2     | rs1     | funct3  | mm\[4:1\|11\]|opcode  |
 
 |Tipo de instrução| 31 - 12                    | 11 - 7 | 6 - 0  |
 |:---------------:|:--------------------------:|:------:|:------:|
@@ -41,20 +41,20 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 |:---------------:|:----------------:|:-------:|:-------:|:------------:|:------:|
 | I-Type          |imm\[11:0\]       | rs1     | funct3  | rd           |opcode  |
 
-|Instrução|  Tipo  |
-|:-------:|:------:|
-| add     | R-Type |
-| addi    | I-Type |
-| slli    | I-Type |
-| sw      | S-Type |
-| lw      | S-Type |
-| bge     | B-Type |
-| beq     | B-Type |
-| blt     | B-Type |
-| bne     | B-Type |
-| auipc   | U-Type |
-| jal     | J-Type |
-| jalr    | J-Type |
+|Instrução|  Tipo  | Instruction Set                                                |
+|:-------:|:------:|:--------------------------------------------------------------:|
+| add     | R-Type | `0000000 \| rs2 \| rs1 \| 000 \| rd \| 0110011`                |
+| addi    | I-Type | `imm[11:0] \| rs1 \| 000 \| rd  \| 0010011`                    |
+| slli    | I-Type | `0000000 \| shamt \| rs1 \| 001 \| rd \| 0010011`              |
+| sw      | S-Type | `imm[11:5] \| rs2 \| rs1 \| 010 \| imm[4:0] \| 0100011`        |
+| lw      | S-Type | `imm[11:0] \| rs1 \| 010 \| rd \| 0000011`                     |
+| bge     | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 101 \| imm[4:1\|11] \| 1100011`|
+| beq     | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 000 \| imm[4:1\|11] \| 1100011`|
+| blt     | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 100 \| imm[4:1\|11] \| 1100011`|
+| bne     | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 001 \| imm[4:1\|11] \| 1100011`|
+| auipc   | U-Type | `imm[31:12] \| rd \| 0010111`                                  |
+| jal     | J-Type | `imm[20\|10:1\|11\|19:12] \| rd \| 1101111`                    |
+| jalr    | J-Type | `imm[11:0] \| rs1 \| 000 \| rd \| 1100111`                     |
 
 ### Pseudo instruções
 * mov: Copy register, para essa intrução utilizamos a instrução `addi rd, rs, 0`
