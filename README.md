@@ -42,7 +42,7 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 | I-Type          |imm\[11:0\]       | rs1     | funct3  | rd           |opcode  |
 
 |Instrução|  Tipo  | Instruction Set                                                |
-|:-------:|:------:|:--------------------------------------------------------------:|
+|:-------:|:------:|:---------------------------------------------------------------|
 | add     | R-Type | `0000000 \| rs2 \| rs1 \| 000 \| rd \| 0110011`                |
 | addi    | I-Type | `imm[11:0] \| rs1 \| 000 \| rd  \| 0010011`                    |
 | slli    | I-Type | `0000000 \| shamt \| rs1 \| 001 \| rd \| 0010011`              |
