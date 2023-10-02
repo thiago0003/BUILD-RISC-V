@@ -1,0 +1,11 @@
+I/O Assignment Analysis Status : Successful - Mon Oct  2 09:35:10 2023
+Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+Revision Name : RISCV
+Top-level Entity Name : RISCV
+Family : Cyclone V
+Device : 5CGXFC7C7F23C8
+Timing Models : Final
+Total pins : 34 / 268 ( 13 % )
+Total virtual pins : 0
+Total PLLs : 0 / 13 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

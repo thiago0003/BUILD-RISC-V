@@ -1,6 +1,6 @@
 Analysis & Synthesis report for RISCV
-Sun Oct  1 20:37:51 2023
-Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Standard Edition
+Mon Oct  2 09:47:50 2023
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
 ---------------------
@@ -41,27 +41,27 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+--------------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                         ;
-+---------------------------------+----------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Oct  1 20:37:51 2023              ;
-; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Standard Edition ;
-; Revision Name                   ; RISCV                                              ;
-; Top-level Entity Name           ; RISCV                                              ;
-; Family                          ; Cyclone V                                          ;
-; Logic utilization (in ALMs)     ; N/A                                                ;
-; Total registers                 ; 0                                                  ;
-; Total pins                      ; 34                                                 ;
-; Total virtual pins              ; 0                                                  ;
-; Total block memory bits         ; 0                                                  ;
-; Total DSP Blocks                ; 0                                                  ;
-; Total HSSI RX PCSs              ; 0                                                  ;
-; Total HSSI PMA RX Deserializers ; 0                                                  ;
-; Total HSSI TX PCSs              ; 0                                                  ;
-; Total HSSI PMA TX Serializers   ; 0                                                  ;
-; Total PLLs                      ; 0                                                  ;
-; Total DLLs                      ; 0                                                  ;
-+---------------------------------+----------------------------------------------------+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Oct  2 09:47:50 2023          ;
+; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
+; Revision Name                   ; RISCV                                          ;
+; Top-level Entity Name           ; RISCV                                          ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 0                                              ;
+; Total pins                      ; 34                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -157,7 +157,7 @@ https://fpgasoftware.intel.com/eula.
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
 ; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -254,65 +254,66 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 22.1std.2 Build 922 07/20/2023 SC Standard Edition
-    Info: Processing started: Sun Oct  1 20:37:45 2023
+    Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+    Info: Processing started: Mon Oct  2 09:47:38 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV -c RISCV
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Warning (12019): Can't analyze file -- file RISCV.v is missing
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file RISCV.sv
-    Info (12023): Found entity 1: RISCV File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 2
+    Info (12023): Found entity 1: RISCV File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 1
 Info (12127): Elaborating entity "RISCV" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(7): object "reset" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 7
 Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(11): object "alu_result" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 11
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(56): object "RD" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 56
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(79): object "is_sw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 79
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(80): object "is_lw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 80
+Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(78): object "RD" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 78
+Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(124): object "is_sw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 124
+Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(127): object "is_lw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 127
+Warning (12158): Entity "RISCV" contains only dangling pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 34 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 3
-    Warning (15610): No output dependent on input pin "rst" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 4
-    Warning (15610): No output dependent on input pin "instruction[0]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[1]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[2]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[3]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[4]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[5]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[6]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[7]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[8]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[9]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[10]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[11]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[12]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[13]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[14]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[15]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[16]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[17]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[18]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[19]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[20]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[21]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[22]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[23]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[24]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[25]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[26]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[27]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[28]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[29]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[30]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
-    Warning (15610): No output dependent on input pin "instruction[31]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 6
+    Warning (15610): No output dependent on input pin "clk" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 2
+    Warning (15610): No output dependent on input pin "rst" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 3
+    Warning (15610): No output dependent on input pin "instruction[0]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[1]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[2]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[3]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[4]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[5]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[6]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[7]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[8]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[9]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[10]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[11]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[12]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[13]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[14]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[15]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[16]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[17]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[18]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[19]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[20]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[21]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[22]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[23]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[24]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[25]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[26]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[27]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[28]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[29]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[30]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
+    Warning (15610): No output dependent on input pin "instruction[31]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
 Info (21057): Implemented 34 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 34 input pins
     Info (21059): Implemented 0 output pins
 Info (144001): Generated suppressed messages file /home/martins/Documents/BUILD-RISC-V/RISC-V/output_files/RISCV.map.smsg
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 41 warnings
-    Info: Peak virtual memory: 427 megabytes
-    Info: Processing ended: Sun Oct  1 20:37:51 2023
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:12
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 42 warnings
+    Info: Peak virtual memory: 424 megabytes
+    Info: Processing ended: Mon Oct  2 09:47:50 2023
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:28
 
 
 +------------------------------------------+
