@@ -70,7 +70,8 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 
 ## Coisas a investigar
 * Foi gerado os arquivos game_of_life_start_report.txt e game_of_life_compact_report.txt, a ideia é analizar os tempos de execução de ambos os programas em x86 e posteriormente (quem sabe) em RISC-V para verificar se há uma melhor otimização no código que não possui as instruções de multiplicação e divisão. Alguma das hipóteses é que com a linearização da matriz obtemos um acesso direto a memória, o que não ocorre na matriz, onde é passado o endereço de um vetor para poder acessar o dado em determinada posição.
-* Outra ideia a se investigar seria a diferença entre uma operação de multiplicação utilizando instrução de processador e uma operação de multiplicação utilizando iterações.  
+* Outra ideia a se investigar seria a diferença entre uma operação de multiplicação utilizando instrução de processador e uma operação de multiplicação utilizando iterações.
+* O que aconteceria caso o valor de soma do PC fosse fora do range especificado de 32 bits?
 
 
 # Build RISC-V
