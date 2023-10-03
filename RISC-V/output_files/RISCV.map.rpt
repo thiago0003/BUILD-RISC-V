@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RISCV
-Mon Oct  2 09:47:50 2023
+Mon Oct  2 16:11:18 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -44,7 +44,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Oct  2 09:47:50 2023          ;
+; Analysis & Synthesis Status     ; Successful - Mon Oct  2 16:11:18 2023          ;
 ; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                   ; RISCV                                          ;
 ; Top-level Entity Name           ; RISCV                                          ;
@@ -255,7 +255,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Mon Oct  2 09:47:38 2023
+    Info: Processing started: Mon Oct  2 16:11:05 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV -c RISCV
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -267,7 +267,6 @@ Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(11): object "alu_result
 Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(78): object "RD" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 78
 Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(124): object "is_sw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 124
 Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(127): object "is_lw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 127
-Warning (12158): Entity "RISCV" contains only dangling pins
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 34 input pin(s) that do not drive logic
@@ -309,11 +308,11 @@ Info (21057): Implemented 34 device resources after synthesis - the final resour
     Info (21058): Implemented 34 input pins
     Info (21059): Implemented 0 output pins
 Info (144001): Generated suppressed messages file /home/martins/Documents/BUILD-RISC-V/RISC-V/output_files/RISCV.map.smsg
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 42 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 41 warnings
     Info: Peak virtual memory: 424 megabytes
-    Info: Processing ended: Mon Oct  2 09:47:50 2023
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:28
+    Info: Processing ended: Mon Oct  2 16:11:18 2023
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:29
 
 
 +------------------------------------------+
