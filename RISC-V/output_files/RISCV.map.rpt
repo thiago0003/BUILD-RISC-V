@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RISCV
-Mon Oct  2 16:11:18 2023
+Tue Oct  3 11:09:25 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -14,10 +14,11 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
- 12. Analysis & Synthesis Suppressed Messages
+  9. Parameter Settings for User Entity Instance: mem:memor
+ 10. Port Connectivity Checks: "regfile:regs"
+ 11. Post-Synthesis Netlist Statistics for Top Partition
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -44,14 +45,14 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Oct  2 16:11:18 2023          ;
+; Analysis & Synthesis Status     ; Successful - Tue Oct  3 11:09:25 2023          ;
 ; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                   ; RISCV                                          ;
 ; Top-level Entity Name           ; RISCV                                          ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
 ; Total registers                 ; 0                                              ;
-; Total pins                      ; 34                                             ;
+; Total pins                      ; 2                                              ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0                                              ;
 ; Total DSP Blocks                ; 0                                              ;
@@ -192,13 +193,13 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;       ;
 ; Dedicated logic registers                   ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 34    ;
+; I/O pins                                    ; 2     ;
 ;                                             ;       ;
 ; Total DSP Blocks                            ; 0     ;
 ;                                             ;       ;
 ; Maximum fan-out node                        ; clk   ;
 ; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 34    ;
+; Total fan-out                               ; 2     ;
 ; Average fan-out                             ; 0.50  ;
 +---------------------------------------------+-------+
 
@@ -208,7 +209,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |RISCV                     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 34   ; 0            ; |RISCV              ; RISCV       ; work         ;
+; |RISCV                     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 2    ; 0            ; |RISCV              ; RISCV       ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -228,12 +229,32 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mem:memor ;
++----------------+----------+----------------------------+
+; Parameter Name ; Value    ; Type                       ;
++----------------+----------+----------------------------+
+; FILENAME       ; fibo.txt ; String                     ;
++----------------+----------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "regfile:regs"                                                                                                            ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                  ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; rd1  ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (5 bits) it drives; bit(s) "rd1[31..5]" have no fanouts ;
+; rd2  ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (5 bits) it drives; bit(s) "rd2[31..5]" have no fanouts ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-------------------+---------------------------------+
 ; Type              ; Count                           ;
 +-------------------+---------------------------------+
-; boundary_port     ; 34                              ;
+; boundary_port     ; 2                               ;
 ;                   ;                                 ;
 ; Max LUT depth     ; 0.00                            ;
 ; Average LUT depth ; 0.00                            ;
@@ -255,69 +276,30 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Mon Oct  2 16:11:05 2023
+    Info: Processing started: Tue Oct  3 11:09:12 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV -c RISCV
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file RISCV.sv
+Info (12021): Found 3 design units, including 3 entities, in source file RISCV.sv
     Info (12023): Found entity 1: RISCV File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 1
+    Info (12023): Found entity 2: mem File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 188
+    Info (12023): Found entity 3: regfile File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 212
 Info (12127): Elaborating entity "RISCV" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(7): object "reset" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 7
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(11): object "alu_result" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 11
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(78): object "RD" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 78
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(124): object "is_sw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 124
-Warning (10036): Verilog HDL or VHDL warning at RISCV.sv(127): object "is_lw" assigned a value but never read File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 127
+Info (12128): Elaborating entity "regfile" for hierarchy "regfile:regs" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 177
+Info (12128): Elaborating entity "mem" for hierarchy "mem:memor" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 181
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 34 input pin(s) that do not drive logic
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "clk" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 2
-    Warning (15610): No output dependent on input pin "rst" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 3
-    Warning (15610): No output dependent on input pin "instruction[0]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[1]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[2]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[3]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[4]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[5]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[6]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[7]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[8]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[9]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[10]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[11]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[12]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[13]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[14]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[15]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[16]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[17]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[18]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[19]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[20]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[21]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[22]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[23]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[24]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[25]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[26]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[27]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[28]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[29]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[30]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-    Warning (15610): No output dependent on input pin "instruction[31]" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 5
-Info (21057): Implemented 34 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 34 input pins
+    Warning (15610): No output dependent on input pin "rst" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 4
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
     Info (21059): Implemented 0 output pins
-Info (144001): Generated suppressed messages file /home/martins/Documents/BUILD-RISC-V/RISC-V/output_files/RISCV.map.smsg
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 41 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 424 megabytes
-    Info: Processing ended: Mon Oct  2 16:11:18 2023
+    Info: Processing ended: Tue Oct  3 11:09:25 2023
     Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:29
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in /home/martins/Documents/BUILD-RISC-V/RISC-V/output_files/RISCV.map.smsg.
+    Info: Total CPU time (on all processors): 00:00:30
 
 

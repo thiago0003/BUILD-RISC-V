@@ -1,36 +1,31 @@
 module RISCV(
-	input wire clk,
-	input wire rst,
-	input wire [31:0] instruction
+	input wire clock,
+	input wire reset
 	);
 	
-	logic reset;
 	logic [31:0]pc;
-	logic [31:0]next_pc_wire;
 	logic [31:0]next_pc;
 	logic [31:0]alu_result;
-
-	assign reset = rst;
-	assign next_pc =	rst     					? 32'b0:
-							is_conditional_jump	? jump_add:
-							pc + 32'd4;
-						  
-	always_ff @(posedge clk) begin
-		next_pc_wire[31:0] <= next_pc[31:0];
-	end
+	logic [31:0]instruction;
 	
-	assign pc[31:0] = next_pc_wire;
+	assign next_pc =	reset     				? 32'b0:
+							is_conditional_jump	? jump_add:
+							$signed(pc) + 32'd4;
+						  
+	always_ff @(posedge clock) begin
+		pc <= next_pc[31:0];
+	end
 	
 	logic [6:0] opcode;
 	assign opcode = instruction[6:0];
-	logic [4:0] rd;
-	assign rd = instruction[11:7];
+	logic [4:0] rd_;
+	assign rd_ = instruction[11:7];
 	logic [2:0] funct3_;
 	assign funct3_ = instruction[14:12];
-	logic [4:0] rs1;
-	assign rs1 = instruction[19:15];
-	logic [4:0] rs2;
-	assign rs2 = instruction[24:20];
+	logic [4:0] rs1_;
+	assign rs1_ = instruction[19:15];
+	logic [4:0] rs2_;
+	assign rs2_ = instruction[24:20];
 	logic [6:0] funct7_;
 	assign funct7_ = instruction[31:25];
 	
@@ -76,7 +71,7 @@ module RISCV(
 	assign RS2 = (R_type | S_type | B_type)          ? rs2 : 5'b0;
 
 	logic [4:0] RD;
-	assign RD = (R_type | I_type | U_type | J_type) ? rd : 5'b0;
+	assign RD = (R_type | I_type | U_type | J_type) ? rd_ : 5'b0;
 	
 	logic [2:0] funct3;
 	assign funct3 = (R_type | I_type | S_type | B_type) ? funct3_ : 3'b0;
@@ -124,8 +119,8 @@ module RISCV(
 	logic is_sw;
 	assign is_sw     = (opcode == 7'b0100011 & funct3 == 3'b010);
 	
-	logic is_lw;
-	assign is_lw     = (opcode == 7'b0000011 & funct3 == 3'b010);
+	//logic is_lw;
+	//assign is_lw     = (opcode == 7'b0000011 & funct3 == 3'b010);
 	
 	logic is_conditional_jump;
 	assign is_conditional_jump = (is_beq || is_bne || is_blt || is_bge || is_jal || is_jalr);
@@ -136,22 +131,82 @@ module RISCV(
 							is_addi  ? $signed(RS1) + $signed(imm):
 							is_slli  ? RS1 << imm[4:0]:
 							is_auipc ? pc + $signed(imm):
-							is_jal   ? pc + 1:
-							is_jalr  ? pc + 1:
+							is_jal   ? pc + 32'd4:
+							is_jalr  ? pc + 32'd4:
+							S_type 	? $signed(RS1) + $signed(imm): 
 							32'b0;
 	
 	logic [31:0] jump_add;
 	assign jump_add =	is_jal  													? $signed(pc) + $signed($signed(imm) >>> 2):
-							is_jalr 													? $signed(RS1) + $signed($signed(imm) >>> 2):
+							is_jalr 													? $signed(pc) + $signed(RS1) + $signed($signed(imm) >>> 2):
 							(is_beq && (RS1 == RS2)) 							? $signed(pc) + $signed($signed(imm) >>> 2):
 							(is_bne && (RS1 != RS2))							? $signed(pc) + $signed($signed(imm) >>> 2):
 							(is_blt && ($signed(RS1) < $signed(RS2)))		? $signed(pc) + $signed($signed(imm) >>> 2):
 							(is_bge && ($signed(RS1) >= $signed(RS2)))	? $signed(pc) + $signed($signed(imm) >>> 2):
-							pc + 1;
+							pc + 32'd4;
 		
-		always @(posedge clk) begin
+		always @(posedge clock) begin
 				alu_result <= result;
 		end
+		
+	// Registers
+	logic rd_valid;
+	assign rd_valid = R_type || I_type || U_type || J_type && (rd_!=5'b0);
 
+	logic [32-1:0] ld_data;
+	logic [4:0] rs1;
+	logic [4:0] rs2; 
+	 
+	regfile regs(clock, rd_valid, rs1_, rs2_, RD, is_lw ? ld_data : alu_result, rs1, rs2);
+
+
+	// Memoria 
+	imem imem(pc, instruction)
+	dmem dmem(clock, is_sw, alu_result[6:2], rs2, ld_data);
 	
+	
+endmodule
+
+
+// Modulo de memoria
+
+module dmem(input  logic        clk, we,
+            input  logic [31:0] a, wd,
+            output logic [31:0] rd);
+
+  logic [31:0] RAM[63:0];
+
+  assign rd = RAM[a[31:2]]; // word aligned
+
+  always_ff @(posedge clk)
+    if (we) RAM[a[31:2]] <= wd;
+endmodule
+
+module imem(input  logic [31:0] a,
+            output logic [31:0] rd);
+
+  logic [31:0] RAM[63:0];
+
+  initial
+      $readmemh("fibo.hex",RAM);
+
+  assign rd = RAM[a[31:2]]; // word aligned
+endmodule
+
+
+// Modulo de registradores
+module regfile(input  logic        clock, 
+               input  logic        reg_enable,
+               input  logic [4:0]  reg_addr1, reg_addr2, addr, 
+               input  logic [31:0] write_reg, 
+               output logic [31:0] rd1, rd2);
+					
+  logic [31:0] rf[31:0];
+
+	always_ff @(posedge clock) 
+		if (reg_enable) 
+			rf[addr] <= write_reg;	
+			
+		assign rd1 = (reg_addr1 != 0) ? rf[reg_addr1] : 0;
+		assign rd2 = (reg_addr2 != 0) ? rf[reg_addr2] : 0;
 endmodule
