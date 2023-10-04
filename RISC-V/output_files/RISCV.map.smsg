@@ -1,2 +1,2 @@
-Info (10281): Verilog HDL Declaration information at RISCV.sv(73): object "RS1" differs only in case from object "rs1" in the same scope File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 73
-Info (10281): Verilog HDL Declaration information at RISCV.sv(76): object "RS2" differs only in case from object "rs2" in the same scope File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 76
+Info (10281): Verilog HDL Declaration information at RISCV.sv(25): object "rs1" differs only in case from object "RS1" in the same scope File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 25
+Info (10281): Verilog HDL Declaration information at RISCV.sv(27): object "rs2" differs only in case from object "RS2" in the same scope File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 27

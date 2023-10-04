@@ -1,5 +1,5 @@
 Assembler report for RISCV
-Mon Oct  2 09:32:49 2023
+Wed Oct  4 13:29:53 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -38,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Oct  2 09:32:49 2023 ;
+; Assembler Status      ; Successful - Wed Oct  4 13:29:53 2023 ;
 ; Revision Name         ; RISCV                                 ;
 ; Top-level Entity Name ; RISCV                                 ;
 ; Family                ; Cyclone V                             ;
@@ -67,8 +67,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------+--------------------+
 ; Option         ; Setting            ;
 +----------------+--------------------+
-; JTAG usercode  ; 0x00EC2875         ;
-; Checksum       ; 0x00EC2875         ;
+; JTAG usercode  ; 0x0115D37D         ;
+; Checksum       ; 0x0115D37D         ;
 +----------------+--------------------+
 
 
@@ -78,14 +78,14 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Mon Oct  2 09:32:40 2023
+    Info: Processing started: Wed Oct  4 13:29:47 2023
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off RISCV -c RISCV
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 522 megabytes
-    Info: Processing ended: Mon Oct  2 09:32:49 2023
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Peak virtual memory: 532 megabytes
+    Info: Processing ended: Wed Oct  4 13:29:53 2023
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 
