@@ -113,7 +113,7 @@ module RISCV(
 	// ALU
 	logic [31:0] result, result_ff;
 	assign result = 	is_add   ? src1 + src2:
-							is_addi  ? $signed(src1 + 32'b0) + $signed(imm):
+							is_addi  ? $signed(src1) + $signed(imm):
 							is_slli  ? src1 << imm[4:0]:
 							is_auipc ? pc + $signed(imm):
 							J_type   ? jump_add:
@@ -134,16 +134,20 @@ module RISCV(
 		
 	// Registers
 	logic rd_valid;
-	assign rd_valid = (RD != 5'b0);
+	assign rd_valid = (RS1 != 5'b0 || RS2 != 5'b0);
 
-	assign WriteData = src2;
+	assign WriteData = src1;
 	assign MemWrite = is_sw;
+	
+	//logic MemReg;
+	//assign MemReg = instruction[27:26];
+	
 	assign alu_result = is_lw ? ReadData: result_ff;
 	logic [31:0]src1;
 	logic [31:0]src2;
 		
 	logic regWrite;
-	assign regWrite = (R_type || S_type || B_type);
+	assign regWrite = (R_type || S_type || B_type || I_type);
 	 
 	regfile regs(clk, regWrite, rd_valid, RS1, RS2, RD, alu_result, src1, src2);
 	
@@ -157,10 +161,6 @@ module regfile(input  logic        clk,
                output logic [31:0] rd1, rd2);
 					
   logic [31:0] rf[31:0];
-  
-  initial begin
-		rf = '{32{0}};;
-  end
 
 	always_ff @(posedge clk) 
 		if (regWrite) 
