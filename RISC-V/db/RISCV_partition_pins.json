@@ -392,14 +392,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[5]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[4]",
-					"strict" : false
-				},
-				{
 					"name" : "instruction[6]",
 					"strict" : false
 				},
@@ -420,11 +412,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[13]",
+					"name" : "instruction[4]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[14]",
+					"name" : "instruction[5]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[13]",
 					"strict" : false
 				},
 				{
@@ -432,7 +428,87 @@
 					"strict" : false
 				},
 				{
+					"name" : "instruction[14]",
+					"strict" : false
+				},
+				{
 					"name" : "ReadData[0]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[30]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[31]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[25]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[26]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[27]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[28]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[29]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[11]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[24]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[10]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[23]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[9]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[22]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[7]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[8]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[18]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[19]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[21]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[20]",
 					"strict" : false
 				},
 				{
@@ -560,87 +636,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[23]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[24]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[7]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[8]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[9]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[10]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[11]",
-					"strict" : false
-				},
-				{
 					"name" : "reset",
 					"strict" : false
 				},
 				{
 					"name" : "clk",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[18]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[19]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[21]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[20]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[22]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[30]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[31]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[25]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[26]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[27]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[28]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[29]",
 					"strict" : false
 				},
 				{

@@ -9,8 +9,8 @@ module RISCV(
 	
 	logic [31:0]next_pc;	
 	assign next_pc =	reset     				? 32'b0:
-						is_conditional_jump	? jump_add:
-						$signed(pc) + 32'd4;
+							is_conditional_jump	? jump_add:
+							pc + 32'd4;
 						  
 	always_ff @(posedge clk) begin
 		pc <= next_pc[31:0];
@@ -113,7 +113,7 @@ module RISCV(
 	// ALU
 	logic [31:0] result, result_ff;
 	assign result = 	is_add   ? src1 + src2:
-							is_addi  ? src1 + $signed(imm):
+							is_addi  ? $signed(src1 + 32'b0) + $signed(imm):
 							is_slli  ? src1 << imm[4:0]:
 							is_auipc ? pc + $signed(imm):
 							J_type   ? jump_add:
@@ -129,20 +129,19 @@ module RISCV(
 							(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) + $signed($signed(imm) >>> 2):
 							pc + 32'd4;
 		
-		always @(posedge clk) begin
-				result_ff <= result;
-		end
+	always_comb
+		result_ff <= result;
 		
 	// Registers
 	logic rd_valid;
-	assign rd_valid = R_type || I_type || U_type || J_type && (rd_!=5'b0);
+	assign rd_valid = (RD != 5'b0);
 
 	assign WriteData = src2;
 	assign MemWrite = is_sw;
 	assign alu_result = is_lw ? ReadData: result_ff;
 	logic [31:0]src1;
 	logic [31:0]src2;
-	
+		
 	logic regWrite;
 	assign regWrite = (R_type || S_type || B_type);
 	 
@@ -152,19 +151,23 @@ endmodule
 
 // Modulo de registradores
 module regfile(input  logic        clk, 
-               input  logic        MemWrite, rd_valid,
+               input  logic        regWrite, rd_valid,
                input  logic [4:0]  reg_addr1, reg_addr2, addr, 
                input  logic [31:0] write_reg, 
                output logic [31:0] rd1, rd2);
 					
   logic [31:0] rf[31:0];
+  
+  initial begin
+		rf = '{32{0}};;
+  end
 
 	always_ff @(posedge clk) 
-		if (MemWrite) 
+		if (regWrite) 
 			rf[addr] <= write_reg;	
 			
-	assign rd1 = rd_valid ? rf[reg_addr1] : 0;
-	assign rd2 = rd_valid ? rf[reg_addr2] : 0;
+	assign rd1 = rd_valid ? rf[reg_addr1] : 32'b0;
+	assign rd2 = rd_valid ? rf[reg_addr2] : 32'b0;
 endmodule
 
 
