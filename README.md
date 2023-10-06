@@ -64,9 +64,14 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 * j: Jump, para essa intrução utilizamos a instrução `jal x0, offset`
 * jr: Jump register, para essa instrução utilizamos a instrução `jalr x0, rs, 0`
 * call: Call for-away subrotine, para essa instrução utilizamos o conjunto de instruções `auipc x6, offset[31:12]` e `jalr x1, x6, offset[11:0]`
-* li ?
+* li : Instrução traduzida para `addi x2, x0, 0` 
 * nop: Stall para saber se o salto será tomado, como RISC-V é incipiente devem incluir essa instrução por precaução. Para essa instrução utilizamos a instrução `addi x0, x0, 0`
 
+## Coisas interessantes na compilação
+Quando gerado as instruções RISC-V foi percebido que:
+* Devido a norma ABI é colocado instruções de SW para salvar os dados contido nos registradores que serão utilizados e posteriormente é efetuado as instruções de LW para carregar novamente os dados para o registrador. Porém essas intruções não são necessárias para a gente uma vez que os registradores serão utilizado somente para rodar o nosso jogo.
+* Também foi percebido que quando instanciado os arrays como variáveis globais é gerado instruções como `%hi e %lo` que não são traduzidas no nosso simulador online [Venus](https://venus.kvakil.me/).
+* Também foi percebido que, podemos utilizar a flag `register` durante a programação para ao invés de utilizar a memória utilizarmos as variáveis dentro dos registradores, tornando assim as instruções mais simples.
 
 ## Coisas a investigar
 * Foi gerado os arquivos game_of_life_start_report.txt e game_of_life_compact_report.txt, a ideia é analizar os tempos de execução de ambos os programas em x86 e posteriormente (quem sabe) em RISC-V para verificar se há uma melhor otimização no código que não possui as instruções de multiplicação e divisão. Alguma das hipóteses é que com a linearização da matriz obtemos um acesso direto a memória, o que não ocorre na matriz, onde é passado o endereço de um vetor para poder acessar o dado em determinada posição.
@@ -75,3 +80,6 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 
 
 # Build RISC-V
+
+## Problemas do nosso processador
+* Sempre que utilizarmos um registrador devemos realizar a operação `addi reg, 0` sendo `reg` o nosso registrador a ser inicializado. Dessa forma, garantimos que o conteúdo do registrador é sempre inicializado com zero. Quando não efetuado essa operação, podemos ver na __EPWave__ do nosso simulador [EDA Playground](https://www.edaplayground.com). 

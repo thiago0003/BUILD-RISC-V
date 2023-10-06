@@ -392,11 +392,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[6]",
+					"name" : "instruction[2]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[2]",
+					"name" : "instruction[6]",
 					"strict" : false
 				},
 				{
@@ -432,10 +432,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "ReadData[0]",
-					"strict" : false
-				},
-				{
 					"name" : "instruction[30]",
 					"strict" : false
 				},
@@ -464,15 +460,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[11]",
-					"strict" : false
-				},
-				{
 					"name" : "instruction[24]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[10]",
+					"name" : "instruction[11]",
 					"strict" : false
 				},
 				{
@@ -480,7 +472,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[9]",
+					"name" : "instruction[10]",
 					"strict" : false
 				},
 				{
@@ -488,11 +480,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[7]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[8]",
+					"name" : "instruction[9]",
 					"strict" : false
 				},
 				{
@@ -500,7 +488,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[19]",
+					"name" : "instruction[17]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[15]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[16]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[20]",
 					"strict" : false
 				},
 				{
@@ -508,7 +508,27 @@
 					"strict" : false
 				},
 				{
-					"name" : "instruction[20]",
+					"name" : "instruction[19]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[8]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[7]",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "ReadData[0]",
 					"strict" : false
 				},
 				{
@@ -633,26 +653,6 @@
 				},
 				{
 					"name" : "ReadData[31]",
-					"strict" : false
-				},
-				{
-					"name" : "reset",
-					"strict" : false
-				},
-				{
-					"name" : "clk",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[17]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[16]",
-					"strict" : false
-				},
-				{
-					"name" : "instruction[15]",
 					"strict" : false
 				}
 			]

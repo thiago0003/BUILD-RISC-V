@@ -8,11 +8,9 @@ int main(void)
     
     while(1)//Só vai mostrar até 1000
     {                 
-        fib = fib + aux;                 
-        aux = n;
+        fib += n;
 
         printf("%d\n:", fib);        
     }
   return 0;
 }
-

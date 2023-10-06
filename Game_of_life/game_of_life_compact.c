@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void show(void *u, int w, int h)
+void show(unsigned univ[])
 {
-	int (*univ) = u;
+	int w = 30, h = 30;
+
 	printf("\033[H");
 	
 	for(int i = 0; i < h; i++){
@@ -17,35 +18,53 @@ void show(void *u, int w, int h)
 	fflush(stdout);
 }
 
-void evolve(void *u, int w, int h)
+void evolve(unsigned univ[], unsigned new[])
 {
-	unsigned (*univ) = u;
-	unsigned new[900];
-	int sum_y = 0;
+	register int sum_y = 0;
+	register int x, y;
+	register int w = 30, h = 30;
 
-	for(int y = 0; y < h; y++) {
-		for(int x = 0; x < w; x++)
+	for(y = 0; y < h; y++) {
+		for(x = 0; x < w; x++)
 		{
-			int n = 0;
-			for (int y1 = y -1; y1 <= y + 1; y1++)
+			register int n = 0;
+			register int y1; 
+			for (y1 = y -1; y1 <= y + 1; y1++)
 			{
-				int sum = 0;
-				int mod_y = ((y1 < 0) ? y1 + h : ((y1 == h) ? 0 : y1));
+				register int sum = 0;
+				register int mod_y;
+				register int i;
 
-				for(int i = 0; i < mod_y; i++)
+				if(y1 < 0)
+					mod_y = y1 + h;
+				else if(y1 == h)
+					mod_y = 0;
+				else
+					mod_y = y1;
+
+				for(i = 0; i < mod_y; i++)
 					sum += h;
 
-				for (int x1 = x -1; x1 <= x + 1; x1++)
+				for (i = x -1; i <= x + 1; i++)
 			 	{
-					int mod_x = ((x1 < 0) ? x1 + w : (x1 == w) ? 0 : x1);
-					int sum_ = sum + mod_x;
+					register int mod_x;
+					if(i < 0)
+						mod_x = i + w;
+					else if(i == w)
+						mod_x = 0;
+					else
+						mod_x = i;
+
+					register int sum_ = sum + mod_x;
 
 					if (univ[sum_])
 						n++;
 				}
 			}
 
-			if (univ[sum_y + x]) n--;
+			if (univ[sum_y + x]) 
+				n--;
+			
 			new[sum_y + x] = (n == 3 || (n == 2 && univ[sum_y + x]));
 		}
 
@@ -53,18 +72,19 @@ void evolve(void *u, int w, int h)
 	}
 
 	sum_y = 0;
-	for(int y = 0; y < h; y++)
+	for(y = 0; y < h; y++)
 	{
-		for(int x = 0; x < w; x++)
+		for(x = 0; x < w; x++)
 			univ[sum_y + x] = new[sum_y + x];
 
 		sum_y += h;
 	}
 }
 
-int main(int c, char **v)
+int main()
 {
-	int w = 30, h = 30;
+
+	unsigned new[900];
 	unsigned univ[900] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,
                           0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,1,0,1,
                           0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -95,11 +115,13 @@ int main(int c, char **v)
                           0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
                           0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
                           0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	
 	int i = 0;
 
 	while (i != 100000) {
-		evolve(univ, w, h);
-		show(univ, w, h);
+		evolve(univ, new);
+		show(univ);
 		usleep(20000);
 		i++;
 	}

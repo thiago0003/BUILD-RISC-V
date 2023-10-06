@@ -1,5 +1,5 @@
-Analysis & Elaboration report for RISCV
-Wed Oct  4 17:47:20 2023
+Analysis & Synthesis report for RISCV
+Thu Oct  5 16:34:55 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -7,11 +7,20 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Analysis & Elaboration Messages
-  6. Analysis & Elaboration Suppressed Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
+ 15. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -35,42 +44,31 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+--------------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                                 ;
-+-------------------------------+------------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Oct  4 17:47:20 2023          ;
-; Quartus Prime Version         ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
-; Revision Name                 ; RISCV                                          ;
-; Top-level Entity Name         ; RISCV                                          ;
-; Family                        ; Cyclone V                                      ;
-; Logic utilization (in ALMs)   ; N/A until Partition Merge                      ;
-; Total registers               ; N/A until Partition Merge                      ;
-; Total pins                    ; N/A until Partition Merge                      ;
-; Total virtual pins            ; N/A until Partition Merge                      ;
-; Total block memory bits       ; N/A until Partition Merge                      ;
-; Total PLLs                    ; N/A until Partition Merge                      ;
-; Total DLLs                    ; N/A until Partition Merge                      ;
-+-------------------------------+------------------------------------------------+
-
-
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Oct  5 16:34:55 2023          ;
+; Quartus Prime Version           ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
+; Revision Name                   ; RISCV                                          ;
+; Top-level Entity Name           ; RISCV                                          ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 1024                                           ;
+; Total pins                      ; 163                                            ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                                           ;
+; Analysis & Synthesis Settings                                                                                             ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
@@ -156,35 +154,240 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                            ;
++----------------------------------+-----------------+---------------------------------------------+------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                                   ; File Name with Absolute Path                         ; Library ;
++----------------------------------+-----------------+---------------------------------------------+------------------------------------------------------+---------+
+; RISCV.sv                         ; yes             ; User SystemVerilog HDL File                 ; /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv ;         ;
+; imem.hex                         ; yes             ; Auto-Found Hexadecimal (Intel-Format) File  ; /home/martins/Documents/BUILD-RISC-V/RISC-V/imem.hex ;         ;
+; dmem.hex                         ; yes             ; Auto-Found Hexadecimal (Intel-Format) File  ; /home/martins/Documents/BUILD-RISC-V/RISC-V/dmem.hex ;         ;
++----------------------------------+-----------------+---------------------------------------------+------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 1244      ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 1314      ;
+;     -- 7 input functions                    ; 457       ;
+;     -- 6 input functions                    ; 278       ;
+;     -- 5 input functions                    ; 207       ;
+;     -- 4 input functions                    ; 103       ;
+;     -- <=3 input functions                  ; 269       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 1024      ;
+;                                             ;           ;
+; I/O pins                                    ; 163       ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 1024      ;
+; Total fan-out                               ; 10496     ;
+; Average fan-out                             ; 3.94      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |RISCV                     ; 1314 (636)          ; 1024 (32)                 ; 0                 ; 0          ; 163  ; 0            ; |RISCV              ; RISCV       ; work         ;
+;    |regfile:regs|          ; 678 (678)           ; 992 (992)                 ; 0                 ; 0          ; 0    ; 0            ; |RISCV|regfile:regs ; regfile     ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++----------------------------------------+---------------------------------------------+
+; Register name                          ; Reason for Removal                          ;
++----------------------------------------+---------------------------------------------+
+; regfile:regs|rf~0                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~1                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~2                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~3                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~4                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~5                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~6                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~7                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~8                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~9                      ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~10                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~11                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~12                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~13                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~14                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~15                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~16                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~17                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~18                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~19                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~20                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~21                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~22                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~23                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~24                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~25                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~26                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~27                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~28                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~29                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~30                     ; Stuck at GND due to stuck port clock_enable ;
+; regfile:regs|rf~31                     ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 32 ;                                             ;
++----------------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                 ;
++-------------------+--------------------------------+----------------------------------------+
+; Register name     ; Reason for Removal             ; Registers Removed due to This Register ;
++-------------------+--------------------------------+----------------------------------------+
+; regfile:regs|rf~0 ; Stuck at GND                   ; regfile:regs|rf~12, regfile:regs|rf~15 ;
+;                   ; due to stuck port clock_enable ;                                        ;
++-------------------+--------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1024  ;
+; Number of registers using Synchronous Clear  ; 30    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 994   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RISCV|pc[0]~reg0          ;
+; 6:1                ; 30 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; Yes        ; |RISCV|pc[31]~reg0         ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |RISCV|imm[20]             ;
+; 4:1                ; 25 bits   ; 50 LEs        ; 50 LEs               ; 0 LEs                  ; No         ; |RISCV|ShiftLeft0          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |RISCV|ShiftLeft0          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |RISCV|ShiftLeft0          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |RISCV|ShiftLeft0          ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |RISCV|imm[17]             ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |RISCV|imm[8]              ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |RISCV|imm[4]              ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 48 LEs               ; 12 LEs                 ; No         ; |RISCV|result[0]           ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 20 LEs               ; 4 LEs                  ; No         ; |RISCV|result[15]          ;
+; 12:1               ; 12 bits   ; 96 LEs        ; 84 LEs               ; 12 LEs                 ; No         ; |RISCV|result[17]          ;
+; 15:1               ; 4 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; No         ; |RISCV|result[28]          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 1024                        ;
+;     ENA               ; 994                         ;
+;     SCLR              ; 30                          ;
+; arriav_lcell_comb     ; 1314                        ;
+;     arith             ; 190                         ;
+;         1 data inputs ; 30                          ;
+;         3 data inputs ; 34                          ;
+;         4 data inputs ; 15                          ;
+;         5 data inputs ; 111                         ;
+;     extend            ; 457                         ;
+;         7 data inputs ; 457                         ;
+;     normal            ; 635                         ;
+;         2 data inputs ; 112                         ;
+;         3 data inputs ; 63                          ;
+;         4 data inputs ; 86                          ;
+;         5 data inputs ; 96                          ;
+;         6 data inputs ; 278                         ;
+;     shared            ; 32                          ;
+;         3 data inputs ; 30                          ;
+;         4 data inputs ; 2                           ;
+; boundary_port         ; 163                         ;
+;                       ;                             ;
+; Max LUT depth         ; 12.10                       ;
+; Average LUT depth     ; 9.43                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:04     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed Oct  4 17:47:09 2023
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV -c RISCV --analysis_and_elaboration
+    Info: Processing started: Thu Oct  5 16:34:36 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV -c RISCV
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 5 design units, including 5 entities, in source file RISCV.sv
     Info (12023): Found entity 1: RISCV File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 1
-    Info (12023): Found entity 2: regfile File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 153
-    Info (12023): Found entity 3: top File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 174
-    Info (12023): Found entity 4: dmem File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 191
-    Info (12023): Found entity 5: imem File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 203
+    Info (12023): Found entity 2: regfile File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 161
+    Info (12023): Found entity 3: top File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 178
+    Info (12023): Found entity 4: dmem File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 195
+    Info (12023): Found entity 5: imem File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 210
 Info (12127): Elaborating entity "RISCV" for the top level hierarchy
-Info (12128): Elaborating entity "regfile" for hierarchy "regfile:regs" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 148
+Warning (10230): Verilog HDL assignment warning at RISCV.sv(118): truncated value with size 44 to match size of target (32) File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 118
+Info (12128): Elaborating entity "regfile" for hierarchy "regfile:regs" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 156
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "regfile:regs|rf" is uninferred due to asynchronous read logic File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 167
+Info (286030): Timing-Driven Synthesis is running
 Info (144001): Generated suppressed messages file /home/martins/Documents/BUILD-RISC-V/RISC-V/output_files/RISCV.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 727 megabytes
-    Info: Processing ended: Wed Oct  4 17:47:20 2023
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:26
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2469 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 66 input pins
+    Info (21059): Implemented 97 output pins
+    Info (21061): Implemented 2306 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 448 megabytes
+    Info: Processing ended: Thu Oct  5 16:34:55 2023
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:35
 
 
-+--------------------------------------------+
-; Analysis & Elaboration Suppressed Messages ;
-+--------------------------------------------+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
 The suppressed messages can be found in /home/martins/Documents/BUILD-RISC-V/RISC-V/output_files/RISCV.map.smsg.
 
 

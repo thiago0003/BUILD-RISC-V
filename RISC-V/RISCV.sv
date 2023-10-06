@@ -69,7 +69,7 @@ module RISCV(
 							(S_type)	? ({{20{instruction[31]}},instruction[31:25],instruction[11:7]}):		
 							(B_type) ? ({{19{instruction[31]}},instruction[31],instruction[7],instruction[30:25],instruction[11:8],1'b0}):
 							(U_type) ? ({instruction[31:12],12'b0}):
-							(J_type) ? ({{12{instruction[31]}},instruction[19:12],instruction[20],instruction[30:21],1'b0}):
+							(J_type) ? ({{11{instruction[31]}}, instruction[31],instruction[19:12],instruction[20],instruction[30:21],1'b0}):
 							32'b0;
 	logic is_add;
 	assign is_add    = (opcode == 7'b0110011 & funct3 == 3'b000 & funct7 == 7'b0000000);
@@ -85,6 +85,9 @@ module RISCV(
 	
 	logic is_jal;
 	assign is_jal    = (opcode == 7'b1101111);
+	
+	logic is_lui;
+	assign is_lui	  = (opcode == 7'b0110111);
 	
 	logic is_jalr;
 	assign is_jalr   = (opcode == 7'b1100111 & funct3 == 3'b0);
@@ -112,44 +115,45 @@ module RISCV(
 	
 	// ALU
 	logic [31:0] result, result_ff;
-	assign result = 	is_add   ? src1 + src2:
+	assign result = 	is_add   ? $signed(src1) + $signed(src2):
 							is_addi  ? $signed(src1) + $signed(imm):
 							is_slli  ? src1 << imm[4:0]:
 							is_auipc ? pc + $signed(imm):
 							J_type   ? jump_add:
 							S_type 	? $signed(src1) + $signed(imm): 
+							is_lw		? $signed(src1) + $signed(imm): 
+							is_sw		? $signed(src1) + $signed(imm): 
+							is_lui	? $signed(imm):
 							32'b0;
 	
 	logic [31:0] jump_add;
-	assign jump_add =	is_jal  													? pc + $signed(imm):
-							is_jalr 													? $signed(pc) + $signed(src1) + $signed($signed(imm) >>> 2):
-							(is_beq && (src1 == src2)) 						? $signed(pc) + $signed($signed(imm) >>> 2):
-							(is_bne && (src1 != src2))							? $signed(pc) + $signed($signed(imm) >>> 2):
-							(is_blt && ($signed(src1) < $signed(src2)))	? $signed(pc) + $signed($signed(imm) >>> 2):
-							(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) + $signed($signed(imm) >>> 2):
+	assign jump_add =	is_jal  													? $signed(pc) + $signed(imm):
+							is_jalr 													? $signed(pc) + $signed(src1) + $signed(imm):
+							(is_beq && (src1 == src2)) 						? $signed(pc) + $signed(imm) :
+							(is_bne && (src1 != src2))							? $signed(pc) + $signed(imm):
+							(is_blt && ($signed(src1) < $signed(src2)))	? $signed(pc) + $signed(imm):
+							(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) + $signed(imm):
 							pc + 32'd4;
 		
 	always_comb
 		result_ff <= result;
 		
 	// Registers
-	logic rd_valid;
-	assign rd_valid = (RS1 != 5'b0 || RS2 != 5'b0);
+	logic rs_valid;
+	assign rs_valid = (RS1 != 5'b0 || RS2 != 5'b0);
 
-	assign WriteData = src1;
+	assign WriteData = src2;
+		
 	assign MemWrite = is_sw;
 	
-	//logic MemReg;
-	//assign MemReg = instruction[27:26];
-	
-	assign alu_result = is_lw ? ReadData: result_ff;
+	assign alu_result = result_ff;
 	logic [31:0]src1;
 	logic [31:0]src2;
 		
 	logic regWrite;
-	assign regWrite = (R_type || S_type || B_type || I_type);
+	assign regWrite = (R_type || S_type || B_type || I_type || U_type) && RD != 5'b0;
 	 
-	regfile regs(clk, regWrite, rd_valid, RS1, RS2, RD, alu_result, src1, src2);
+	regfile regs(clk, regWrite, rs_valid, RS1, RS2, RD, is_lw ?  ReadData: alu_result, src1, src2);
 	
 endmodule
 
@@ -192,7 +196,10 @@ module dmem(input  logic        clk, memWrite,
             input  logic [31:0] aluResult, writeData,
             output logic [31:0] readData);
 
-  logic [31:0] RAM[63:0];
+	logic  [31:0] RAM[1023:0];  
+	
+  initial
+      $readmemh("dmem.hex",RAM);
 
   assign readData = RAM[aluResult[31:2]]; // word aligned
 
@@ -203,10 +210,10 @@ endmodule
 module imem(input  logic [31:0] pc,
             output logic [31:0] instr);
 
-  logic [31:0] RAM[63:0];
+  logic [31:0] RAM[511:0];
 
   initial
-      $readmemh("fibo.hex",RAM);
+      $readmemh("imem.hex",RAM);
 
   assign instr = RAM[pc[31:2]]; // word aligned
 endmodule
