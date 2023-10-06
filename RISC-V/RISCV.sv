@@ -139,10 +139,10 @@ module RISCV(
 		result_ff <= result;
 		
 	// Registers
-	logic rs_valid;
-	assign rs_valid = (RS1 != 5'b0 || RS2 != 5'b0);
+	// logic regAdr_valid;
+	// assign regAdr_valid = (RS1 != 5'b0 || RS2 != 5'b0);
 
-	assign WriteData = src2;
+	assign WriteData = is_sw ? src2: 32'bX;
 		
 	assign MemWrite = is_sw;
 	
@@ -152,14 +152,14 @@ module RISCV(
 		
 	logic regWrite;
 	assign regWrite = (R_type || S_type || B_type || I_type || U_type) && RD != 5'b0;
-	 
-	regfile regs(clk, regWrite, rs_valid, RS1, RS2, RD, is_lw ?  ReadData: alu_result, src1, src2);
+									//regAdr_valid
+	regfile regs(clk, regWrite, RS1, RS2, RD, is_lw ?  ReadData: alu_result, src1, src2);
 	
 endmodule
 
 // Modulo de registradores
 module regfile(input  logic        clk, 
-               input  logic        regWrite, rd_valid,
+               input  logic        regWrite, //regAdr_valid
                input  logic [4:0]  reg_addr1, reg_addr2, addr, 
                input  logic [31:0] write_reg, 
                output logic [31:0] rd1, rd2);
@@ -169,9 +169,9 @@ module regfile(input  logic        clk,
 	always_ff @(posedge clk) 
 		if (regWrite) 
 			rf[addr] <= write_reg;	
-			
-	assign rd1 = rd_valid ? rf[reg_addr1] : 32'b0;
-	assign rd2 = rd_valid ? rf[reg_addr2] : 32'b0;
+		
+	assign rd1 = (reg_addr1 != 32'b0) ? rf[reg_addr1] : 32'b0; 
+	assign rd2 = (reg_addr2 != 32'b0) ? rf[reg_addr2] : 32'b0;
 endmodule
 
 
@@ -196,7 +196,7 @@ module dmem(input  logic        clk, memWrite,
             input  logic [31:0] aluResult, writeData,
             output logic [31:0] readData);
 
-	logic  [31:0] RAM[1023:0];  
+  logic  [31:0] RAM[8192:0];  
 	
   initial
       $readmemh("dmem.hex",RAM);
