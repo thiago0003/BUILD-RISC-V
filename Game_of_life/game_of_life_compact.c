@@ -46,7 +46,7 @@ void evolve(unsigned univ[], unsigned new[])
 					sum += h;
 
 				for (i = x -1; i <= x + 1; i++)
-			 	{
+				{
 					register int mod_x;
 					if(i < 0)
 						mod_x = i + w;
@@ -62,10 +62,11 @@ void evolve(unsigned univ[], unsigned new[])
 				}
 			}
 
-			if (univ[sum_y + x]) 
+			register int pos = sum_y + x;
+			if (univ[pos]) 
 				n--;
 			
-			new[sum_y + x] = (n == 3 || (n == 2 && univ[sum_y + x]));
+			new[pos] = (n == 3 || (n == 2 && univ[pos]));
 		}
 
 		sum_y += h;
@@ -116,8 +117,25 @@ int main()
                           0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,
                           0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
+
+
+	register int i = 0;
+	for(; i < 900; i++)
+	{
+		unsigned short lfsr = 0xACE1u;
+		unsigned period = 0;
+			
+		// do {
+		// 	/* taps: 32 31 29 1; characteristic polynomial: x^32 + x^31 + x^29 + x + 1 */
+		// 	lfsr = (lfsr >> 1) ^ (unsigned int)(0 - (lfsr & 1u) & 0xd0000001u); 
+		// 	++period;
+		// } while(lfsr != 1u);
+
+		new[i] = 0;	
+		//univ[i] = lfsr;
+	}
 	
-	int i = 0;
+	i = 0;
 
 	while (i != 100000) {
 		evolve(univ, new);
