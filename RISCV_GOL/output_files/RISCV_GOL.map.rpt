@@ -1,0 +1,393 @@
+Analysis & Synthesis report for RISCV_GOL
+Fri Oct  6 21:37:29 2023
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |top
+ 12. Port Connectivity Checks: "dmem:dmem"
+ 13. Port Connectivity Checks: "CPU_RISCV:CPU_RISCV"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+ 17. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Oct  6 21:37:29 2023          ;
+; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
+; Revision Name                      ; RISCV_GOL                                      ;
+; Top-level Entity Name              ; top                                            ;
+; Family                             ; Cyclone IV E                                   ;
+; Total logic elements               ; 45                                             ;
+;     Total combinational functions  ; 45                                             ;
+;     Dedicated logic registers      ; 24                                             ;
+; Total registers                    ; 24                                             ;
+; Total pins                         ; 34                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; top                ; RISCV_GOL          ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                    ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------+---------+
+; CPU_RISCV.sv                     ; yes             ; User SystemVerilog HDL File  ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv ;         ;
+; vga.v                            ; yes             ; User Verilog HDL File        ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/vga.v        ;         ;
+; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv       ;         ;
+; imem.txt                         ; yes             ; User File                    ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/imem.txt     ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 45           ;
+;                                             ;              ;
+; Total combinational functions               ; 45           ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 12           ;
+;     -- 3 input functions                    ; 0            ;
+;     -- <=2 input functions                  ; 33           ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 27           ;
+;     -- arithmetic mode                      ; 18           ;
+;                                             ;              ;
+; Total registers                             ; 24           ;
+;     -- Dedicated logic registers            ; 24           ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 34           ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; VGA_CLK~reg0 ;
+; Maximum fan-out                             ; 25           ;
+; Total fan-out                               ; 230          ;
+; Average fan-out                             ; 1.68         ;
++---------------------------------------------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; |top                       ; 45 (4)              ; 24 (1)                    ; 0           ; 0            ; 0       ; 0         ; 34   ; 0            ; |top                ; top         ; work         ;
+;    |vga:video|             ; 41 (41)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|vga:video      ; vga         ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; fifo_vga[0..63]                        ; Stuck at GND due to stuck port data_in ;
+; VGA_PIXEL                              ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 65 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                            ;
++---------------+---------------------------+--------------------------------------------------------------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                     ;
++---------------+---------------------------+--------------------------------------------------------------------------------------------+
+; fifo_vga[63]  ; Stuck at GND              ; fifo_vga[62], fifo_vga[61], fifo_vga[60], fifo_vga[59], fifo_vga[58], fifo_vga[57],        ;
+;               ; due to stuck port data_in ; fifo_vga[56], fifo_vga[55], fifo_vga[54], fifo_vga[53], fifo_vga[52], fifo_vga[51],        ;
+;               ;                           ; fifo_vga[50], fifo_vga[49], fifo_vga[48], fifo_vga[47], fifo_vga[46], fifo_vga[45],        ;
+;               ;                           ; fifo_vga[44], fifo_vga[43], fifo_vga[42], fifo_vga[41], fifo_vga[40], fifo_vga[39],        ;
+;               ;                           ; fifo_vga[38], fifo_vga[37], fifo_vga[36], fifo_vga[35], fifo_vga[34], fifo_vga[33],        ;
+;               ;                           ; fifo_vga[32], fifo_vga[31], fifo_vga[30], fifo_vga[29], fifo_vga[28], fifo_vga[27],        ;
+;               ;                           ; fifo_vga[26], fifo_vga[25], fifo_vga[24], fifo_vga[23], fifo_vga[22], fifo_vga[21],        ;
+;               ;                           ; fifo_vga[20], fifo_vga[19], fifo_vga[18], fifo_vga[17], fifo_vga[16], fifo_vga[15],        ;
+;               ;                           ; fifo_vga[14], fifo_vga[13], fifo_vga[12], fifo_vga[11], fifo_vga[10], fifo_vga[9],         ;
+;               ;                           ; fifo_vga[8], fifo_vga[7], fifo_vga[6], fifo_vga[5], fifo_vga[4], fifo_vga[3], fifo_vga[2], ;
+;               ;                           ; fifo_vga[1], fifo_vga[0], VGA_PIXEL                                                        ;
++---------------+---------------------------+--------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 24    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |top ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; VGA_BITS       ; 8     ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "dmem:dmem"                                                                                                                                                    ;
++---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                                                                                              ;
++---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; adr           ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "adr[31..1]" will be connected to GND.        ;
+; write_data    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "write_data[31..1]" will be connected to GND. ;
+; read_data_vga ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                  ;
++---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CPU_RISCV:CPU_RISCV"                                                                                                                  ;
++------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                         ;
++------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+; alu_result ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "alu_result[31..1]" have no fanouts ;
+; write_data ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "write_data[31..1]" have no fanouts ;
++------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 34                          ;
+; cycloneiii_ff         ; 24                          ;
+;     ENA               ; 10                          ;
+;     plain             ; 14                          ;
+; cycloneiii_lcell_comb ; 47                          ;
+;     arith             ; 18                          ;
+;         2 data inputs ; 18                          ;
+;     normal            ; 29                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 12                          ;
+;         4 data inputs ; 12                          ;
+;                       ;                             ;
+; Max LUT depth         ; 3.00                        ;
+; Average LUT depth     ; 2.28                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+    Info: Processing started: Fri Oct  6 21:37:16 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV_GOL -c RISCV_GOL
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 4 design units, including 4 entities, in source file CPU_RISCV.sv
+    Info (12023): Found entity 1: CPU_RISCV File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 2
+    Info (12023): Found entity 2: regfile File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 171
+    Info (12023): Found entity 3: dmem File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 188
+    Info (12023): Found entity 4: imem File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 203
+Info (12021): Found 1 design units, including 1 entities, in source file vga.v
+    Info (12023): Found entity 1: vga File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/vga.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file top.sv
+    Info (12023): Found entity 1: top File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 2
+Warning (10236): Verilog HDL Implicit Net warning at top.sv(12): created implicit net for "mem_write" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 12
+Warning (10236): Verilog HDL Implicit Net warning at top.sv(12): created implicit net for "alu_result" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 12
+Warning (10236): Verilog HDL Implicit Net warning at top.sv(12): created implicit net for "write_data" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 12
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Info (12128): Elaborating entity "CPU_RISCV" for hierarchy "CPU_RISCV:CPU_RISCV" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 12
+Info (12128): Elaborating entity "regfile" for hierarchy "CPU_RISCV:CPU_RISCV|regfile:regs" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 167
+Info (12128): Elaborating entity "imem" for hierarchy "imem:imem" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 15
+Warning (10850): Verilog HDL warning at CPU_RISCV.sv(209): number of words (134) in memory file does not match the number of elements in the address range [0:255] File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 209
+Warning (10030): Net "RAM.data_a" at CPU_RISCV.sv(206) has no driver or initial value, using a default initial value '0' File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 206
+Warning (10030): Net "RAM.waddr_a" at CPU_RISCV.sv(206) has no driver or initial value, using a default initial value '0' File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 206
+Warning (10030): Net "RAM.we_a" at CPU_RISCV.sv(206) has no driver or initial value, using a default initial value '0' File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 206
+Info (12128): Elaborating entity "dmem" for hierarchy "dmem:dmem" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 16
+Info (12128): Elaborating entity "vga" for hierarchy "vga:video" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 38
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 8
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 8
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/output_files/RISCV_GOL.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[0]" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 4
+Info (21057): Implemented 79 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 29 output pins
+    Info (21061): Implemented 45 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 371 megabytes
+    Info: Processing ended: Fri Oct  6 21:37:29 2023
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:30
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/output_files/RISCV_GOL.map.smsg.
+
+

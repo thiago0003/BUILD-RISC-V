@@ -1,0 +1,321 @@
+Design Assistant report for RISCV
+Fri Oct  6 18:15:55 2023
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Design Assistant Settings
+  4. Information only Violations
+  5. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Fri Oct  6 18:15:55 2023 ;
+; Revision Name                     ; RISCV                               ;
+; Top-level Entity Name             ; RISCV                               ;
+; Family                            ; Cyclone V                           ;
+; Total Critical Violations         ; 0                                   ;
+; Total High Violations             ; 0                                   ;
+; Total Medium Violations           ; 0                                   ;
+; Total Information only Violations ; 135                                 ;
+; - Rule T101                       ; 85                                  ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Option                                                                                                                                                               ; Setting      ; To ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Design Assistant mode                                                                                                                                                ; Post-Fitting ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                        ; 25           ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                    ; 30           ;    ;
+; Minimum number of node fan-out                                                                                                                                       ; 30           ;    ;
+; Maximum number of nodes to report                                                                                                                                    ; 50           ;    ;
+; Rule C101: Gated clock should be implemented according to the Intel FPGA standard scheme                                                                             ; On           ;    ;
+; Rule C102: Logic cell should not be used to generate an inverted clock signal                                                                                        ; On           ;    ;
+; Rule C103: Gated clock does not feed at least a pre-defined number of clock ports to effectively save power                                                          ; On           ;    ;
+; Rule C104: Clock signal source should drive only clock input ports                                                                                                   ; On           ;    ;
+; Rule C105: Clock signal should be a global signal                                                                                                                    ; On           ;    ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges                                                                         ; On           ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                         ; On           ;    ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                ; On           ;    ;
+; Rule R103: External reset signal should be correctly synchronized                                                                                                    ; On           ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and used in another clock domain should be correctly synchronized                                  ; On           ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and used in another clock domain should be synchronized                                            ; On           ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                     ; On           ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                             ; On           ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                             ; On           ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                           ; On           ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                    ; On           ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                         ; On           ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                           ; On           ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                         ; On           ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                      ; On           ;    ;
+; Rule A108: Design should not contain latches                                                                                                                         ; On           ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                             ; On           ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                ; On           ;    ;
+; Rule S103: More than one asynchronous port of a register should not be driven by the same signal source                                                              ; On           ;    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                                                                ; On           ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                        ; On           ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain ; On           ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                              ; On           ;    ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+
+
++----------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                        ;
++------------------------------------------------------------------+-----------------------+---------+
+; Rule name                                                        ; Name                  ; Fan-Out ;
++------------------------------------------------------------------+-----------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; clk~inputCLKENA0      ; 1024    ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2948  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; reg_write~0           ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~25               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; imm~0                 ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2967  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~24               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2979  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2977  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS2[1]~2              ; 257     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS2[2]~3              ; 257     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2980  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2978  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS2[0]~1              ; 129     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2966  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2968  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2965  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2959  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2958  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2971  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2970  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2972  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2969  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2960  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2956  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2951  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2952  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2950  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2954  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2946  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2945  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2963  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2975  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2973  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2976  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2974  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2961  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2964  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|rf~2962  ; 32      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS2[3]~4              ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS2[4]~0              ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|Equal0~0 ; 103     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS1[3]~1              ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS1[4]~0              ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS1[1]~4              ; 257     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS1[0]~3              ; 129     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; RS1[2]~2              ; 257     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; regfile:regs|Equal1~0 ; 86      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~23               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; imm[30]~11            ; 61      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~22               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~11               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~10               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~42               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; is_add~3              ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~9                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; result[14]~2          ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; result~1              ; 35      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~7                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~6                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~5                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~4                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~3                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~46               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~2                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~1                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~0                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; imm[1]~7              ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; imm[0]~4              ; 34      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; is_jalr~1             ; 33      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~21               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~20               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~19               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~18               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~17               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~16               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~15               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~14               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~13               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~34               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~38               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~8                ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~30               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~26               ; 31      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; comb~12               ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; clk~inputCLKENA0      ; 1024    ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS2[1]~2              ; 257     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS1[1]~4              ; 257     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS1[2]~2              ; 257     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS2[2]~3              ; 257     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS2[0]~1              ; 129     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS1[0]~3              ; 129     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|Equal0~0 ; 103     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|Equal1~0 ; 86      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; imm[30]~11            ; 61      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; result~1              ; 35      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; imm[1]~7              ; 34      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; imm[0]~4              ; 34      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS2[4]~0              ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS2[3]~4              ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS1[4]~0              ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; is_jalr~1             ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; RS1[3]~1              ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2969  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2980  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2954  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2960  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2977  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2973  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2971  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2979  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2956  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2967  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2975  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2950  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2951  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2963  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2952  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2972  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2958  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2961  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2959  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2970  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2964  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2965  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2946  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2976  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2974  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2968  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2962  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2966  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2978  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2948  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; regfile:regs|rf~2945  ; 32      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; comb~10               ; 31      ;
++------------------------------------------------------------------+-----------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Design Assistant
+    Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+    Info: Processing started: Fri Oct  6 18:15:53 2023
+Info: Command: quartus_drc RISCV -c RISCV
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'RISCV.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332144): No user constrained base clocks found in the design
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 85 node(s) with highest fan-out.
+    Info (308011): Node  "clk~inputCLKENA0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 19
+    Info (308011): Node  "regfile:regs|rf~2948" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "reg_write~0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 168
+    Info (308011): Node  "comb~25"
+    Info (308011): Node  "imm~0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 86
+    Info (308011): Node  "regfile:regs|rf~2967" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "comb~24"
+    Info (308011): Node  "regfile:regs|rf~2979" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2977" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "RS2[1]~2" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "RS2[2]~3" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "regfile:regs|rf~2980" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2978" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "RS2[0]~1" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "regfile:regs|rf~2966" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2968" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2965" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2959" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2958" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2971" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2970" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2972" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2969" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2960" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2956" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2951" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2952" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2950" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2954" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2946" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info (308044): (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info (308011): Node  "clk~inputCLKENA0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 19
+    Info (308011): Node  "RS2[1]~2" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "RS1[1]~4" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 71
+    Info (308011): Node  "RS1[2]~2" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 71
+    Info (308011): Node  "RS2[2]~3" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "RS2[0]~1" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "RS1[0]~3" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 71
+    Info (308011): Node  "regfile:regs|Equal0~0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 191
+    Info (308011): Node  "regfile:regs|Equal1~0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 192
+    Info (308011): Node  "imm[30]~11" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 86
+    Info (308011): Node  "result~1" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 137
+    Info (308011): Node  "imm[1]~7" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 86
+    Info (308011): Node  "imm[0]~4" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 86
+    Info (308011): Node  "RS2[4]~0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "RS2[3]~4" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 74
+    Info (308011): Node  "RS1[4]~0" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 71
+    Info (308011): Node  "is_jalr~1" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 111
+    Info (308011): Node  "RS1[3]~1" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 71
+    Info (308011): Node  "regfile:regs|rf~2969" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2980" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2954" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2960" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2977" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2973" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2971" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2979" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2956" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2967" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2975" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308011): Node  "regfile:regs|rf~2950" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 185
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 135 information messages and 0 warning messages
+Info: Quartus Prime Design Assistant was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 680 megabytes
+    Info: Processing ended: Fri Oct  6 18:15:55 2023
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+

@@ -47,16 +47,16 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 |:----------:|:------:|:---------------------------------------------------------------|
 | ☑️ add  | R-Type | `0000000 \| rs2 \| rs1 \| 000 \| rd \| 0110011`                |
 | ☑️ addi | I-Type | `imm[11:0] \| rs1 \| 000 \| rd  \| 0010011`                    |
-| slli    | I-Type | `0000000 \| shamt \| rs1 \| 001 \| rd \| 0010011`              |
-|   jalr  | I-Type | `imm[11:0] \| rs1 \| 000 \| rd \| 1100111`                     |
-|   sw    | S-Type | `imm[11:5] \| rs2 \| rs1 \| 010 \| imm[4:0] \| 0100011`        |
+| ☑️ slli | I-Type | `0000000 \| shamt \| rs1 \| 001 \| rd \| 0010011`              |
+| ➖ jalr | I-Type | `imm[11:0] \| rs1 \| 000 \| rd \| 1100111`                     |
+| ☑️  sw  | S-Type | `imm[11:5] \| rs2 \| rs1 \| 010 \| imm[4:0] \| 0100011`        |
 | ☑️ lw   | S-Type | `imm[11:0] \| rs1 \| 010 \| rd \| 0000011`                     |
-|   bge   | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 101 \| imm[4:1\|11] \| 1100011`|
+| ☑️ bge  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 101 \| imm[4:1\|11] \| 1100011`|
 | ☑️ beq  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 000 \| imm[4:1\|11] \| 1100011`|
 | ☑️ blt  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 100 \| imm[4:1\|11] \| 1100011`|
-|   bne   | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 001 \| imm[4:1\|11] \| 1100011`|
-|   lui   | U-Type | `imm[31:12] \| rd \| 0110111`                                  |
-|   auipc | U-Type | `imm[31:12] \| rd \| 0010111`                                  |
+| ☑️ bne  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 001 \| imm[4:1\|11] \| 1100011`|
+| ☑️ lui  | U-Type | `imm[31:12] \| rd \| 0110111`                                  |
+| ➖ auipc| U-Type | `imm[31:12] \| rd \| 0010111`                                  |
 | ☑️ jal  | J-Type | `imm[20\|10:1\|11\|19:12] \| rd \| 1101111`                    |
 
 ### Pseudo instruções

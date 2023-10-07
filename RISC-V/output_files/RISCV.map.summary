@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Thu Oct  5 16:34:55 2023
+Analysis & Synthesis Status : Successful - Fri Oct  6 18:22:26 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : RISCV
 Top-level Entity Name : RISCV
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 1024
+Total registers : 63
 Total pins : 163
 Total virtual pins : 0
 Total block memory bits : 0
