@@ -23,13 +23,8 @@ void show(void *u, int w, int h)
 unsigned lfsr_gen(int lfsr)
 {
     //Mask position
-    unsigned  pos_16 = 1u << 16;
-    unsigned  pos_14 = 1u << 14;
-    unsigned  pos_13 = 1u << 13;
-    unsigned  pos_11 = 1u << 11;
-    unsigned  pos_31 = 1u << 31;
-
-    unsigned op = (((((lfsr & pos_16 )>>16 ^ (lfsr & pos_14)>>14) ^ (lfsr & pos_13)>>13) ^ (lfsr & pos_11)>>11));
+    // unsigned op = (lfsr>>16) ^ (lfsr>>14) ^ (lfsr>>13) ^ (lfsr>>11);
+    unsigned op = ((lfsr &(1u << 16))>>16) ^ ((lfsr & (1u << 14))>>14) ^ ((lfsr & (1u << 13))>>13) ^ ((lfsr & (1u << 11))>>11);
     return  op | lfsr<<1;
 }
 

@@ -184,30 +184,3 @@ module regfile(input  logic        clk,
 	assign rd2 = (reg_addr2 != 32'b0) ? rf[reg_addr2] : 32'b0;
 endmodule
 
-// Modulo de memoria de programa 
-module dmem(input  logic        clk, mem_write,
-            input  logic [31:0] adr, adr_vga, write_data,
-            output logic [31:0] read_data, read_data_vga);
-
-  logic  [31:0] RAM[9600:0];  
-
-  assign read_data = RAM[adr[31:0]]; // word aligned
-  assign read_data_vga = RAM[adr_vga[31:0]]; 
-
-  always_ff @(posedge clk)
-    if (mem_write) RAM[adr[31:0]] <= write_data;
-endmodule
-
-
-// Modulo de memoria das instruçoes
-module imem(input  logic [31:0] adr,
-            output logic [31:0] instruction);
-
-  logic [31:0] RAM[255:0];
-
-  initial
-      $readmemh("imem.txt",RAM);
-
-  assign instruction = RAM[adr[31:0]]; // word aligned
-endmodule
-

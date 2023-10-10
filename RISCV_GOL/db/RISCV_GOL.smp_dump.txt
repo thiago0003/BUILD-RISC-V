@@ -1,0 +1,6 @@
+
+State Machine - |top|cpu:proc|state
+Name state.FETCH state.EXECUTE state.DECODE 
+state.FETCH 0 0 0 
+state.DECODE 1 0 1 
+state.EXECUTE 1 1 0 

@@ -1,6 +1,6 @@
 Flow report for RISCV_GOL
-Fri Oct  6 21:37:58 2023
-Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+Tue Oct 10 09:57:04 2023
+Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 
 
 ---------------------
@@ -21,7 +21,7 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2023  Intel Corporation. All rights reserved.
+Copyright (C) 2022  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -38,26 +38,26 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+-------------------------------------------------------------------------------------+
-; Flow Summary                                                                        ;
-+------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Fri Oct  6 21:37:58 2023          ;
-; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
-; Revision Name                      ; RISCV_GOL                                      ;
-; Top-level Entity Name              ; top                                            ;
-; Family                             ; Cyclone IV E                                   ;
-; Device                             ; EP4CE115F29C7                                  ;
-; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 46 / 114,480 ( < 1 % )                         ;
-;     Total combinational functions  ; 45 / 114,480 ( < 1 % )                         ;
-;     Dedicated logic registers      ; 24 / 114,480 ( < 1 % )                         ;
-; Total registers                    ; 24                                             ;
-; Total pins                         ; 34 / 529 ( 6 % )                               ;
-; Total virtual pins                 ; 0                                              ;
-; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                          ;
-; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                                  ;
-+------------------------------------+------------------------------------------------+
++----------------------------------------------------------------------------------+
+; Flow Summary                                                                     ;
++------------------------------------+---------------------------------------------+
+; Flow Status                        ; Successful - Tue Oct 10 09:57:04 2023       ;
+; Quartus Prime Version              ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
+; Revision Name                      ; RISCV_GOL                                   ;
+; Top-level Entity Name              ; top                                         ;
+; Family                             ; Cyclone IV E                                ;
+; Device                             ; EP4CE115F29C7                               ;
+; Timing Models                      ; Final                                       ;
+; Total logic elements               ; 168 / 114,480 ( < 1 % )                     ;
+;     Total combinational functions  ; 168 / 114,480 ( < 1 % )                     ;
+;     Dedicated logic registers      ; 23 / 114,480 ( < 1 % )                      ;
+; Total registers                    ; 23                                          ;
+; Total pins                         ; 34 / 529 ( 6 % )                            ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
++------------------------------------+---------------------------------------------+
 
 
 +-----------------------------------------+
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/06/2023 21:37:16 ;
+; Start date & time ; 10/10/2023 09:56:33 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RISCV_GOL           ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 102021904440097.169663903613630        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 264216236081208.169694259328392        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -86,6 +86,8 @@ https://fpgasoftware.intel.com/eula.
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation                    ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --                                ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --                                ;
+; MISC_FILE                           ; pll_bb.v                               ; --            ; --          ; --                                ;
+; MISC_FILE                           ; pll.ppf                                ; --            ; --          ; --                                ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --                                ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; top         ; Top                               ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; top         ; Top                               ;
@@ -100,12 +102,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 357 MB              ; 00:00:30                           ;
-; Fitter               ; 00:00:18     ; 1.0                     ; 874 MB              ; 00:00:25                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 372 MB              ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 518 MB              ; 00:00:02                           ;
-; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 597 MB              ; 00:00:01                           ;
-; Total                ; 00:00:36     ; --                      ; --                  ; 00:01:02                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 420 MB              ; 00:00:20                           ;
+; Fitter               ; 00:00:10     ; 1.0                     ; 1181 MB             ; 00:00:15                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 372 MB              ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 563 MB              ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 617 MB              ; 00:00:00                           ;
+; Total                ; 00:00:25     ; --                      ; --                  ; 00:00:40                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -114,11 +116,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+----------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
 +----------------------+------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; Fitter               ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; Assembler            ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; Timing Analyzer      ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
-; EDA Netlist Writer   ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
+; Analysis & Synthesis ; esl              ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; Fitter               ; esl              ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; Assembler            ; esl              ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; Timing Analyzer      ; esl              ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+; EDA Netlist Writer   ; esl              ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
 +----------------------+------------------+----------------+------------+----------------+
 
 
