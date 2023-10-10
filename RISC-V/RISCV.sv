@@ -23,9 +23,19 @@ module RISCV(
            output logic [31:0] alu_result, write_data,
            input  logic [31:0] read_data
 	);
+
+	// Registradores
+	logic [31:0]src1;
+	logic [31:0]src2;
+
+	//JUMP
+	logic is_conditional_jump;
+	logic [31:0] jump_add;
+
+	//PC
+	logic [31:0]next_pc;
 	
 	// Atualiza nosso valor de PC
-	logic [31:0]next_pc;	
 	assign next_pc =	reset     				? 32'b0:
 							is_conditional_jump	? jump_add:
 							pc + 32'd4;
@@ -85,11 +95,11 @@ module RISCV(
 	
 	logic [31:0] imm;
 	assign imm   = 	(I_type) ? ({{20{instruction[31]}},instruction[31:20]}):
-							(S_type)	? ({{20{instruction[31]}},instruction[31:25],instruction[11:7]}):		
-							(B_type) ? ({{19{instruction[31]}},instruction[31],instruction[7],instruction[30:25],instruction[11:8],1'b0}):
-							(U_type) ? ({instruction[31:12],12'b0}):
-							(J_type) ? ({{11{instruction[31]}}, instruction[31],instruction[19:12],instruction[20],instruction[30:21],1'b0}):
-							32'b0;
+					(S_type) ? ({{20{instruction[31]}},instruction[31:25],instruction[11:7]}):		
+					(B_type) ? ({{19{instruction[31]}},instruction[31],instruction[7],instruction[30:25],instruction[11:8],1'b0}):
+					(U_type) ? ({instruction[31:12],12'b0}):
+					(J_type) ? ({{11{instruction[31]}}, instruction[31],instruction[19:12],instruction[20],instruction[30:21],1'b0}):
+					32'b0;
 	logic is_add;
 	assign is_add    = (opcode == 7'b0110011 & funct3 == 3'b000 & funct7 == 7'b0000000);
 	
@@ -135,52 +145,53 @@ module RISCV(
 	logic is_slri;
 	assign is_slri	 = (opcode == 7'b0010011 & funct3 == 3'b101);
 	
+	logic is_sb;
+	assign is_sb	= (opcode == 7'b0100011 & funct3 == 3'b000);
+	
+	logic is_lbu;
+	assign is_lbu	= (opcode == 7'b0000011 & funct3 == 3'b100);
+	
 	// Condicional para sabermos se havera um JUMP 
-	logic is_conditional_jump;
 	assign is_conditional_jump = (is_beq || is_bne || is_blt || is_bge || is_jal || is_jalr);
 	
 	// ALU
 	logic [31:0] result;
-	assign result = 	is_add   ? $signed(src1) + $signed(src2):
-							is_addi  ? $signed(src1) + $signed(imm):
-							is_slli  ? $signed(src1) << imm[4:0]:
-							is_slri  ? $signed(src1) << imm[4:0]:
-							is_auipc ? pc + $signed(imm):
-							J_type   ? jump_add:
-							S_type 	? $signed(src1) + $signed(imm): 
-							is_lw		? $signed(src1) + $signed(imm): 
-							is_sw		? $signed(src1) + $signed(imm): 
-							is_lui	? $signed(imm):
-							is_xor	? $signed(src1) ^ $signed(src2):
-							32'b0;
+	assign result = is_add   	? $signed(src1) + $signed(src2):
+					is_addi		? $signed(src1) + $signed(imm):
+					is_slli		? $signed(src1) << imm[4:0]:
+					is_slri		? $signed(src1) << imm[4:0]:
+					is_auipc	? pc + $signed(imm):
+					J_type   	? jump_add:
+					S_type 		? $signed(src1) + $signed(imm): 
+					is_lw		? $signed(src1) + $signed(imm): 
+					is_sw		? $signed(src1) + $signed(imm): 
+					is_lui		? $signed(imm):
+					is_xor		? $signed(src1) ^ $signed(src2):
+					is_lbu		? $signed(src1) + $signed(imm):
+					32'b0;
 							
 	// Recebe o resultado da alu.
 	always_comb
 		alu_result <= result;
 	
 	// Caso nossa instruçao seja de JUMP, temos que calcular a nova posiçao para nosso PC.
-	logic [31:0] jump_add;
-	assign jump_add =	is_jal  													? $signed(pc) + $signed(imm):
-							is_jalr 													? $signed(pc) + $signed(src1) + $signed(imm):
-							(is_beq && (src1 == src2)) 						? $signed(pc) + $signed(imm) :
-							(is_bne && (src1 != src2))							? $signed(pc) + $signed(imm):
-							(is_blt && ($signed(src1) < $signed(src2)))	? $signed(pc) + $signed(imm):
-							(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) + $signed(imm):
-							pc + 32'd4;
+	assign jump_add =	is_jal  										? $signed(pc) + $signed(imm):
+						is_jalr 										? $signed(pc) + $signed(src1) + $signed(imm):
+						(is_beq && (src1 == src2)) 						? $signed(pc) + $signed(imm) :
+						(is_bne && (src1 != src2))						? $signed(pc) + $signed(imm):
+						(is_blt && ($signed(src1) < $signed(src2)))		? $signed(pc) + $signed(imm):
+						(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) + $signed(imm):
+						pc + 32'd4;
 
 	// Valor que sera salvo na nossa memoria e a condicional de escrita
-	assign write_data = is_sw ? src2: 32'bX;
-	assign mem_write = is_sw;
+	assign write_data = is_sw ? src2 : (is_sb ? {{24{imm[31]}}, src2[7:0]} : 32'bX);
+	assign mem_write = S_type;
 		
 	// Condicional para escrita nos registradores
 	logic reg_write;
 	assign reg_write = (R_type || S_type || B_type || I_type || U_type) && RD != 5'b0;
 	
-	// Registradores
-	logic [31:0]src1;
-	logic [31:0]src2;
-	
-	regfile regs(clk, reg_write, RS1, RS2, RD, is_lw ?  read_data: alu_result, src1, src2);
+	regfile regs(clk, reg_write, RS1, RS2, RD, (is_lw || is_lbu) ?  read_data: alu_result, src1, src2);
 endmodule
 
 // Modulo de registradores

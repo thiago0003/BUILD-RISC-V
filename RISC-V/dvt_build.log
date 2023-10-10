@@ -1,0 +1,230 @@
+*** Start analyzing build configuration ***
+INFO: Auto-config - Scanning: /home/martins/Documents/BUILD-RISC-V/RISC-V
+Detected Quartus project root, running Quartus project autoconfig...
+Auto-config - Quartus: Could not perform Quartus project autoconfig, running default autoconfig...
+INFO: Auto-config - VLOG: /home/martins/Documents/BUILD-RISC-V/RISC-V
+INFO: Auto-config - VHDL: /home/martins/Documents/BUILD-RISC-V/RISC-V
+INFO: Auto-config - Wrote:
+    .dvt/default.build.auto.1
+*** List of included argument files ***
+    Build configuration file:  /home/martins/Documents/BUILD-RISC-V/RISC-V/.dvt/default.build
+    -f /home/martins/Documents/BUILD-RISC-V/RISC-V/.dvt/default.build.auto.1
+*** List of invocations ***
+Invocation #1 +dvt_init+dvt in /home/martins/Documents/BUILD-RISC-V/RISC-V/.dvt/default.build.auto.1 at line 9
+*** Done analyzing build configuration [721 ms] ***
+*** Start VHDL build ***
+Total number of lines [0]
+Performing post full build step 1 (VHDL - RU) [16 ms] ...
+*** Files summary [0 total, 0 unique] ***
+*** Done VHDL build [2s.183ms] ***
+*** Start SystemVerilog build ***
+*** Invocation #1***
+Loading (1) /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv ...
+Done /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [1026 ms, 408 lines, SystemVerilog_2012] ...
+Loading (2) /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv ...
+Done /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [113 ms, 232 lines, SystemVerilog_2012] ...
+Loading (3) /home/martins/Documents/BUILD-RISC-V/RISC-V/testbench.sv ...
+Done /home/martins/Documents/BUILD-RISC-V/RISC-V/testbench.sv [18 ms, 41 lines, SystemVerilog_2012] ...
+*** Done invocation #1 [461 ms] ***
+*** Total number of lines [681] ***
+Performing post full build actions ...
+Performing post full build step 1 (SRI) [1 ms] ...
+Performing post full build step 2 (RI) [1 ms] ...
+Performing post full build step 3 (RCP) [0 ms] ...
+*** Files summary [3 total, 3 unique, 0 optimized] ***
+*** Done SystemVerilog build [1s.224ms] ***
+*** Start mixed mode extension build ***
+Performing mixed post full build step (VHDL - RU) [27 ms] ...
+Performing mixed post full build step (VHDL - RT) [410 ms] ...
+Performing mixed post full build step (VHDL - RD) [15 ms] ...
+Performing mixed post full build step (VHDL - FSC) [412 ms] ...
+Performing mixed post full build step (VLOG - RI) [0 ms] ...
+*** Warning: UNSPECIFIED_TOP: Please specify a -top module/entity/configuration in the project build file
+
+*** Top design candidates: work.RISCV, work.testbench
+Performing mixed post full build step (MIXED - ELAB) [592 ms] ...
+Performing mixed post full build step (MIXED - UNEL) [52 ms] ...
+*** Error: USAGE_BEFORE_DECLARATION: Element 'is_conditional_jump' is used before being declared
+    at line 139 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 30 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'jump_add' is used before being declared
+    at line 162 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 30 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 144 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src2' is used before being declared
+    at line 181 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 144 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 145 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 146 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 147 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'jump_add' is used before being declared
+    at line 162 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 149 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 150 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 151 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 152 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 154 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src2' is used before being declared
+    at line 181 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 154 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 164 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 165 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src2' is used before being declared
+    at line 181 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 165 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 166 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src2' is used before being declared
+    at line 181 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 166 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 167 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src2' is used before being declared
+    at line 181 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 167 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src1' is used before being declared
+    at line 180 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 168 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src2' is used before being declared
+    at line 181 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 168 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Error: USAGE_BEFORE_DECLARATION: Element 'src2' is used before being declared
+    at line 181 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv
+    at line 172 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'alu_result' in combinational logic (use blocking assignment)
+    at line 159 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Warning: ASSIGNMENT_NON_BLOCKING: Non-blocking assignment of 'clk' in combinational logic (use blocking assignment)
+    at line 27 in /home/martins/Documents/BUILD-RISC-V/RISC-V/testbench.sv [compile index 3]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.top' is not elaborated
+    at line 76 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.dmem' is not elaborated
+    at line 89 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.imem' is not elaborated
+    at line 101 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.arm' is not elaborated
+    at line 112 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.controller' is not elaborated
+    at line 136 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.decode' is not elaborated
+    at line 158 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.condlogic' is not elaborated
+    at line 215 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.condcheck' is not elaborated
+    at line 239 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.datapath' is not elaborated
+    at line 269 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.regfile' is not elaborated
+    at line 308 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.extend' is not elaborated
+    at line 328 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.adder' is not elaborated
+    at line 344 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.flopenr' is not elaborated
+    at line 351 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.flopr' is not elaborated
+    at line 361 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.mux2' is not elaborated
+    at line 371 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+*** Warning: UNELABORATED_MODULE: Module 'work.alu' is not elaborated
+    at line 383 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv [compile index 1]
+
+Performing mixed post full build step (VHDL - ELPC) [1 ms] ...
+Performing mixed post full build step (VHDL - US) [0 ms] ...
+Performing mixed post full build step (VHDL - USBD) [56 ms] ...
+Performing mixed post full build step (VLOG - RD) [5 ms] ...
+Performing mixed post full build step (VLOG - FSC) [54 ms] ...
+Performing mixed post full build step (VLOG - EV) [51 ms] ...
+Performing mixed post full build step (VLOG - ELPC) [2 ms] ...
+Performing mixed post full build step (VLOG - US) [51 ms] ...
+*** Warning: DUPLICATE_MODULE: Duplicate module 'top', already declared
+    at line 76 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv
+    at line 3 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Warning: DUPLICATE_MODULE: Duplicate module 'dmem', already declared
+    at line 89 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv
+    at line 204 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Warning: DUPLICATE_MODULE: Duplicate module 'imem', already declared
+    at line 101 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv
+    at line 221 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Warning: DUPLICATE_MODULE: Duplicate module 'regfile', already declared
+    at line 308 in /home/martins/Documents/BUILD-RISC-V/RISC-V/ARM.sv
+    at line 187 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Warning: SIGNAL_NEVER_WRITTEN: Signal 'RAM' is never written
+    at line 224 in /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv [compile index 2]
+
+*** Warning: SIGNAL_NEVER_USED: Signal 'readdata' is never used
+    at line 6 in /home/martins/Documents/BUILD-RISC-V/RISC-V/testbench.sv [compile index 3]
+
+*** Warning: INTERNAL_GENERATED_CLOCK: Clock signal 'clk' is not an input port
+    at line 31 in /home/martins/Documents/BUILD-RISC-V/RISC-V/testbench.sv [compile index 3]
+
+*** Warning: INTERNAL_GENERATED_RESET: Reset signal 'memwrite' is not an input port
+    at line 33 in /home/martins/Documents/BUILD-RISC-V/RISC-V/testbench.sv [compile index 3]
+
+*** Done mixed mode extension build [1s.761ms] ***
+*** Total build time [5s.978ms] ***
