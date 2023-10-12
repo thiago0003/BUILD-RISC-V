@@ -1,33 +1,52 @@
-module vga_ (
+module vga #(parameter VGA_BITS = 8) (
   input clk,
-  output [7:0] vaddr,
-  output reg vga_HS, vga_VS, vga_DA);
+  input [3:0] SW,
+  input [7:0] vdata,
+  output [VGA_BITS-1:0] VGA_R, VGA_G, VGA_B,
+  output VGA_HS_O, VGA_VS_O,
+  output [17:0] vaddr);
 
   reg [9:0] CounterX, CounterY;
-  wire CounterXmaxed = (CounterX == 800);
-  wire CounterYmaxed = (CounterY == 525);
-  
+  reg inDisplayArea;
+  reg vga_HS, vga_VS;
   wire [3:0] row, col;
-  
-  assign row = (CounterY>>6);
-  assign col = (CounterX>>6);
-  assign vaddr = (vaddr > 207) ? 8'b10000000 : {1'b1,col[3:0],row[2:0]}; 
-  
+
+  wire CounterXmaxed = (CounterX == 800); // 16 + 48 + 96 + 640
+  wire CounterYmaxed = (CounterY == 525); // 10 +  2 + 33 + 480
+
   always @(posedge clk)
-  begin
-    if (CounterXmaxed)
+	 if(SW[0])
+		CounterX <= 10'b0;
+    else if (CounterXmaxed)
       CounterX <= 10'b0;
     else
       CounterX <= CounterX + 1'b1;
 		
-    if (CounterXmaxed)
-      if(CounterYmaxed)
-        CounterY <= 10'b0;
-      else
-        CounterY <= CounterY + 1'b1;
+	always @(posedge clk)	
+		if(SW[0])
+			CounterY <= 10'b0;
+		else if (CounterXmaxed)
+			if(CounterYmaxed)
+				CounterY <= 10'b0;
+		else
+			CounterY <= CounterY + 1'b1;
+    
 		  
-    vga_HS <= ~(CounterX > (640 + 16) && (CounterX < (640 + 16 + 96)));
-    vga_VS <= ~(CounterY > (480 + 10) && (CounterY < (480 + 10 +  2)));
-    vga_DA <= (CounterX < 640) && (CounterY < 480);
+  assign col = (CounterX>>5);
+  assign row = (CounterY>>5);
+  assign vaddr = col + (row<<4) + (row<<2);
+
+  always @(posedge clk)
+  begin
+    vga_HS <= (CounterX > (640 + 16) && (CounterX < (640 + 16 + 96)));   // active for 96 clocks
+    vga_VS <= (CounterY > (480 + 10) && (CounterY < (480 + 10 +  2)));   // active for  2 clocks
+    inDisplayArea <= (CounterX < 640) && (CounterY < 480);	
   end
+
+  assign VGA_HS_O = ~vga_HS;
+  assign VGA_VS_O = ~vga_VS;
+
+  assign VGA_R = inDisplayArea ? {8{vdata[0]}} : 8'b00000000;
+  assign VGA_G = inDisplayArea ? {8{vdata[0]}} : 8'b00000000;
+  assign VGA_B = inDisplayArea ? {8{vdata[0]}} : 8'b00000000;
 endmodule

@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define h 480
-#define w 640
+#define h 30
+#define w 30
 
 #define for_x for (int x = 0; x < w; x++)
 #define for_y for (int y = 0; y < h; y++)
@@ -61,9 +61,9 @@ void evolve()
 void main(int c, char **v)
 {
 	for_x for_y univ[y][x] = rand() < RAND_MAX / 10 ? 1 : 0;
-	while (1) {
-		show();
+	// while (1) {
 		evolve();
 		usleep(2000);
-	}
+		show();
+	// }
 }

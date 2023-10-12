@@ -1,6 +1,11 @@
 Flow report for RISCV_GOL
+<<<<<<< HEAD
+Wed Oct 11 20:57:25 2023
+Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+=======
 Wed Oct 11 19:31:14 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 
 
 ---------------------
@@ -38,6 +43,28 @@ https://fpgasoftware.intel.com/eula.
 
 
 
+<<<<<<< HEAD
++----------------------------------------------------------------------------------+
+; Flow Summary                                                                     ;
++------------------------------------+---------------------------------------------+
+; Flow Status                        ; Flow Failed - Wed Oct 11 20:57:25 2023      ;
+; Quartus Prime Version              ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
+; Revision Name                      ; RISCV_GOL                                   ;
+; Top-level Entity Name              ; top                                         ;
+; Family                             ; Cyclone IV E                                ;
+; Device                             ; EP4CE115F29C7                               ;
+; Timing Models                      ; Final                                       ;
+; Total logic elements               ; N/A until Partition Merge                   ;
+;     Total combinational functions  ; N/A until Partition Merge                   ;
+;     Dedicated logic registers      ; N/A until Partition Merge                   ;
+; Total registers                    ; N/A until Partition Merge                   ;
+; Total pins                         ; N/A until Partition Merge                   ;
+; Total virtual pins                 ; N/A until Partition Merge                   ;
+; Total memory bits                  ; N/A until Partition Merge                   ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
+; Total PLLs                         ; N/A until Partition Merge                   ;
++------------------------------------+---------------------------------------------+
+=======
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
@@ -58,6 +85,7 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                                 ;
 +------------------------------------+------------------------------------------------+
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 
 
 +-----------------------------------------+
@@ -65,7 +93,11 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
+<<<<<<< HEAD
+; Start date & time ; 10/11/2023 20:57:02 ;
+=======
 ; Start date & time ; 10/11/2023 19:27:19 ;
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RISCV_GOL           ;
 +-------------------+---------------------+
@@ -76,7 +108,11 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
+<<<<<<< HEAD
+; COMPILER_SIGNATURE_ID               ; 264216236081208.169706862117684        ; --            ; --          ; --                                ;
+=======
 ; COMPILER_SIGNATURE_ID               ; 102021904440097.169706323913285        ; --            ; --          ; --                                ;
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -102,6 +138,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
+<<<<<<< HEAD
+; Analysis & Synthesis ; 00:00:24     ; 1.0                     ; 439 MB              ; 00:00:30                           ;
+; Total                ; 00:00:24     ; --                      ; --                  ; 00:00:30                           ;
+=======
 ; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 377 MB              ; 00:00:31                           ;
 ; Fitter               ; 00:00:14     ; 1.0                     ; 875 MB              ; 00:00:19                           ;
 ; Assembler            ; 00:00:03     ; 1.0                     ; 375 MB              ; 00:00:04                           ;
@@ -110,6 +150,7 @@ https://fpgasoftware.intel.com/eula.
 ; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 597 MB              ; 00:00:00                           ;
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 609 MB              ; 00:00:01                           ;
 ; Total                ; 00:00:35     ; --                      ; --                  ; 00:00:58                           ;
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -118,6 +159,9 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+----------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
 +----------------------+------------------+----------------+------------+----------------+
+<<<<<<< HEAD
+; Analysis & Synthesis ; esl              ; Ubuntu 20.04.6 ; 20         ; x86_64         ;
+=======
 ; Analysis & Synthesis ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
 ; Fitter               ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
 ; Assembler            ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
@@ -125,6 +169,7 @@ https://fpgasoftware.intel.com/eula.
 ; EDA Netlist Writer   ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
 ; EDA Netlist Writer   ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
 ; EDA Netlist Writer   ; martins          ; Ubuntu 22.04.3 ; 22         ; x86_64         ;
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 +----------------------+------------------+----------------+------------+----------------+
 
 
@@ -132,12 +177,15 @@ https://fpgasoftware.intel.com/eula.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off RISCV_GOL -c RISCV_GOL
+<<<<<<< HEAD
+=======
 quartus_fit --read_settings_files=off --write_settings_files=off RISCV_GOL -c RISCV_GOL
 quartus_asm --read_settings_files=off --write_settings_files=off RISCV_GOL -c RISCV_GOL
 quartus_sta RISCV_GOL -c RISCV_GOL
 quartus_eda --read_settings_files=off --write_settings_files=off RISCV_GOL -c RISCV_GOL
 quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off RISCV_GOL -c RISCV_GOL --vector_source=/home/martins/Documents/BUILD-RISC-V/RISCV_GOL/Waveform.vwf --testbench_file=/home/martins/Documents/BUILD-RISC-V/RISCV_GOL/simulation/qsim/Waveform.vwf.vt
 quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=/home/martins/Documents/BUILD-RISC-V/RISCV_GOL/simulation/qsim/ RISCV_GOL -c RISCV_GOL
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 
 
 

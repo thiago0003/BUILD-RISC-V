@@ -1,6 +1,11 @@
 Analysis & Synthesis report for RISCV_GOL
+<<<<<<< HEAD
+Wed Oct 11 20:57:25 2023
+Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+=======
 Wed Oct 11 19:27:33 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 
 
 ---------------------
@@ -10,21 +15,18 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis IP Cores Summary
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: Top-level Entity: |top
- 12. Parameter Settings for User Entity Instance: pll:clk_wiz_1_inst|altpll:altpll_component
- 13. Parameter Settings for User Entity Instance: vga:video
- 14. altpll Parameter Settings by Entity Instance
- 15. Port Connectivity Checks: "vga:video|mem:video"
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
- 19. Analysis & Synthesis Suppressed Messages
+  5. Analysis & Synthesis IP Cores Summary
+  6. Multiplexer Restructuring Statistics (Restructuring Performed)
+  7. Parameter Settings for User Entity Instance: Top-level Entity: |top
+  8. Parameter Settings for User Entity Instance: pll:clk_wiz_1_inst|altpll:altpll_component
+  9. Parameter Settings for User Entity Instance: vga:video
+ 10. altpll Parameter Settings by Entity Instance
+ 11. Port Connectivity Checks: "vga:video"
+ 12. Port Connectivity Checks: "dmem:dmem"
+ 13. Port Connectivity Checks: "RISCV:CPU_RISCV"
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
+ 16. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -48,6 +50,26 @@ https://fpgasoftware.intel.com/eula.
 
 
 
+<<<<<<< HEAD
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Failed - Wed Oct 11 20:57:25 2023           ;
+; Quartus Prime Version              ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
+; Revision Name                      ; RISCV_GOL                                   ;
+; Top-level Entity Name              ; top                                         ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; N/A until Partition Merge                   ;
+;     Total combinational functions  ; N/A until Partition Merge                   ;
+;     Dedicated logic registers      ; N/A until Partition Merge                   ;
+; Total registers                    ; N/A until Partition Merge                   ;
+; Total pins                         ; N/A until Partition Merge                   ;
+; Total virtual pins                 ; N/A until Partition Merge                   ;
+; Total memory bits                  ; N/A until Partition Merge                   ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
+; Total PLLs                         ; N/A until Partition Merge                   ;
++------------------------------------+---------------------------------------------+
+=======
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
@@ -66,6 +88,7 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
 ; Total PLLs                         ; 1                                              ;
 +------------------------------------+------------------------------------------------+
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 
 
 +------------------------------------------------------------------------------------------------------------+
@@ -163,6 +186,15 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
+<<<<<<< HEAD
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
+=======
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
@@ -238,6 +270,7 @@ https://fpgasoftware.intel.com/eula.
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 +-----------------------------------------------------------------------------------------------------------+
 ; Analysis & Synthesis IP Cores Summary                                                                     ;
 +--------+--------------+---------+--------------+--------------+-------------------------+-----------------+
@@ -247,29 +280,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+-------------------------+-----------------+
 
 
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 23    ;
-; Number of registers using Synchronous Clear  ; 20    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 10    ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |top|vga:video|CounterX[0] ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |top|vga:video|CounterY[8] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |top|vga:video|CounterX[7]   ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |top|vga:video|CounterY[5]   ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|RISCV:CPU_RISCV|pc[1]   ;
+; 6:1                ; 30 bits   ; 120 LEs       ; 60 LEs               ; 60 LEs                 ; Yes        ; |top|RISCV:CPU_RISCV|pc[21]  ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |top|RISCV:CPU_RISCV|imm[30] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |top|RISCV:CPU_RISCV|imm[12] ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |top|RISCV:CPU_RISCV|imm[9]  ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |top|RISCV:CPU_RISCV|imm[2]  ;
+; 12:1               ; 15 bits   ; 120 LEs       ; 75 LEs               ; 45 LEs                 ; No         ; |top|RISCV:CPU_RISCV|comb    ;
+; 13:1               ; 8 bits    ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |top|RISCV:CPU_RISCV|comb    ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; No         ; |top|RISCV:CPU_RISCV|comb    ;
+; 15:1               ; 2 bits    ; 20 LEs        ; 14 LEs               ; 6 LEs                  ; No         ; |top|RISCV:CPU_RISCV|comb    ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |top|RISCV:CPU_RISCV|comb    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
 
 
 +---------------------------------------------------------------------+
@@ -683,40 +712,34 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+--------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "vga:video|mem:video"                                                                       ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                             ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; vdata[7..6] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "vga:video"                                                                                                                                                                ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                                                                  ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; vaddr ; Output ; Warning  ; Output or bidir port (18 bits) is smaller than the port expression (32 bits) it drives.  The 14 most-significant bit(s) in the port expression will be connected to GND. ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; boundary_port         ; 34                          ;
-; cycloneiii_ff         ; 23                          ;
-;     ENA SCLR          ; 10                          ;
-;     SCLR              ; 10                          ;
-;     plain             ; 3                           ;
-; cycloneiii_lcell_comb ; 172                         ;
-;     arith             ; 28                          ;
-;         2 data inputs ; 22                          ;
-;         3 data inputs ; 6                           ;
-;     normal            ; 144                         ;
-;         0 data inputs ; 3                           ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 11                          ;
-;         3 data inputs ; 11                          ;
-;         4 data inputs ; 114                         ;
-; cycloneiii_pll        ; 1                           ;
-;                       ;                             ;
-; Max LUT depth         ; 10.30                       ;
-; Average LUT depth     ; 6.48                        ;
-+-----------------------+-----------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "dmem:dmem"                                                                                                                                                   ;
++--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                              ;
++--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; addr         ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "addr[31..1]" will be connected to GND.       ;
+; write_data   ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "write_data[31..1]" will be connected to GND. ;
+; vdata[31..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                  ;
++--------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "RISCV:CPU_RISCV"                                                                                                                      ;
++------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                         ;
++------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
+; alu_result ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "alu_result[31..1]" have no fanouts ;
+; write_data ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "write_data[31..1]" have no fanouts ;
++------------+--------+----------+---------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -724,7 +747,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -733,12 +756,46 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
+<<<<<<< HEAD
+    Info: Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+    Info: Processing started: Wed Oct 11 20:57:01 2023
+=======
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
     Info: Processing started: Wed Oct 11 19:27:19 2023
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV_GOL -c RISCV_GOL
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file CPU_RISCV.sv
+<<<<<<< HEAD
+    Info (12023): Found entity 1: RISCV File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 2
+    Info (12023): Found entity 2: regfile File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 182
+Info (12021): Found 1 design units, including 1 entities, in source file vga.v
+    Info (12023): Found entity 1: vga File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/vga.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file top.sv
+    Info (12023): Found entity 1: top File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file mem.sv
+    Info (12023): Found entity 1: dmem File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 2
+    Info (12023): Found entity 2: imem File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 325
+Info (12021): Found 1 design units, including 1 entities, in source file pll.v
+    Info (12023): Found entity 1: pll File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 40
+Warning (10236): Verilog HDL Implicit Net warning at top.sv(15): created implicit net for "mem_write" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 15
+Warning (10236): Verilog HDL Implicit Net warning at top.sv(15): created implicit net for "alu_result" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 15
+Warning (10236): Verilog HDL Implicit Net warning at top.sv(15): created implicit net for "write_data" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 15
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Warning (10034): Output port "LEDR[3..1]" at top.sv(5) has no driver File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 5
+Info (12128): Elaborating entity "RISCV" for hierarchy "RISCV:CPU_RISCV" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 15
+Info (12128): Elaborating entity "regfile" for hierarchy "RISCV:CPU_RISCV|regfile:regs" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 178
+Info (12128): Elaborating entity "imem" for hierarchy "imem:imem" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 25
+Warning (10030): Net "RAM.data_a" at mem.sv(328) has no driver or initial value, using a default initial value '0' File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 328
+Warning (10030): Net "RAM.waddr_a" at mem.sv(328) has no driver or initial value, using a default initial value '0' File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 328
+Warning (10030): Net "RAM.we_a" at mem.sv(328) has no driver or initial value, using a default initial value '0' File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 328
+Info (12128): Elaborating entity "dmem" for hierarchy "dmem:dmem" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 27
+Info (12128): Elaborating entity "pll" for hierarchy "pll:clk_wiz_1_inst" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 37
+Info (12128): Elaborating entity "altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
+Info (12130): Elaborated megafunction instantiation "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
+Info (12133): Instantiated megafunction "pll:clk_wiz_1_inst|altpll:altpll_component" with the following parameter: File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
+=======
     Info (12023): Found entity 1: CPU_RISCV File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 2
     Info (12023): Found entity 2: regfile File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 171
 Info (12021): Found 1 design units, including 1 entities, in source file vga.v
@@ -755,6 +812,7 @@ Info (12128): Elaborating entity "pll" for hierarchy "pll:clk_wiz_1_inst" File: 
 Info (12128): Elaborating entity "altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
 Info (12130): Elaborated megafunction instantiation "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
 Info (12133): Instantiated megafunction "pll:clk_wiz_1_inst|altpll:altpll_component" with the following parameter: File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
     Info (12134): Parameter "bandwidth_type" = "AUTO"
     Info (12134): Parameter "clk0_divide_by" = "2000"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
@@ -810,6 +868,25 @@ Info (12133): Instantiated megafunction "pll:clk_wiz_1_inst|altpll:altpll_compon
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "width_clock" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/pll_altpll.v
+<<<<<<< HEAD
+    Info (12023): Found entity 1: pll_altpll File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/db/pll_altpll.v Line: 30
+Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component|pll_altpll:auto_generated" File: /home/esl/intelFPGA_lite/21.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Info (12128): Elaborating entity "vga" for hierarchy "vga:video" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 38
+Warning (10230): Verilog HDL assignment warning at vga.v(35): truncated value with size 10 to match size of target (4) File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/vga.v Line: 35
+Warning (10230): Verilog HDL assignment warning at vga.v(36): truncated value with size 10 to match size of target (4) File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/vga.v Line: 36
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276007): RAM logic "dmem:dmem|RAM" is uninferred due to asynchronous read logic File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 7
+    Info (276007): RAM logic "RISCV:CPU_RISCV|regfile:regs|rf" is uninferred due to asynchronous read logic File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 188
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "/home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/db/RISCV_GOL.ram0_imem_37c714.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Error (276003): Cannot convert all sets of registers into RAM megafunctions when creating nodes. The resulting number of registers remaining in design exceeds the number of registers in the device or the number specified by the assignment max_number_of_registers_from_uninferred_rams. This can cause longer compilation time or result in insufficient memory to complete Analysis and Synthesis
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (144001): Generated suppressed messages file /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/output_files/RISCV_GOL.map.smsg
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 12 warnings
+    Error: Peak virtual memory: 439 megabytes
+    Error: Processing ended: Wed Oct 11 20:57:25 2023
+    Error: Elapsed time: 00:00:24
+    Error: Total CPU time (on all processors): 00:00:30
+=======
     Info (12023): Found entity 1: pll_altpll File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/db/pll_altpll.v Line: 30
 Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component|pll_altpll:auto_generated" File: /home/martins/intelFPGA_lite/22.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
 Info (12128): Elaborating entity "vga" for hierarchy "vga:video" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 30
@@ -840,6 +917,7 @@ Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
     Info: Processing ended: Wed Oct 11 19:27:33 2023
     Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:31
+>>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 
 
 +------------------------------------------+
