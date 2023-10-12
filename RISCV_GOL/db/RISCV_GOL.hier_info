@@ -4,7 +4,6 @@ SW[0] => SW[0].IN2
 SW[1] => SW[1].IN1
 SW[2] => SW[2].IN1
 SW[3] => SW[3].IN1
-<<<<<<< HEAD
 LEDR[0] << LEDR[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 LEDR[1] << <GND>
 LEDR[2] << <GND>
@@ -706,10 +705,6 @@ instr[31] <= RAM.DATAOUT31
 
 |top|dmem:dmem
 clk => RAM.we_a.CLK
-clk => RAM.waddr_a[13].CLK
-clk => RAM.waddr_a[12].CLK
-clk => RAM.waddr_a[11].CLK
-clk => RAM.waddr_a[10].CLK
 clk => RAM.waddr_a[9].CLK
 clk => RAM.waddr_a[8].CLK
 clk => RAM.waddr_a[7].CLK
@@ -787,18 +782,10 @@ addr[10] => RAM.PORTBRADDR8
 addr[11] => RAM.waddr_a[9].DATAIN
 addr[11] => RAM.WADDR9
 addr[11] => RAM.PORTBRADDR9
-addr[12] => RAM.waddr_a[10].DATAIN
-addr[12] => RAM.WADDR10
-addr[12] => RAM.PORTBRADDR10
-addr[13] => RAM.waddr_a[11].DATAIN
-addr[13] => RAM.WADDR11
-addr[13] => RAM.PORTBRADDR11
-addr[14] => RAM.waddr_a[12].DATAIN
-addr[14] => RAM.WADDR12
-addr[14] => RAM.PORTBRADDR12
-addr[15] => RAM.waddr_a[13].DATAIN
-addr[15] => RAM.WADDR13
-addr[15] => RAM.PORTBRADDR13
+addr[12] => ~NO_FANOUT~
+addr[13] => ~NO_FANOUT~
+addr[14] => ~NO_FANOUT~
+addr[15] => ~NO_FANOUT~
 addr[16] => ~NO_FANOUT~
 addr[17] => ~NO_FANOUT~
 addr[18] => ~NO_FANOUT~
@@ -825,10 +812,10 @@ vaddr[6] => RAM.RADDR6
 vaddr[7] => RAM.RADDR7
 vaddr[8] => RAM.RADDR8
 vaddr[9] => RAM.RADDR9
-vaddr[10] => RAM.RADDR10
-vaddr[11] => RAM.RADDR11
-vaddr[12] => RAM.RADDR12
-vaddr[13] => RAM.RADDR13
+vaddr[10] => ~NO_FANOUT~
+vaddr[11] => ~NO_FANOUT~
+vaddr[12] => ~NO_FANOUT~
+vaddr[13] => ~NO_FANOUT~
 vaddr[14] => ~NO_FANOUT~
 vaddr[15] => ~NO_FANOUT~
 vaddr[16] => ~NO_FANOUT~
@@ -975,37 +962,6 @@ vdata[28] <= RAM.DATAOUT28
 vdata[29] <= RAM.DATAOUT29
 vdata[30] <= RAM.DATAOUT30
 vdata[31] <= RAM.DATAOUT31
-=======
-VGA_R[0] << vga:video.port2
-VGA_R[1] << vga:video.port2
-VGA_R[2] << vga:video.port2
-VGA_R[3] << vga:video.port2
-VGA_R[4] << vga:video.port2
-VGA_R[5] << vga:video.port2
-VGA_R[6] << vga:video.port2
-VGA_R[7] << vga:video.port2
-VGA_G[0] << vga:video.port3
-VGA_G[1] << vga:video.port3
-VGA_G[2] << vga:video.port3
-VGA_G[3] << vga:video.port3
-VGA_G[4] << vga:video.port3
-VGA_G[5] << vga:video.port3
-VGA_G[6] << vga:video.port3
-VGA_G[7] << vga:video.port3
-VGA_B[0] << vga:video.port4
-VGA_B[1] << vga:video.port4
-VGA_B[2] << vga:video.port4
-VGA_B[3] << vga:video.port4
-VGA_B[4] << vga:video.port4
-VGA_B[5] << vga:video.port4
-VGA_B[6] << vga:video.port4
-VGA_B[7] << vga:video.port4
-VGA_HS_O << vga:video.port5
-VGA_VS_O << vga:video.port6
-VGA_CLK << VGA_CLK.DB_MAX_OUTPUT_PORT_TYPE
-VGA_BLANK_N << <VCC>
-VGA_SYNC_N << <GND>
->>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
 
 
 |top|pll:clk_wiz_1_inst

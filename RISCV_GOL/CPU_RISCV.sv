@@ -140,42 +140,32 @@ module RISCV(
 	
 	// ALU
 	logic [31:0] result;
-	assign result = is_add   	? $signed(src1) + $signed(src2):
-					is_addi		? $signed(src1) + $signed(imm):
-					is_slli		? $signed(src1) << imm[4:0]:
-					is_slri		? $signed(src1) << imm[4:0]:
-					is_auipc	? pc + $signed(imm):
-					J_type   	? jump_add:
-					S_type 		? $signed(src1) + $signed(imm): 
-					is_lw		? $signed(src1) + $signed(imm): 
-					is_sw		? $signed(src1) + $signed(imm): 
-					is_lui		? $signed(imm):
-					is_xor		? $signed(src1) ^ $signed(src2):
-					is_lbu		? $signed(src1) + $signed(imm):
-					32'b0;
+	assign result = 	is_add   	? $signed(src1) + $signed(src2):
+							is_addi		? $signed(src1) + $signed(imm):
+							is_slli		? $signed(src1) << imm[4:0]:
+							is_slri		? $signed(src1) << imm[4:0]:
+							is_auipc		? pc + $signed(imm):
+							J_type   	? jump_add:
+							S_type 		? $signed(src1) + $signed(imm): 
+							is_lw			? $signed(src1) + $signed(imm): 
+							is_sw			? $signed(src1) + $signed(imm): 
+							is_lui		? $signed(imm):
+							is_xor		? $signed(src1) ^ $signed(src2):
+							is_lbu		? $signed(src1) + $signed(imm):
+							32'b0;
 							
 	// Recebe o resultado da alu.
 	always_comb
 		alu_result <= result;
 	
 	// Caso nossa instruçao seja de JUMP, temos que calcular a nova posiçao para nosso PC.
-<<<<<<< HEAD
-	assign jump_add =	is_jal  										? $signed(pc) + $signed(imm):
-						is_jalr 										? $signed(src1) + $signed(imm):
-						(is_beq && (src1 == src2)) 						? $signed(pc) + $signed(imm) :
-						(is_bne && (src1 != src2))						? $signed(pc) + $signed(imm):
-						(is_blt && ($signed(src1) < $signed(src2)))		? $signed(pc) + $signed(imm):
-						(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) + $signed(imm):
-=======
-	logic [31:0] jump_add;
-	assign jump_add =	is_jal  									 ? $signed(pc) + $signed(imm):
-						is_jalr 									 ? $signed(src1) + $signed(imm):
-						(is_beq && (src1 == src2)) 					 ? $signed(pc) + $signed(imm) :
-						(is_bne && (src1 != src2))					 ? $signed(pc) + $signed(imm):
-						(is_blt && ($signed(src1) < $signed(src2)))	 ? $signed(pc) + $signed(imm):
-						(is_bge && ($signed(src1) >= $signed(src2))) ? $signed(pc) + $signed(imm):
->>>>>>> 872bc982ff20af9f62104a23e55ed0f291e5a770
-						pc + 32'd4;
+	assign jump_add =	is_jal  													? $signed(pc) 		+ $signed(imm):
+							is_jalr 													? $signed(src1) 	+ $signed(imm):
+							(is_beq && (src1 == src2)) 						? $signed(pc) 		+ $signed(imm) :
+							(is_bne && (src1 != src2))							? $signed(pc) 		+ $signed(imm):
+							(is_blt && ($signed(src1) < $signed(src2)))	? $signed(pc) 		+ $signed(imm):
+							(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) 		+ $signed(imm):
+							pc + 32'd4;
 
 	// Valor que sera salvo na nossa memoria e a condicional de escrita
 	assign write_data = is_sw ? src2 : (is_sb ? {{24{imm[31]}}, src2[7:0]} : 32'bX);

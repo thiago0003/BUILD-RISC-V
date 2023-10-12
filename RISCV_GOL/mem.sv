@@ -4,7 +4,7 @@ module dmem(input clk, mem_write,
 				output [31:0] read_data,
 				output [31:0] vdata);
 
-  reg [31:0] RAM[12300:0];
+  reg [31:0] RAM[1000:0];
 
   initial
   begin
