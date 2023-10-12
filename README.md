@@ -43,21 +43,23 @@ Nessa sessão será detalhado um pouco das intruções que deverão estar contid
 |:---------------:|:----------------:|:-------:|:-------:|:------------:|:------:|
 | I-Type          |imm\[11:0\]       | rs1     | funct3  | rd           |opcode  |
 
-|Instrução   |  Tipo  | Instruction Set                                                |
-|:----------:|:------:|:---------------------------------------------------------------|
-| ☑️ add  | R-Type | `0000000 \| rs2 \| rs1 \| 000 \| rd \| 0110011`                |
-| ☑️ addi | I-Type | `imm[11:0] \| rs1 \| 000 \| rd  \| 0010011`                    |
-| ☑️ slli | I-Type | `0000000 \| shamt \| rs1 \| 001 \| rd \| 0010011`              |
-| ➖ jalr | I-Type | `imm[11:0] \| rs1 \| 000 \| rd \| 1100111`                     |
-| ☑️  sw  | S-Type | `imm[11:5] \| rs2 \| rs1 \| 010 \| imm[4:0] \| 0100011`        |
-| ☑️ lw   | S-Type | `imm[11:0] \| rs1 \| 010 \| rd \| 0000011`                     |
-| ☑️ bge  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 101 \| imm[4:1\|11] \| 1100011`|
-| ☑️ beq  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 000 \| imm[4:1\|11] \| 1100011`|
-| ☑️ blt  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 100 \| imm[4:1\|11] \| 1100011`|
-| ☑️ bne  | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 001 \| imm[4:1\|11] \| 1100011`|
-| ☑️ lui  | U-Type | `imm[31:12] \| rd \| 0110111`                                  |
-| ➖ auipc| U-Type | `imm[31:12] \| rd \| 0010111`                                  |
-| ☑️ jal  | J-Type | `imm[20\|10:1\|11\|19:12] \| rd \| 1101111`                    |
+|    |Instrução |  Tipo  | Instruction Set                                                |
+|:--:|:--------:|:------:|:---------------------------------------------------------------|
+| ☑️ | add      | R-Type | `0000000 \| rs2 \| rs1 \| 000 \| rd \| 0110011`                |
+| ☑️ | addi     | I-Type | `imm[11:0] \| rs1 \| 000 \| rd  \| 0010011`                    |
+| ☑️ | lw       | I-Type | `imm[11:0] \| rs1 \| 010 \| rd  \| 0010011`                    |
+| ☑️ | lbu      | I-Type | `imm[11:0] \| rs1 \| 100 \| rd  \| 0010011`                    |
+| ☑️ | slli     | I-Type | `0000000 \| shamt \| rs1 \| 001 \| rd \| 0010011`              |
+| ☑️ | jalr     | I-Type | `imm[11:0] \| rs1 \| 000 \| rd \| 1100111`                     |
+| ☑️ | sb       | S-Type | `imm[11:5] \| rs2 \| rs1 \| 000 \| imm[4:0] \| 0100011`        |
+| ☑️ | sw       | S-Type | `imm[11:5] \| rs2 \| rs1 \| 010 \| imm[4:0] \| 0100011`        |
+| ☑️ | bge      | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 101 \| imm[4:1\|11] \| 1100011`|
+| ☑️ | beq      | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 000 \| imm[4:1\|11] \| 1100011`|
+| ☑️ | blt      | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 100 \| imm[4:1\|11] \| 1100011`|
+| ☑️ | bne      | B-Type | `imm[12\|10:5] \| rs2 \| rs1 \| 001 \| imm[4:1\|11] \| 1100011`|
+| ☑️ | lui      | U-Type | `imm[31:12] \| rd \| 0110111`                                  |
+| ➖ | auipc    | U-Type | `imm[31:12] \| rd \| 0010111`                                  |
+| ☑️ | jal      | J-Type | `imm[20\|10:1\|11\|19:12] \| rd \| 1101111`                    |
 
 ### Pseudo instruções
 * mov: Copy register, para essa intrução utilizamos a instrução `addi rd, rs, 0`
@@ -84,29 +86,6 @@ Quando gerado as instruções RISC-V foi percebido que:
 
 ## Problemas do nosso processador
 * Sempre que utilizarmos um registrador devemos realizar a operação `addi reg, 0` sendo `reg` o nosso registrador a ser inicializado. Dessa forma, garantimos que o conteúdo do registrador é sempre inicializado com zero. Quando não efetuado essa operação, podemos ver na __EPWave__ do nosso simulador [EDA Playground](https://www.edaplayground.com). 
-
-## Registradores que devemos inicializar
-Como mencionado anteriormente, devemos inicializar os seguintes registradores:
-* x1:  `addi x1, x0, 0`
-* x2:  `addi x2, x0, 0`
-* x5:  `addi x5, x0, 0`
-* x6:  `addi x6, x0, 0`
-* x8:  `addi x8, x0, 0`
-* x9:  `addi x9, x0, 0`
-* x10: `addi x10, x0, 0`
-* x11: `addi x11, x0, 0`
-* x13: `addi x13, x0, 0`
-* x14: `addi x14, x0, 0`
-* x15: `addi x15, x0, 0`
-* x18: `addi x18, x0, 0`
-* x19: `addi x19, x0, 0`
-* x20: `addi x20, x0, 0`
-* x21: `addi x21, x0, 0`
-* x22: `addi x22, x0, 0`
-* x23: `addi x23, x0, 0`
-* x24: `addi x24, x0, 0`
-* x25: `addi x25, x0, 0`
-* x26: `addi x26, x0, 0`
 
 ## Criando nosso assembly 
 Um dos nossos maiores problemas na criação do nosso assembly é que temos memórias separadas para programa e para dados, dessa forma, temos que inicializar em zero ambas as posições. Para nos ajudar nessa etapa estamos utilizando o software [RARS](https://github.com/TheThirdOne/rars/tree/master), com ele podemos criar 2 programas um onde a memória de programa é inicializado em zero e outro em que a memória de dados é inicilizado em zero. Tendo esses programas criados, a próxima etapa é efetuar o merge de ambos para criar nosso programa.

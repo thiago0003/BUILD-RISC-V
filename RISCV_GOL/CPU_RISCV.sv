@@ -144,13 +144,13 @@ module CPU_RISCV(
 	
 	// Caso nossa instruçao seja de JUMP, temos que calcular a nova posiçao para nosso PC.
 	logic [31:0] jump_add;
-	assign jump_add =	is_jal  													? $signed(pc) + $signed(imm):
-							is_jalr 													? $signed(pc) + $signed(src1) + $signed(imm):
-							(is_beq && (src1 == src2)) 						? $signed(pc) + $signed(imm) :
-							(is_bne && (src1 != src2))							? $signed(pc) + $signed(imm):
-							(is_blt && ($signed(src1) < $signed(src2)))	? $signed(pc) + $signed(imm):
-							(is_bge && ($signed(src1) >= $signed(src2)))	? $signed(pc) + $signed(imm):
-							pc + 32'd4;
+	assign jump_add =	is_jal  									 ? $signed(pc) + $signed(imm):
+						is_jalr 									 ? $signed(src1) + $signed(imm):
+						(is_beq && (src1 == src2)) 					 ? $signed(pc) + $signed(imm) :
+						(is_bne && (src1 != src2))					 ? $signed(pc) + $signed(imm):
+						(is_blt && ($signed(src1) < $signed(src2)))	 ? $signed(pc) + $signed(imm):
+						(is_bge && ($signed(src1) >= $signed(src2))) ? $signed(pc) + $signed(imm):
+						pc + 32'd4;
 
 	// Valor que sera salvo na nossa memoria e a condicional de escrita
 	assign write_data = is_sw ? src2: 32'bX;

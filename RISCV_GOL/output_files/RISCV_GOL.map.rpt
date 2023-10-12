@@ -1,6 +1,6 @@
 Analysis & Synthesis report for RISCV_GOL
-Tue Oct 10 09:56:43 2023
-Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+Wed Oct 11 19:27:33 2023
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
 ---------------------
@@ -31,7 +31,7 @@ Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2022  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -48,24 +48,24 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                     ;
-+------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 10 09:56:43 2023       ;
-; Quartus Prime Version              ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
-; Revision Name                      ; RISCV_GOL                                   ;
-; Top-level Entity Name              ; top                                         ;
-; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 168                                         ;
-;     Total combinational functions  ; 168                                         ;
-;     Dedicated logic registers      ; 23                                          ;
-; Total registers                    ; 23                                          ;
-; Total pins                         ; 34                                          ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 1                                           ;
-+------------------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Oct 11 19:27:33 2023          ;
+; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
+; Revision Name                      ; RISCV_GOL                                      ;
+; Top-level Entity Name              ; top                                            ;
+; Family                             ; Cyclone IV E                                   ;
+; Total logic elements               ; 168                                            ;
+;     Total combinational functions  ; 168                                            ;
+;     Dedicated logic registers      ; 23                                             ;
+; Total registers                    ; 23                                             ;
+; Total pins                         ; 34                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 1                                              ;
++------------------------------------+------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------+
@@ -160,33 +160,32 @@ https://fpgasoftware.intel.com/eula.
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
 ; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                        ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                    ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
-; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv                               ;         ;
-; mem.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv                               ;         ;
-; pll.v                            ; yes             ; User Wizard-Generated File   ; /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v                                ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; /home/esl/intelFPGA_lite/21.1/quartus/libraries/megafunctions/altpll.tdf        ;         ;
-; aglobal211.inc                   ; yes             ; Megafunction                 ; /home/esl/intelFPGA_lite/21.1/quartus/libraries/megafunctions/aglobal211.inc    ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; /home/esl/intelFPGA_lite/21.1/quartus/libraries/megafunctions/stratix_pll.inc   ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; /home/esl/intelFPGA_lite/21.1/quartus/libraries/megafunctions/stratixii_pll.inc ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; /home/esl/intelFPGA_lite/21.1/quartus/libraries/megafunctions/cycloneii_pll.inc ;         ;
-; db/pll_altpll.v                  ; yes             ; Auto-Generated Megafunction  ; /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/db/pll_altpll.v                      ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                               ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                           ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------+---------+
+; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv                                  ;         ;
+; mem.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/mem.sv                                  ;         ;
+; pll.v                            ; yes             ; User Wizard-Generated File   ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v                                   ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; /home/martins/intelFPGA_lite/22.1std/quartus/libraries/megafunctions/altpll.tdf        ;         ;
+; aglobal221.inc                   ; yes             ; Megafunction                 ; /home/martins/intelFPGA_lite/22.1std/quartus/libraries/megafunctions/aglobal221.inc    ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; /home/martins/intelFPGA_lite/22.1std/quartus/libraries/megafunctions/stratix_pll.inc   ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; /home/martins/intelFPGA_lite/22.1std/quartus/libraries/megafunctions/stratixii_pll.inc ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; /home/martins/intelFPGA_lite/22.1std/quartus/libraries/megafunctions/cycloneii_pll.inc ;         ;
+; db/pll_altpll.v                  ; yes             ; Auto-Generated Megafunction  ; /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/db/pll_altpll.v                         ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------------------+
@@ -244,7 +243,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+-------------------------+-----------------+
 ; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance         ; IP Include File ;
 +--------+--------------+---------+--------------+--------------+-------------------------+-----------------+
-; Altera ; ALTPLL       ; 21.1    ; N/A          ; N/A          ; |top|pll:clk_wiz_1_inst ; pll.v           ;
+; Altera ; ALTPLL       ; 22.1    ; N/A          ; N/A          ; |top|pll:clk_wiz_1_inst ; pll.v           ;
 +--------+--------------+---------+--------------+--------------+-------------------------+-----------------+
 
 
@@ -734,28 +733,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
-    Info: Processing started: Tue Oct 10 09:56:33 2023
+    Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+    Info: Processing started: Wed Oct 11 19:27:19 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV_GOL -c RISCV_GOL
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file CPU_RISCV.sv
-    Info (12023): Found entity 1: CPU_RISCV File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 2
-    Info (12023): Found entity 2: regfile File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 171
+    Info (12023): Found entity 1: CPU_RISCV File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 2
+    Info (12023): Found entity 2: regfile File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/CPU_RISCV.sv Line: 171
 Info (12021): Found 1 design units, including 1 entities, in source file vga.v
-    Info (12023): Found entity 1: vga_ File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/vga.v Line: 1
+    Info (12023): Found entity 1: vga_ File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/vga.v Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file top.sv
-    Info (12023): Found entity 1: top File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 2
-    Info (12023): Found entity 2: vga File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 37
+    Info (12023): Found entity 1: top File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 2
+    Info (12023): Found entity 2: vga File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 37
 Info (12021): Found 1 design units, including 1 entities, in source file mem.sv
-    Info (12023): Found entity 1: mem File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 1
+    Info (12023): Found entity 1: mem File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file pll.v
-    Info (12023): Found entity 1: pll File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 40
+    Info (12023): Found entity 1: pll File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v Line: 40
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Info (12128): Elaborating entity "pll" for hierarchy "pll:clk_wiz_1_inst" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 29
-Info (12128): Elaborating entity "altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
-Info (12130): Elaborated megafunction instantiation "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
-Info (12133): Instantiated megafunction "pll:clk_wiz_1_inst|altpll:altpll_component" with the following parameter: File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
+Info (12128): Elaborating entity "pll" for hierarchy "pll:clk_wiz_1_inst" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 29
+Info (12128): Elaborating entity "altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
+Info (12130): Elaborated megafunction instantiation "pll:clk_wiz_1_inst|altpll:altpll_component" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
+Info (12133): Instantiated megafunction "pll:clk_wiz_1_inst|altpll:altpll_component" with the following parameter: File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/pll.v Line: 91
     Info (12134): Parameter "bandwidth_type" = "AUTO"
     Info (12134): Parameter "clk0_divide_by" = "2000"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
@@ -811,24 +810,24 @@ Info (12133): Instantiated megafunction "pll:clk_wiz_1_inst|altpll:altpll_compon
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "width_clock" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/pll_altpll.v
-    Info (12023): Found entity 1: pll_altpll File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/db/pll_altpll.v Line: 30
-Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component|pll_altpll:auto_generated" File: /home/esl/intelFPGA_lite/21.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "vga" for hierarchy "vga:video" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 30
-Warning (10230): Verilog HDL assignment warning at top.sv(71): truncated value with size 10 to match size of target (4) File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 71
-Warning (10230): Verilog HDL assignment warning at top.sv(72): truncated value with size 10 to match size of target (4) File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 72
-Warning (10230): Verilog HDL assignment warning at top.sv(73): truncated value with size 32 to match size of target (9) File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 73
-Info (12128): Elaborating entity "mem" for hierarchy "vga:video|mem:video" File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 89
-Warning (10030): Net "RAM.data_a" at mem.sv(5) has no driver or initial value, using a default initial value '0' File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
-Warning (10030): Net "RAM.waddr_a" at mem.sv(5) has no driver or initial value, using a default initial value '0' File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
-Warning (10030): Net "RAM.we_a" at mem.sv(5) has no driver or initial value, using a default initial value '0' File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
+    Info (12023): Found entity 1: pll_altpll File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/db/pll_altpll.v Line: 30
+Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:clk_wiz_1_inst|altpll:altpll_component|pll_altpll:auto_generated" File: /home/martins/intelFPGA_lite/22.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Info (12128): Elaborating entity "vga" for hierarchy "vga:video" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 30
+Warning (10230): Verilog HDL assignment warning at top.sv(71): truncated value with size 10 to match size of target (4) File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 71
+Warning (10230): Verilog HDL assignment warning at top.sv(72): truncated value with size 10 to match size of target (4) File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 72
+Warning (10230): Verilog HDL assignment warning at top.sv(73): truncated value with size 32 to match size of target (9) File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 73
+Info (12128): Elaborating entity "mem" for hierarchy "vga:video|mem:video" File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 89
+Warning (10030): Net "RAM.data_a" at mem.sv(5) has no driver or initial value, using a default initial value '0' File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
+Warning (10030): Net "RAM.waddr_a" at mem.sv(5) has no driver or initial value, using a default initial value '0' File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
+Warning (10030): Net "RAM.we_a" at mem.sv(5) has no driver or initial value, using a default initial value '0' File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276007): RAM logic "vga:video|mem:video|RAM" is uninferred due to asynchronous read logic File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
-Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "/home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/db/RISCV_GOL.ram0_mem_1c3ed.hdl.mif" contains "don't care" values -- overwriting them with 0s
+    Info (276007): RAM logic "vga:video|mem:video|RAM" is uninferred due to asynchronous read logic File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/mem.sv Line: 5
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "/home/martins/Documents/BUILD-RISC-V/RISCV_GOL/db/RISCV_GOL.ram0_mem_1c3ed.hdl.mif" contains "don't care" values -- overwriting them with 0s
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 7
-    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/top.sv Line: 7
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 7
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/top.sv Line: 7
 Info (286030): Timing-Driven Synthesis is running
-Info (144001): Generated suppressed messages file /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/output_files/RISCV_GOL.map.smsg
+Info (144001): Generated suppressed messages file /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/output_files/RISCV_GOL.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 203 device resources after synthesis - the final resource count might be different
@@ -837,15 +836,15 @@ Info (21057): Implemented 203 device resources after synthesis - the final resou
     Info (21061): Implemented 168 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 427 megabytes
-    Info: Processing ended: Tue Oct 10 09:56:43 2023
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Peak virtual memory: 392 megabytes
+    Info: Processing ended: Wed Oct 11 19:27:33 2023
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:31
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in /home/esl/Workspace/BUILD-RISC-V/RISCV_GOL/output_files/RISCV_GOL.map.smsg.
+The suppressed messages can be found in /home/martins/Documents/BUILD-RISC-V/RISCV_GOL/output_files/RISCV_GOL.map.smsg.
 
 
