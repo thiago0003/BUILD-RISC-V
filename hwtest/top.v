@@ -19,7 +19,7 @@ module top #(parameter VGA_BITS = 8) (
   output VGA_BLANK_N, VGA_SYNC_N);
 
   wire VGA_DA; // In display area
-  wire VGA_PIXEl;
+  wire VGA_PIXEL;
   
   always@(posedge CLOCK_50)
     VGA_CLK = ~VGA_CLK; // 25MHz

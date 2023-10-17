@@ -176,6 +176,7 @@ module RISCV(
 	assign reg_write = (R_type || S_type || B_type || I_type || U_type) && RD != 5'b0;
 	
 	regfile regs(clk, reg_write, RS1, RS2, RD, (is_lw || is_lbu) ?  read_data: alu_result, src1, src2);
+	
 endmodule
 
 // Modulo de registradores
