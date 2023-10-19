@@ -1,0 +1,77 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'sysclk'
+Slack : -12.535
+TNS   : -11213.487
+
+Type  : Slow 1200mV 85C Model Setup 'VGA_CLK~reg0'
+Slack : -1.904
+TNS   : -36.601
+
+Type  : Slow 1200mV 85C Model Hold 'VGA_CLK~reg0'
+Slack : 0.438
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'sysclk'
+Slack : 1.042
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sysclk'
+Slack : -3.000
+TNS   : -1294.425
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'VGA_CLK~reg0'
+Slack : -1.285
+TNS   : -29.555
+
+Type  : Slow 1200mV 0C Model Setup 'sysclk'
+Slack : -11.381
+TNS   : -10246.664
+
+Type  : Slow 1200mV 0C Model Setup 'VGA_CLK~reg0'
+Slack : -1.650
+TNS   : -31.169
+
+Type  : Slow 1200mV 0C Model Hold 'VGA_CLK~reg0'
+Slack : 0.395
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'sysclk'
+Slack : 0.969
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sysclk'
+Slack : -3.000
+TNS   : -1294.425
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'VGA_CLK~reg0'
+Slack : -1.285
+TNS   : -29.555
+
+Type  : Fast 1200mV 0C Model Setup 'sysclk'
+Slack : -5.767
+TNS   : -5178.296
+
+Type  : Fast 1200mV 0C Model Setup 'VGA_CLK~reg0'
+Slack : -0.385
+TNS   : -5.492
+
+Type  : Fast 1200mV 0C Model Hold 'VGA_CLK~reg0'
+Slack : 0.198
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'sysclk'
+Slack : 0.442
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sysclk'
+Slack : -3.000
+TNS   : -1091.291
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'VGA_CLK~reg0'
+Slack : -1.000
+TNS   : -23.000
+
+------------------------------------------------------------

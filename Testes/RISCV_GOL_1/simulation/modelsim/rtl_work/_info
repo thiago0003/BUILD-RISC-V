@@ -1,0 +1,142 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/martins/Documents/RISCV_GOL_1/simulation/modelsim
+vimem
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1697234899
+!i10b 1
+!s100 mcK:XjSzC@SNkIQjeMTT40
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IGbSRWgaa4fP>k2VYAPP:X0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1697232866
+8/home/martins/Documents/RISCV_GOL_1/mem.sv
+F/home/martins/Documents/RISCV_GOL_1/mem.sv
+!i122 3
+L0 324 27
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1697234899.000000
+!s107 /home/martins/Documents/RISCV_GOL_1/mem.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/martins/Documents/RISCV_GOL_1|/home/martins/Documents/RISCV_GOL_1/mem.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+/home/martins/Documents/RISCV_GOL_1
+Z9 tCvgOpt 0
+vregfile
+R1
+R2
+!i10b 1
+!s100 ;bg9gEQhBI9h6n^Y_U:M63
+R3
+I[eJTz;E]=I0jzONi]=0gW0
+R4
+S1
+R0
+Z10 w1697233393
+Z11 8/home/martins/Documents/RISCV_GOL_1/RISCV.sv
+Z12 F/home/martins/Documents/RISCV_GOL_1/RISCV.sv
+!i122 0
+L0 183 15
+R5
+r1
+!s85 0
+31
+R6
+Z13 !s107 /home/martins/Documents/RISCV_GOL_1/RISCV.sv|
+Z14 !s90 -reportprogress|300|-sv|-work|work|+incdir+/home/martins/Documents/RISCV_GOL_1|/home/martins/Documents/RISCV_GOL_1/RISCV.sv|
+!i113 1
+R7
+R8
+R9
+vRISCV
+R1
+R2
+!i10b 1
+!s100 <KgVA8HoP8Tlk47JBIB5Y0
+R3
+IiJBQhdR553R9b_GJFGM?S2
+R4
+S1
+R0
+R10
+R11
+R12
+!i122 0
+L0 2 179
+R5
+r1
+!s85 0
+31
+R6
+R13
+R14
+!i113 1
+R7
+R8
+R9
+n@r@i@s@c@v
+vtop
+R1
+R2
+!i10b 1
+!s100 8I:7m5M42@lHz8C2PVH_A2
+R3
+Imj2McAj3e4;mJ2oVnW?fS3
+R4
+S1
+R0
+w1697233488
+8/home/martins/Documents/RISCV_GOL_1/top.sv
+F/home/martins/Documents/RISCV_GOL_1/top.sv
+!i122 1
+L0 2 27
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/martins/Documents/RISCV_GOL_1/top.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/martins/Documents/RISCV_GOL_1|/home/martins/Documents/RISCV_GOL_1/top.sv|
+!i113 1
+R7
+R8
+R9
+vvga
+R1
+R2
+!i10b 1
+!s100 CNRcK1l23OK4o0gJj986Q2
+R3
+IPO4k^6I]cn8_RRJeGo<aI3
+R4
+S1
+R0
+w1697233394
+8/home/martins/Documents/RISCV_GOL_1/vga.sv
+F/home/martins/Documents/RISCV_GOL_1/vga.sv
+!i122 2
+L0 1 52
+R5
+r1
+!s85 0
+31
+R6
+!s107 /home/martins/Documents/RISCV_GOL_1/vga.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/martins/Documents/RISCV_GOL_1|/home/martins/Documents/RISCV_GOL_1/vga.sv|
+!i113 1
+R7
+R8
+R9

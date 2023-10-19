@@ -1,3 +1,6 @@
+	addi t0, x0, 0
+	addi t1, x0, 0
+	addi t2, x0, 0
 	li t0, 0
 	li t1, 300
 loop:

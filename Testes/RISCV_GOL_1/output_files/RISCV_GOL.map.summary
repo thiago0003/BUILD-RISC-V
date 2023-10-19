@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Oct 13 19:04:09 2023
+Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+Revision Name : RISCV_GOL
+Top-level Entity Name : top
+Family : Cyclone IV E
+Total logic elements : 2,713
+    Total combinational functions : 1,774
+    Dedicated logic registers : 1,028
+Total registers : 1028
+Total pins : 38
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
