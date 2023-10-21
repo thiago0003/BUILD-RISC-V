@@ -2,15 +2,13 @@
 module top #(parameter VGA_BITS = 8) (
 			  input sysclk, 
 			  input [3:0] SW,
-			  input [3:0] KEY,
-			  output [3:0]LEDR,
-			  output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6,
 			  output [VGA_BITS-1:0] VGA_R, VGA_G, VGA_B,
 			  output VGA_HS_O, VGA_VS_O,
 			  output reg VGA_CLK, VGA_BLANK_N, VGA_SYNC_N);
 
 	wire [31:0] pc, instruction, read_data, alu_result, read_data_vga, write_data;
 	wire [ 8:0] addr_vga; // 2**7 = 128 > 75 (words) = 300 (bytes) = 20*15 (res) = 32x32 pixel;
+	wire mem_write;
 	
 	// CPU
 	RISCV CPU_RISCV(VGA_CLK, SW[0], pc, instruction, mem_write, alu_result, write_data, read_data);

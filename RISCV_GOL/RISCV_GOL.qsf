@@ -182,13 +182,9 @@ set_location_assignment PIN_AG18 -to HEX7[5]
 set_location_assignment PIN_AA14 -to HEX7[6]
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name HEX_FILE dmem.hex
-set_global_assignment -name HEX_FILE imem.hex
 set_global_assignment -name VERILOG_FILE mem.v
 set_global_assignment -name SYSTEMVERILOG_FILE CPU_RISCV.sv
 set_global_assignment -name VERILOG_FILE vga.v
 set_global_assignment -name SYSTEMVERILOG_FILE top.sv
-set_global_assignment -name HEX_FILE dmem.hex
-set_global_assignment -name SYSTEMVERILOG_FILE mem.sv
 set_global_assignment -name QIP_FILE pll.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
