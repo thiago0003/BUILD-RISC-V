@@ -17,16 +17,15 @@ module RISCV(
 	logic [31:0] jump_add;
 
 	//PC
-	logic [31:0]next_pc;
+	reg [31:0]next_pc;
 	
 	// Atualiza nosso valor de PC
-	assign next_pc =	reset     				? 32'b0:
+	assign next_pc =	reset 					? 32'b0:
 							is_conditional_jump	? jump_add:
 							pc + 32'd4;
 						  
-	always_ff @(posedge clk) begin
-		pc <= next_pc[31:0];
-	end
+	always @(posedge clk)
+		pc <= next_pc;
 	
 	// Recebe os valores que sao passados na instruçao
 	logic [6:0] opcode;
@@ -63,78 +62,87 @@ module RISCV(
 	
 	// Decodificaçao das instruçoes e seus respectivos tipos 
 	logic [4:0] RS1;
-	assign RS1 = (R_type | I_type | S_type | B_type) ? rs1 : 5'b0;
+	assign RS1 = (R_type | I_type | S_type | B_type) 	? rs1 : 5'b0;
 	
 	logic [4:0] RS2;
-	assign RS2 = (R_type | S_type | B_type)          ? rs2 : 5'b0;
+	assign RS2 = (R_type | S_type | B_type)         	? rs2 : 5'b0;
 
 	logic [4:0] RD;
-	assign RD = (R_type | I_type | U_type | J_type) ? rd_ : 5'b0;
+	assign RD = (R_type | I_type | U_type | J_type) 	? rd_ : 5'b0;
 	
 	logic [2:0] funct3;
-	assign funct3 = (R_type | I_type | S_type | B_type) ? funct3_ : 3'b0;
+	assign funct3 = (R_type | I_type | S_type | B_type)? funct3_ : 3'b0;
 	
 	logic [6:0] funct7;
-	assign funct7 = (R_type)                            ? funct7_ : 7'b0;
+	assign funct7 = (R_type)                           ? funct7_ : 7'b0;
 	
 	logic [31:0] imm;
-	assign imm   = 	(I_type) ? ({{20{instruction[31]}},instruction[31:20]}):
-					(S_type) ? ({{20{instruction[31]}},instruction[31:25],instruction[11:7]}):		
-					(B_type) ? ({{19{instruction[31]}},instruction[31],instruction[7],instruction[30:25],instruction[11:8],1'b0}):
-					(U_type) ? ({instruction[31:12],12'b0}):
-					(J_type) ? ({{11{instruction[31]}}, instruction[31],instruction[19:12],instruction[20],instruction[30:21],1'b0}):
-					32'b0;
+	assign imm = (I_type) ? ({{20{instruction[31]}},instruction[31:20]}):
+					 (S_type) ? ({{20{instruction[31]}},instruction[31:25],instruction[11:7]}):		
+					 (B_type) ? ({{19{instruction[31]}},instruction[31],instruction[7],instruction[30:25],instruction[11:8],1'b0}):
+					 (U_type) ? ({instruction[31:12],12'b0}):
+					 (J_type) ? ({{11{instruction[31]}}, instruction[31],instruction[19:12],instruction[20],instruction[30:21],1'b0}):
+					 32'b0;
 	logic is_add;
-	assign is_add    = (opcode == 7'b0110011 & funct3 == 3'b000 & funct7 == 7'b0000000);
+	assign is_add    	= (opcode == 7'b0110011 & funct3 == 3'b000 & funct7 == 7'b0000000);
 	
 	logic is_addi;
-	assign is_addi   = (opcode == 7'b0010011 & funct3 == 3'b000);
+	assign is_addi   	= (opcode == 7'b0010011 & funct3 == 3'b000);
+	
+	logic is_sub;
+	assign is_sub 	  	= (opcode == 7'b0110011 & funct3 == 3'b000 & funct7 == 7'b0100000);
 	
 	logic is_slli;
-	assign is_slli   = (opcode == 7'b0010011 & funct3 == 3'b001 & funct7 == 7'b0000000);
+	assign is_slli   	= (opcode == 7'b0010011 & funct3 == 3'b001 & funct7 == 7'b0000000);
+	
+	logic is_srli;
+	assign is_srli	 	= (opcode == 7'b0010011 & funct3 == 3'b101 & funct7 == 7'b0000000);
 	
 	logic is_auipc;
-	assign is_auipc  = (opcode == 7'b0010111);
+	assign is_auipc  	= (opcode == 7'b0010111);
 	
 	logic is_jal;
-	assign is_jal    = (opcode == 7'b1101111);
+	assign is_jal    	= (opcode == 7'b1101111);
 	
 	logic is_lui;
-	assign is_lui	  = (opcode == 7'b0110111);
+	assign is_lui	  	= (opcode == 7'b0110111);
 	
 	logic is_jalr;
-	assign is_jalr   = (opcode == 7'b1100111 & funct3 == 3'b0);
+	assign is_jalr   	= (opcode == 7'b1100111 & funct3 == 3'b0);
 	
 	logic is_bge;
-	assign is_bge    = (opcode == 7'b1100011 & funct3 == 3'b101);
+	assign is_bge    	= (opcode == 7'b1100011 & funct3 == 3'b101);
 	
 	logic is_beq;
-	assign is_beq    = (opcode == 7'b1100011 & funct3 == 3'b0);
+	assign is_beq    	= (opcode == 7'b1100011 & funct3 == 3'b0);
 	
 	logic is_blt;
-	assign is_blt    = (opcode == 7'b1100011 & funct3 == 3'b100);
+	assign is_blt    	= (opcode == 7'b1100011 & funct3 == 3'b100);
 	
 	logic is_bne;
-	assign is_bne    = (opcode == 7'b1100011 & funct3 == 3'b001);
+	assign is_bne    	= (opcode == 7'b1100011 & funct3 == 3'b001);
 	
 	logic is_sw;
-	assign is_sw     = (opcode == 7'b0100011 & funct3 == 3'b010);
+	assign is_sw     	= (opcode == 7'b0100011 & funct3 == 3'b010);
 	
 	logic is_lw;
-	assign is_lw     = (opcode == 7'b0000011 & funct3 == 3'b010);
+	assign is_lw     	= (opcode == 7'b0000011 & funct3 == 3'b010);
 	
 	logic is_xor;
-	assign is_xor	 = (opcode == 7'b0110011 & funct3 == 3'b100);
+	assign is_xor	 	= (opcode == 7'b0110011 & funct3 == 3'b100 & funct7 == 7'b0000000);
 	
-	logic is_slri;
-	assign is_slri	 = (opcode == 7'b0010011 & funct3 == 3'b101);
+	logic is_or;
+	assign is_or	 	= (opcode == 7'b0110011 & funct3 == 3'b110 & funct7 == 7'b0000000);
+	
+	logic is_andi;
+	assign is_andi		= (opcode == 7'b0010011 & funct3 == 3'b111);
 	
 	logic is_sb;
-	assign is_sb	= (opcode == 7'b0100011 & funct3 == 3'b000);
+	assign is_sb		= (opcode == 7'b0100011 & funct3 == 3'b000);
 	
 	logic is_lbu;
-	assign is_lbu	= (opcode == 7'b0000011 & funct3 == 3'b100);
-	
+	assign is_lbu		= (opcode == 7'b0000011 & funct3 == 3'b100);
+		
 	// Condicional para sabermos se havera um JUMP 
 	assign is_conditional_jump = (is_beq || is_bne || is_blt || is_bge || is_jal || is_jalr);
 	
@@ -142,8 +150,11 @@ module RISCV(
 	logic [31:0] result;
 	assign result = 	is_add   	? $signed(src1) + $signed(src2):
 							is_addi		? $signed(src1) + $signed(imm):
+							is_sub		? $signed(src1) - $signed(src2):
+							is_andi		? $signed(src1) & $signed(imm):
+							is_or			? $signed(src1) | $signed(src2):
 							is_slli		? $signed(src1) << imm[4:0]:
-							is_slri		? $signed(src1) << imm[4:0]:
+							is_srli		? $signed(src1) >> imm[4:0]:
 							is_auipc		? pc + $signed(imm):
 							J_type   	? jump_add:
 							S_type 		? $signed(src1) + $signed(imm): 
@@ -155,7 +166,7 @@ module RISCV(
 							32'b0;
 							
 	// Recebe o resultado da alu.
-	always_comb
+	always @*
 		alu_result <= result;
 	
 	// Caso nossa instruçao seja de JUMP, temos que calcular a nova posiçao para nosso PC.
@@ -186,9 +197,9 @@ module regfile(input  logic        clk,
                input  logic [31:0] write_reg, 
                output logic [31:0] rd1, rd2);
 					
-  logic [31:0] rf[31:0];
+  reg [31:0] rf[31:0];
 
-	always_ff @(posedge clk) 
+	always @(posedge clk) 
 		if (reg_write) 
 			rf[addr] <= write_reg;	
 		

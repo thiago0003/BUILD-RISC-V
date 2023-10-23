@@ -11,9 +11,9 @@
 // #define _idx(x,y) ((((x) <<6) + ((x)<<8)) + (y)) // for 640
 #define _idx(x,y) ((((x) <<5) - ((x)<<1)) + (y)) // for 30
 
-unsigned char univ[h*w];
-unsigned char b1[w], b2[w], prev[w], head[w];
-unsigned char n;
+int univ[h*w];
+int b1[w], b2[w], prev[w], head[w];
+int n;
 
 void show()
 {
@@ -64,7 +64,12 @@ void evolve()
 
 void main(int c, char **v)
 {
-	for_x for_y univ[_idx(y,x)] = rand() < RAND_MAX / 10 ? 1 : 0;
+    register int lfsr = 0x0110;
+	for_x for_y 
+    {
+        lfsr = (((lfsr &(1u << 16))>>16) ^ ((lfsr & (1u << 14))>>14) ^ ((lfsr & (1u << 13))>>13) ^ ((lfsr & (1u << 11))>>11)) | lfsr<<1;
+		univ[_idx(y,x)] = lfsr & 1;
+    }
 
 	show();
 	usleep(100);
