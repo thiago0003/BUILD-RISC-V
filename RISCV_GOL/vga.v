@@ -3,7 +3,7 @@ module vga #(parameter VGA_BITS = 8) (
   input [31:0] vdata,
   output [VGA_BITS-1:0] VGA_R, VGA_G, VGA_B,
   output VGA_HS_O, VGA_VS_O,
-  output [8:0] vaddr); // 2**7 = 128 > 75 (words) = 300 (bytes) = 20*15 (res) = 32x32 pixel;
+  output [31:0] vaddr); // 2**9 = 512 > 300 (words) = 1200 (bytes) = 40*30 (res) = 16x16 pixel;
 
   reg [9:0] CounterX, CounterY;
   reg inDisplayArea;
@@ -29,10 +29,13 @@ module vga #(parameter VGA_BITS = 8) (
         CounterY <= CounterY + 1'b1;
   end
  
-  assign col = (CounterX>>5);
-  assign row = (CounterY>>5);
-  assign vaddr = col + (row<<4) + (row<<2);
-  assign vbyte = col[1] ? (col[0] ? vdata[7:0] : vdata[15:8]) : (col[0] ? vdata[23:16] : vdata[31:24]); // byte select
+  assign col = (CounterX>>4);
+  assign row = (CounterY>>4);
+  assign vaddr = col + (row<<5) + (row<<3);
+  assign vbyte = col[1] ? (col[0] ? vdata[ 7: 0] : 
+                                    vdata[15: 8]): 
+								  (col[0] ? vdata[23:16] : 
+								            vdata[31:24]); // byte select
 
   always @(posedge clk)
   begin
