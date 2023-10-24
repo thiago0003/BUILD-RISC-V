@@ -1,10 +1,9 @@
 module vga #(parameter VGA_BITS = 8) (
   input clk,
-  input [3:0] SW,
-  input [7:0] vdata,
+  input [31:0] vdata,
   output [VGA_BITS-1:0] VGA_R, VGA_G, VGA_B,
   output VGA_HS_O, VGA_VS_O,
-  output [17:0] vaddr);
+  output [8:0] vaddr); // 2**7 = 128 > 75 (words) = 300 (bytes) = 20*15 (res) = 32x32 pixel;
 
   reg [9:0] CounterX, CounterY;
   reg inDisplayArea;
@@ -15,21 +14,18 @@ module vga #(parameter VGA_BITS = 8) (
   wire CounterYmaxed = (CounterY == 525); // 10 +  2 + 33 + 480
 
   always @(posedge clk)
-	 if(SW[0])
-		CounterX <= 10'b0;
-    else if (CounterXmaxed)
+  begin
+    if (CounterXmaxed)
       CounterX <= 10'b0;
     else
       CounterX <= CounterX + 1'b1;
 		
-	always @(posedge clk)	
-		if(SW[0])
-			CounterY <= 10'b0;
-		else if (CounterXmaxed)
-			if(CounterYmaxed)
-				CounterY <= 10'b0;
-		else
-			CounterY <= CounterY + 1'b1;
+    if (CounterXmaxed)
+      if(CounterYmaxed)
+        CounterY <= 10'b0;
+      else
+        CounterY <= CounterY + 1'b1;
+  end
     
 		  
   assign col = (CounterX>>5);

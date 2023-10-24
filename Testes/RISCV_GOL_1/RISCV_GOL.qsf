@@ -55,9 +55,6 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name SYSTEMVERILOG_FILE RISCV.sv
-set_global_assignment -name SYSTEMVERILOG_FILE top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE vga.sv
 set_location_assignment PIN_AB28 -to SW[0]
 set_location_assignment PIN_AC28 -to SW[1]
 set_location_assignment PIN_AC27 -to SW[2]
@@ -110,12 +107,9 @@ set_location_assignment PIN_M21 -to KEY[1]
 set_location_assignment PIN_N21 -to KEY[2]
 set_location_assignment PIN_R24 -to KEY[3]
 set_location_assignment PIN_Y2 -to sysclk
-set_global_assignment -name SYSTEMVERILOG_FILE mem.sv
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
@@ -123,8 +117,14 @@ set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH riscv -section_
 set_global_assignment -name EDA_TEST_BENCH_NAME riscv -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id riscv
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME riscv -section_id riscv
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE top.sv -section_id riscv
 set_global_assignment -name EDA_TEST_BENCH_FILE RISCV.sv -section_id riscv
 set_global_assignment -name EDA_TEST_BENCH_FILE vga.sv -section_id riscv
 set_global_assignment -name EDA_TEST_BENCH_FILE mem.sv -section_id riscv
+set_global_assignment -name SYSTEMVERILOG_FILE vga.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+set_global_assignment -name HEX_FILE dmem.hex
+set_global_assignment -name HEX_FILE imem.hex
+set_global_assignment -name VERILOG_FILE mem.v
+set_global_assignment -name VERILOG_FILE RISCV_GOL.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

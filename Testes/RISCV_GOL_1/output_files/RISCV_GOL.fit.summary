@@ -1,15 +1,15 @@
-Fitter Status : Successful - Fri Oct 13 19:04:54 2023
+Fitter Status : Successful - Tue Oct 24 00:20:25 2023
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : RISCV_GOL
 Top-level Entity Name : top
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 2,127 / 114,480 ( 2 % )
-    Total combinational functions : 1,779 / 114,480 ( 2 % )
-    Dedicated logic registers : 1,028 / 114,480 ( < 1 % )
-Total registers : 1028
-Total pins : 38 / 529 ( 7 % )
+Total logic elements : 1 / 114,480 ( < 1 % )
+    Total combinational functions : 1 / 114,480 ( < 1 % )
+    Dedicated logic registers : 1 / 114,480 ( < 1 % )
+Total registers : 1
+Total pins : 34 / 529 ( 6 % )
 Total virtual pins : 0
 Total memory bits : 0 / 3,981,312 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )

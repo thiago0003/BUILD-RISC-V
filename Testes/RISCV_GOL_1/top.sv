@@ -2,13 +2,13 @@
 module top #(parameter VGA_BITS = 8) (
 			  input sysclk, 
 			  input [3:0] SW,
-			  output [3:0]LEDR,
 			  output [VGA_BITS-1:0] VGA_R, VGA_G, VGA_B,
 			  output VGA_HS_O, VGA_VS_O,
 			  output reg VGA_CLK, VGA_BLANK_N, VGA_SYNC_N);
 
-	logic [31:0] pc, instruction, read_data, addr_vga;
-	logic [31:0] read_data_vga;
+	wire [31:0] pc, instruction, read_data, alu_result, read_data_vga, write_data;
+	wire [ 8:0] addr_vga; // 2**7 = 128 > 75 (words) = 300 (bytes) = 20*15 (res) = 32x32 pixel;
+	wire mem_write;
 	
 	// CPU
 	RISCV CPU_RISCV(sysclk, SW[1], pc, instruction, mem_write, alu_result, write_data, read_data);
@@ -21,7 +21,7 @@ module top #(parameter VGA_BITS = 8) (
 	 always@(posedge sysclk)
 		VGA_CLK = ~VGA_CLK; // 25MHz
 		
-	vga video(VGA_CLK, SW, read_data_vga[7:0], VGA_R, VGA_G, VGA_B, VGA_HS_O, VGA_VS_O, addr_vga);
+	//vga video(VGA_CLK, read_data_vga, VGA_R, VGA_G, VGA_B, VGA_HS_O, VGA_VS_O, addr_vga);
 	
   assign VGA_BLANK_N = 1'b1;
   assign VGA_SYNC_N  = 1'b0;

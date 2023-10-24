@@ -1,5 +1,5 @@
 EDA Netlist Writer report for RISCV_GOL
-Fri Oct 13 19:05:03 2023
+Tue Oct 24 00:20:32 2023
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Fri Oct 13 19:05:03 2023 ;
+; EDA Netlist Writer Status ; Successful - Tue Oct 24 00:20:32 2023 ;
 ; Revision Name             ; RISCV_GOL                             ;
 ; Top-level Entity Name     ; top                                   ;
 ; Family                    ; Cyclone IV E                          ;
@@ -66,13 +66,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------------------------+--------------------+
 
 
-+----------------------------------------------------------------------+
-; Simulation Generated Files                                           ;
-+----------------------------------------------------------------------+
-; Generated Files                                                      ;
-+----------------------------------------------------------------------+
-; /home/martins/Documents/RISCV_GOL_1/simulation/modelsim/RISCV_GOL.vo ;
-+----------------------------------------------------------------------+
++------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                               ;
++------------------------------------------------------------------------------------------+
+; Generated Files                                                                          ;
++------------------------------------------------------------------------------------------+
+; /home/martins/Documents/BUILD-RISC-V/Testes/RISCV_GOL_1/simulation/modelsim/RISCV_GOL.vo ;
++------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -81,14 +81,14 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Fri Oct 13 19:05:02 2023
+    Info: Processing started: Tue Oct 24 00:20:31 2023
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off RISCV_GOL -c RISCV_GOL
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file RISCV_GOL.vo in folder "/home/martins/Documents/RISCV_GOL_1/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file RISCV_GOL.vo in folder "/home/martins/Documents/BUILD-RISC-V/Testes/RISCV_GOL_1/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 618 megabytes
-    Info: Processing ended: Fri Oct 13 19:05:03 2023
+    Info: Peak virtual memory: 605 megabytes
+    Info: Processing ended: Tue Oct 24 00:20:32 2023
     Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
 
 
