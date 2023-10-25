@@ -22,7 +22,7 @@ for i in range(row):
         n_l[idx_y  ,1 +idx_x] = l[col * i + j]
         n_l[idx_y+1,1 +idx_x] = l[col * i + j]
 
-n_l = n_l.reshape((300,4))
+n_l = n_l.reshape((40,30))
 
 
 np.savetxt("mario8bit_exp.bin", n_l, fmt='%08i', delimiter="")
