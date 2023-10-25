@@ -1,3 +1,10 @@
 **/.vscode/**
 **/*.zip
 
+
+# Quartus dump files
+**/hwtest/db/**
+**/build/**
+**/incremental_db/**
+**/output_files/**
+**/greybox_tmp/**
