@@ -80,7 +80,8 @@ module riscvmulti(
             input  logic        clk, reset,
             output logic [31:0] adr, writedata,
             output logic        memwrite,
-            input  logic [31:0] readdata);
+            input  logic [31:0] readdata,
+            output logic [3:0] byte_enable);
 
   logic        zero, pcen, irwrite, regwrite,
                iord, memtoreg;
@@ -97,7 +98,7 @@ module riscvmulti(
               iord, memtoreg,
               alusrca, pcsrc, alusrcb, alucontrol, funct3,
               op, funct7, zero,
-              adr, writedata, readdata);
+              adr, writedata, readdata, byte_enable);
 endmodule
 
 
@@ -250,7 +251,8 @@ module datapath(input  logic        clk, reset,
                 output logic [6:0]  op, funct7,
                 output logic        zero,
                 output logic [31:0] adr, writedata, 
-                input  logic [31:0] readdata);
+                input  logic [31:0] readdata,
+                output logic [3: 0] byte_enable);
 
   // Below are the internal signals of the datapath module.
   logic [4:0]  rd, rs1, rs2;
@@ -276,12 +278,16 @@ module datapath(input  logic        clk, reset,
   assign immB = {{19{instr[31]}},instr[31],instr[7],instr[30:25],instr[11:8],1'b0};
   assign immU = {instr[31:12],12'b0};
   assign immJ = {{19{instr[31]}},instr[31],instr[19:12],instr[20],instr[30:21],1'b0};
+
+  logic [31:0] daddr;
+  assign daddr = immI + srca;
+
   // lbu
   logic is_lbu;
 	assign is_lbu	= (op == 7'b0000011 & funct3 == 3'b100);
-  assign dataload = is_lbu ? (aluresult[1:0]==3 ? {24'h000000, data[31:24]} : 
-	                            aluresult[1:0]==2 ? {24'h000000, data[23:16]} : 
-	                            aluresult[1:0]==1 ? {24'h000000, data[15: 8]} : 
+  assign dataload = is_lbu ? (daddr[1:0]==3 ? {24'h000000, data[31:24]} : 
+	                            daddr[1:0]==2 ? {24'h000000, data[23:16]} : 
+	                            daddr[1:0]==1 ? {24'h000000, data[15: 8]} : 
 						  			                              {24'h000000, data[ 7: 0]}):
 															data;
   // sb/sw
@@ -290,11 +296,19 @@ module datapath(input  logic        clk, reset,
 	logic is_sw;
 	assign is_sw = (op == 7'b0100011 & funct3 == 3'b010);
 
-	assign writedata = is_sw ? b : (is_sb ? (aluresult[1:0]==3 ? {b[7:0],      24'h000000} : 
-													  aluresult[1:0]==2 ? {8'h00, b[7:0], 16'h0000} :
-														  aluresult[1:0]==1 ? {16'h0000, b[7:0], 8'h00} :
-														                      {24'h000000,      b[7:0]}):
-														 32'bx);
+	assign writedata = is_sw ? b : (is_sb ? (daddr[1:0]==3 ? {b[7:0],      24'h000000} : 
+													                 daddr[1:0]==2 ? {8'h00, b[7:0], 16'h0000} :
+														               daddr[1:0]==1 ? {16'h0000, b[7:0], 8'h00} :
+              											                       {24'h000000,      b[7:0]}):
+														               32'bx);
+																			
+	  // Condicional para escrita na memoria
+  assign byte_enable = (is_lbu || is_sb) ? (daddr[1:0]==3 ? 4'b1000 : // sb/lb
+											daddr[1:0]==2 ? 4'b0100 :
+											daddr[1:0]==1 ? 4'b0010 :
+											                4'b0001): 
+										    4'b1111;  // lw/sw
+											 
   // datapath
   flopenr #(32) pcregn(clk, reset, pcen, pcnext, pc);
   flopenr #(32) pcrega(clk, reset, pcen, pc, pca);
