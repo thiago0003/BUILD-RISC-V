@@ -144,9 +144,7 @@ module maindec(input  logic       clk, reset,
   parameter   ADDIEX  = 4'b1001;	// State 9
   parameter   ADDIWB  = 4'b1010;	// state 10
   parameter   JEX     = 4'b1011;	// State 11
-  parameter   MEMWAIT = 4'b1100; 	// State 12
-  parameter   MEMRD2  = 4'b1101;	// State 13
-  
+
   parameter   LW      = 7'b0000011;	// Opcode for lw
   parameter   LBU     = 7'b0000011;	// Opcode for lbu
   parameter   SW      = 7'b0100011;	// Opcode for sw
@@ -167,8 +165,7 @@ module maindec(input  logic       clk, reset,
   // next state logic
   always_comb
     case(state)
-      FETCH:   nextstate <= MEMWAIT;
-      MEMWAIT: nextstate <= DECODE;
+      FETCH:   nextstate <= DECODE;
       DECODE:  case(op)
                  LW:      nextstate <= MEMADR;
                  SW:      nextstate <= MEMADR;
@@ -184,8 +181,7 @@ module maindec(input  logic       clk, reset,
                  SW:      nextstate <= MEMWR;
                  default: nextstate <= 4'bx;
                endcase
-      MEMRD:   nextstate <= MEMRD2;
-      MEMRD2:  nextstate <= MEMWB;
+      MEMRD:   nextstate <= MEMWB;
       MEMWB:   nextstate <= FETCH;
       MEMWR:   nextstate <= FETCH;
       RTYPEEX: nextstate <= RTYPEWB;
@@ -204,12 +200,10 @@ module maindec(input  logic       clk, reset,
 //                                          pcsrc
   always_comb//                                alusrcb
     case(state)//                    alusrca       aluop
-      FETCH:    controls <= 16'b1000_00_000_00_001_00;
-      MEMWAIT:  controls <= 16'b0010_00_000_00_000_00;
+      FETCH:    controls <= 16'b1010_00_000_00_001_00;
       DECODE:   controls <= 16'b0000_00_000_00_011_00;
       MEMADR:   controls <= 16'b0000_01_000_00_010_00;
       MEMRD:    controls <= 16'b0000_00_010_00_000_00;
-      MEMRD2:   controls <= 16'b0000_00_010_00_000_00;
       MEMWB:    controls <= 16'b0001_00_001_00_000_00;
       MEMWR:    controls <= 16'b0100_00_010_00_000_00;
       RTYPEEX:  controls <= 16'b0000_01_000_00_000_10;
@@ -291,7 +285,7 @@ module datapath(input  logic        clk, reset,
 	assign is_sw = (op == 7'b0100011 & funct3 == 3'b010);
 
 	assign writedata = is_sw ? b : (is_sb ? (aluresult[1:0]==3 ? {b[7:0],      24'h000000} : 
-													  aluresult[1:0]==2 ? {8'h00, b[7:0], 16'h0000} :
+														  aluresult[1:0]==2 ? {8'h00, b[7:0], 16'h0000} :
 														  aluresult[1:0]==1 ? {16'h0000, b[7:0], 8'h00} :
 														                      {24'h000000,      b[7:0]}):
 														 32'bx);
@@ -306,7 +300,7 @@ module datapath(input  logic        clk, reset,
   flopr   #(32) areg(clk, reset, rd1, a);
   flopr   #(32) breg(clk, reset, rd2, b);
   mux3    #(32) srcamux(pc, a, pca, alusrca, srca);
-  mux5    #(32) srcbmux(writedata, 32'b1, immI, immI<<2, immJ, alusrcb, srcb);
+  mux5    #(32) srcbmux(writedata, 32'b100, immI, immI<<2, immJ, alusrcb, srcb);
   alu           alu(srca, srcb, alucontrol, aluresult, zero);
   flopr   #(32) alureg(clk, reset, aluresult, aluout);
   mux2    #(32) pcmux(aluresult, aluout, pcsrc[0], pcnext);
@@ -331,10 +325,7 @@ module regfile(input  logic        clk,
 
   always_ff @(posedge clk)
     if (we3) 
-      begin
        rf[wa3] <= wd3;	
-        $display("RF[%d] = %h", wa3, wd3);
-      end
 
   assign rd1 = (ra1 != 0) ? rf[ra1] : 0;
   assign rd2 = (ra2 != 0) ? rf[ra2] : 0;
@@ -440,3 +431,4 @@ module flopenr #(parameter WIDTH = 8)
     if (reset)   q <= 0;
     else if (en) q <= d;
 endmodule
+

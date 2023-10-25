@@ -27,7 +27,6 @@ module mem #(
 	// port A
 	always@(posedge clk)
 	begin
-      $display("RAM[%d] = %h -> %h (%b)", addr1, data_reg1, data_in1, be1);
 		if(we1) begin
 		// edit this code if using other than four bytes per word
 			if(be1[0]) ram[addr1][0] <= data_in1[ 7: 0];
@@ -35,8 +34,7 @@ module mem #(
 			if(be1[2]) ram[addr1][2] <= data_in1[23:16];
 			if(be1[3]) ram[addr1][3] <= data_in1[31:24];
 		end
-      data_reg1 <= ram[addr1];
-      
+	data_reg1 <= ram[addr1[8:2]];
 	end
 
 	assign data_out1 = data_reg1;
@@ -51,7 +49,7 @@ module mem #(
 			if(be2[2]) ram[addr2][2] <= data_in2[23:16];
 			if(be2[3]) ram[addr2][3] <= data_in2[31:24];
 		end
-      data_reg2 <= ram[addr2];
+	data_reg2 <= ram[addr2[8:2]];
 	end
 
 	assign data_out2 = data_reg2;
