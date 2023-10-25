@@ -1,3 +1,0 @@
-Warning (10273): Verilog HDL warning at RISCV.sv(164): extended using "x" or "z" File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 164
-Info (10281): Verilog HDL Declaration information at RISCV.sv(44): object "rs1" differs only in case from object "RS1" in the same scope File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 44
-Info (10281): Verilog HDL Declaration information at RISCV.sv(46): object "rs2" differs only in case from object "RS2" in the same scope File: /home/martins/Documents/BUILD-RISC-V/RISC-V/RISCV.sv Line: 46

@@ -3,8 +3,13 @@
 
 
 # Quartus dump files
-**/hwtest/db/**
+**/db/**
 **/build/**
 **/incremental_db/**
 **/output_files/**
 **/greybox_tmp/**
+
+**/qsim/**
+**/questa/**
+**/modelsim/**
+
