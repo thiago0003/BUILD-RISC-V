@@ -85,7 +85,8 @@ Quando gerado as instruções RISC-V foi percebido que:
 # Build RISC-V
 
 ## Problemas do nosso processador
-* Sempre que utilizarmos um registrador devemos realizar a operação `addi reg, 0` sendo `reg` o nosso registrador a ser inicializado. Dessa forma, garantimos que o conteúdo do registrador é sempre inicializado com zero. Quando não efetuado essa operação, podemos ver na __EPWave__ do nosso simulador [EDA Playground](https://www.edaplayground.com). 
+* Sempre que utilizarmos um registrador devemos realizar a operação `addi reg, 0` sendo `reg` o nosso registrador a ser inicializado. Dessa forma, garantimos que o conteúdo do registrador é sempre inicializado com zero. Quando não efetuado essa operação, podemos ver na __EPWave__ do nosso simulador [EDA Playground](https://www.edaplayground.com).
+* Atualmente (22/10/2023) foi detectado que para continuarmos nosso processador teriamos que implementar um pipeline uma vez que a leitura e a escrita de memória não seria possível no mesmo ciclo. 
 
 ## Criando nosso assembly 
 Um dos nossos maiores problemas na criação do nosso assembly é que temos memórias separadas para programa e para dados, dessa forma, temos que inicializar em zero ambas as posições. Para nos ajudar nessa etapa estamos utilizando o software [RARS](https://github.com/TheThirdOne/rars/tree/master), com ele podemos criar 2 programas um onde a memória de programa é inicializado em zero e outro em que a memória de dados é inicilizado em zero. Tendo esses programas criados, a próxima etapa é efetuar o merge de ambos para criar nosso programa.
