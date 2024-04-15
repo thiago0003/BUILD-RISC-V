@@ -21,12 +21,24 @@
 
 
 // Mask to remove UPPER_BITS or LOWER_BITS of size 8 bits
-#define SHIPS_ID(input)   (0xf  & (input)) 
+#define SHIPS_ID(input)   (0x0f & (input)) 
 #define SHOOTS_T(input)   (0xf0 & (input))
-#define INCLUDE_HIT(input)(0x08 | (input))
+
+// Mask to preview Ship type(3bits)
+#define SHIP_TYPE(input) (0x07 & (input)) 
+
+// Mask to preview data with shoot
+#define INSERT_SHOT(input) (0x10 | (input)) 
+
+// Mask to preview include hit
+#define INCLUDE_HIT(input) (0x08 | (input)) 
+
 
 // Just for input coordinates
-#define toUpper(c)( if(c >= 'a' && c <= 'z') {c = c - 'a' + 'A';})
+char toUpper(char c){
+    if(c >= 'a' && c <= 'z') return c - 'a' + 'A';
+    return c;
+}
 
 // TODO: how to make it more efficient ? Create a function with direction param
 #define HORIZONTAL  (0)
@@ -54,93 +66,120 @@ typedef enum ship_id
 }ship_id;
 
 // Arrays to define a std to the game
-const int ships_size[] = {Carrier, Battleship, Cruiser, Submarine, Destroyer};
-const int ships_id[] = {id_Carrier, id_Battleship, id_Cruiser, id_Submarine, id_Destroyer};
+const int ships_size[] = {Ocean, Carrier, Battleship, Cruiser, Submarine, Destroyer};
+const int ships_id[] = {id_Ocean, id_Carrier, id_Battleship, id_Cruiser, id_Submarine, id_Destroyer};
 
 // We dont have rand() in our problem, so we have an implementation
 int rand_for_dummies(){
     return rand();
 }
+
+
+void display_board(int w, int h,
+                   char board[])
+{
+    char line = 'A';
+
+    printf("   ");for_x(h) printf("%2i ", x);printf("| ");
+    for_x(h) printf("%2i ", x);printf("\n   ");
+    for_x(2*h) printf("---"); printf("\n");
+    for_y(w){
+
+        printf("%c| ", line++);
+        for_x(h) printf("%2c ", SHIPS_ID(board[at(x,y, w, h)]) ? 
+                        '@' + SHIPS_ID(board[at(x, y, w, h)]): ' ');
+        printf("| ");
+        
+        //  Representacao de historico de Tiros
+        for_x(h) printf("%2c ", SHOOTS_T(board[at(x,y, w, h)]) !=0?  'x': ' ');
+        printf("\n");
+    }
+    for_x(2*h) printf("---"); printf("\n\n");
+
+}
+
+
 // This function returns if, given a coordinate, have a sunk ship
 int ship_is_sunk(int w, int h,char board[],int coordX, int coordY )
 {    
+    const int pos_board = SHIPS_ID(board[at(coordX, coordY, w, h)]);
+    const int type = 0x07 & pos_board;
+    const int size = ships_size[type];  
+    
+    //constraint
+    if(INCLUDE_HIT(pos_board) != pos_board || type == id_Ocean ) return 0;
+
+
     int acc = 1;
-    int x1, x2, y1, y2;
-    x1 = x2 = coordX;
-    y1 = y2 = coordY;
+    int x;
+    for (x = coordX + 1; x  < w && SHIPS_ID(board[at(x, coordY, w, h)]) == pos_board; x++) acc++;
+    for (x = coordX - 1; x >= 0 && SHIPS_ID(board[at(x, coordY, w, h)]) == pos_board; x--) acc++;
 
-    ship_id type = SHIPS_ID(board[at(coordX, coordY, w, h)]);
-    int size = ships_size[type];
+    printf("size of boat = %i\nRemaining %i\nCode of Boat = %i\n", size, acc, type);
+    if (acc >= size) return 1;
     
-    if(type == id_Ocean) return 0;
+    // Vertical
+    acc = 1;
+    int y;
+    for (y = coordY + 1; y  < h && SHIPS_ID(board[at(coordX, y, w, h)]) == pos_board; y++) acc++;
+    for (y = coordY - 1; y >= 0 && SHIPS_ID(board[at(coordX, y, w, h)]) == pos_board; y--) acc++;
 
-    // Check on All directions
-        //Horizontal 
-    while((x1+1 < w) &&
-          (SHIPS_ID(board[at(x1+1, coordY, w, h)] != type)))
-        {
-            x1++;acc++;
-        }
-    while((x2-1 > 0) &&
-          (SHIPS_ID(board[at(x2-1, coordY, w, h)] != type)))
-        {
-            x2--;acc++;
-        }
-    if(acc == size) return 1;
-    
-        // Vertical
-    while((y1+1 < w) &&
-          (SHIPS_ID(board[at(coordX, y1+1, w, h)] != type)))
-        {
-            y1++;acc++;
-        }
-    while((y2-1 > 0) &&
-          (SHIPS_ID(board[at(coordX,y2-1, w, h)] != type)))
-        {
-            y2--;acc++;
-        }
-
-    if(acc == size) return 1;
-
-    return 0;
+    return acc >= size;
 }
 
-
-int input_coord(char *cd_x, char *cd_y,int w, int h, char board[])
+void input_coord(int *cd_x, int *cd_y,int w, int h, char board[])
 {
     
     bool valid= false;
+    char tmp;
+    int x,y;
     while(!valid){
-        printf("Insert Coordinates[xy]: \n");
-        scanf("%[A-Za-z]%[0-9]\n",&cd_x, &cd_y);
-        // printf("%i %i", toUpper(cd_x), cd_y);
+        printf("\nInsert Coordinates[xy]: ");
+        scanf("%[A-Za-z]%i",&tmp, &x);
 
-        // valid = toUpper(cd_x) <= 'z';
+        //format to 0-w
+        y = toUpper(tmp) - 'A';
+
+        valid = (y <= w) &&  (x <= h) && (y >= 0) && (x >= 0) ;// &&
+                //(SHOOTS_T(board[at(y, x, w, h)] == 0));// check if have shoot there
+        // clear buffer 
+        while (getchar() != '\n');
+        if(!valid) printf("Invalid, try Again\n");
     }
-        
-    // cd_y = getchar();
-
-    printf("Input %c, %c", cd_x, cd_y);
+    
+    *cd_x = x; 
+    *cd_y = y;
 
 }
-void hit(int *position)
+bool hit(char player1[], char player2[], int x, int y, int w, int h)
 {
-    if (SHIPS_ID(*position) == id_Ocean) return;
-    position = INCLUDE_HIT(*position);
+    //Insert pos shot - Log
+    player1[at(x,y,w,h)] = INSERT_SHOT(player1[at(x,y,w,h)]);
+    
+
+    //insert hit on Ships - On second Board
+    if (SHIPS_ID(player2[at(x,y,w,h)]) == id_Ocean) return false;
+
+    player2[at(x,y,w,h)] = INCLUDE_HIT(player2[at(x,y,w,h)]);
+    return true;
+
 }
 
 //  Changes the situation of the board and return if theres a new ship sunk
-int shoot_player(int is_1st_player,
-                 int w, int h, /* board_size */
-                 int cd_x,int cd_y,/*(x,y) coordinates to shoot*/
+int shoot_player(int w, int h, /* board_size */
+                 int x,int y,/*(x,y) coordinates to shoot*/
+                 int num_player,
                  char player1[],char player2[])
-{ 
-    
-    int ans = 0;
+{
+    bool t = false;
     // check if coordinate have a ship
-    hit(is_1st_player ? player1[at(cd_x, cd_y, w, h)] : player2[at(cd_x, cd_y, w, h)]);
-
-    return ship_is_sunk(w,h, is_1st_player ? player1 : player2, cd_x, cd_y);
+    if(num_player == 0){
+        t = hit(player1, player2, x, y, w, h);
+        return  ship_is_sunk(w,h ,player2, x, y);
+    }
+    
+    t = hit(player2, player1, x, y, w, h);
+    return ship_is_sunk(w, h , player1, x, y);
 }
 
 
@@ -148,27 +187,36 @@ void game(int w, int h, char player1[], char player2[])
 {
 
     //stores status for player
-    bool is_1st_player = true;
+    int num_player = 0;
     int cd_x, cd_y;
     int sunk_ships[2] = {0};
 
     while(sunk_ships[0] != TOTAL_SHIPS && sunk_ships[1] != TOTAL_SHIPS )
     {
         // Read coordinates
-        input_coord(cd_x, cd_y, w, h, is_1st_player ? player1 : player2);
-        sunk_ships[is_1st_player] += shoot_player(is_1st_player, w, h, cd_x, cd_y, player1, player2);
+        input_coord(&cd_x, &cd_y, w, h,  player1);
+        
+        sunk_ships[num_player] += shoot_player(w, h, cd_x, cd_y,(int)num_player, player1, player2);
         // wait_response();
         // refresh_boards();
         //  change player!
-        is_1st_player += is_1st_player%2;
+        printf(".......First Player.......\n");
+        printf("Remaining Ships: %i\n", TOTAL_SHIPS - sunk_ships[1]);
+        display_board(w,h,player1);
+        
+        printf(".......Scond Player.......\n");
+        printf("Remaining Ships: %i\n", TOTAL_SHIPS - sunk_ships[0]);
+        display_board(w,h,player2);
+        
+        num_player = (num_player+1)%2;
     }
 }
 
 void shuffle_board(int w, int h,
         char board[])
 {   
-    int ptr_ships = 0;
-    while(ptr_ships != TOTAL_SHIPS){
+    int ptr_ships = 1;
+    while(ptr_ships != TOTAL_SHIPS+1){
         bool filled = false;
         do{
             int pos_y = rand_for_dummies()%w;
@@ -239,27 +287,6 @@ void shuffle_board(int w, int h,
     }
 }
 
-void display_board(int w, int h,
-                   char board[])
-{
-    char line = 'A';
-
-    printf("   ");for_x(h) printf("%2i ", x);printf("| ");
-    for_x(h) printf("%2i ", x);printf("\n   ");
-    for_x(2*h) printf("---"); printf("\n");
-    for_y(w){
-        printf("%c| ", line++);
-        for_x(h) printf("%2c ", SHIPS_ID(board[at(x,y, w, h)]) ? 
-                        '@' + SHIPS_ID(board[at(x,y, w, h)]): ' ');
-        printf("| ");
-
-        for_x(h) printf("%2c ", SHOOTS_T(board[at(x,y, w, h)]) ? 
-                        '@' + SHOOTS_T(board[at(x,y, w, h)]): ' ');
-        printf("\n");
-    }
-    printf("---------\n");
-
-}
 
 int main() 
 {
@@ -271,16 +298,21 @@ int main()
     // // Shuffle  boards befor game starts
     shuffle_board(width, height, board_p1);
     shuffle_board(width, height, board_p2);
-
     display_board(width, height, board_p1);
     display_board(width, height, board_p2);
-    getchar();
     
+
     while(1)
     {
         game(width, height, board_p1, board_p2);
-    int sunk_ships_p1 = 0;
     }
+
+    int a,b;
+    // while (1)
+    // {
+    //     input_coord(&a,&b, width, height, board_p1);
+    //     printf("Formatted out: %i, %i\n", a, b);
+    // }
 
     return 0;
 }

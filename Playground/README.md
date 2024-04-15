@@ -15,7 +15,9 @@ Requisitos:
 
 ## INFO - ARQUITETURA  || DESENVOLVIMENTO
 128 X 64 -- Tam. do visor. 
+
 Display 01 - Navios Aliados
+
 Display 02 - Zona de Tiro  - Navios Inimigos
 
 ## COMO ARMAZENAMOS OS DADOS ? 
@@ -28,16 +30,18 @@ Representacao de um bloco char:
     +--> Mapa de tiros do Jogador
 
 Do qual: 
-| 3 | 2 - 0 | (bits)
+| 4 | 3 - 0 | (bits)
   |    +-> tipo do barco
   +--> Se foi atigindo
+
+Ex: 1_101: Barco do Tipo Destroyer Atigindo nesta posição
 ```
 
 ## DESAFIOS
 Size == 1024  bytes de variavel.
 
 ## Proximos Passos
-
+Caso Desejemos utilizar um menor consumo de memória(ex 8b -> 4b), será necessario reduzir o total de navios do jogo, dado que o total atual de barcos são 5.
 
 
 
