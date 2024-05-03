@@ -1,77 +1,42 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 
-#define for_x(height) for(int x=0; x<(height); x++ )
-#define for_y(width) for(int y=0; y<(width); y++ )
-// easier access to the boards (the sizes are predefined?)
-#define at(x,y,w,h) ((x)+(w)*(y))
-#define MIN(x,y) ( (x) > (y) ? (y) : (x) )
-#define TOTAL_SHIPS (5)
+
+#include "Battleship.h"
+// Arrays to define a std to the game
+
+
+
 
 // TODO: implementar board com uso mais eficiente, seria com enum ou com struct ? 
 // typedef struct test_board {
 //     unsigned bits[4];
 // }test_board;
 
-// struct board_game{
-//     type_b board,
-//     aval_ships; 
-// }
 
 
-// Mask to remove UPPER_BITS or LOWER_BITS of size 8 bits
-#define SHIPS_ID(input)   (0x0f & (input)) 
-#define SHOOTS_T(input)   (0xf0 & (input))
-
-// Mask to preview Ship type(3bits)
-#define SHIP_TYPE(input) (0x07 & (input)) 
-
-// Mask to preview data with shoot
-#define INSERT_SHOT(input) (0x10 | (input)) 
-
-// Mask to preview include hit
-#define INCLUDE_HIT(input) (0x08 | (input)) 
 
 
-// Just for input coordinates
-char toUpper(char c){
-    if(c >= 'a' && c <= 'z') return c - 'a' + 'A';
-    return c;
-}
-
-// TODO: how to make it more efficient ? Create a function with direction param
-#define HORIZONTAL  (0)
-#define VERTICAL  (1)
-
-// Define size of the ships
-typedef enum ships{
-    Ocean      = 0,
-    Carrier    = 5, 
-    Battleship = 4,
-    Cruiser    = 3,
-    Submarine  = 3,
-    Destroyer  = 2  
-} ships;
-
-
-typedef enum ship_id
+void input_coord(int *x_coordinate, int *y_coordinate, board_game *board)
 {
-    id_Ocean      = 0x00,
-    id_Carrier    = 0x01,
-    id_Battleship = 0x02,
-    id_Cruiser    = 0x03,
-    id_Submarine  = 0x04,
-    id_Destroyer  = 0x05 
-}ship_id;
+    bool valid= false;
+    char tmp;
+    int x,y;
+    int h = HEIGHT, w = WIDTH;
+    while(!valid){
+        printf("\nInsert Coordinates[xy]: ");
+        scanf("%[A-Za-z]%i",&tmp, &x);
 
-// Arrays to define a std to the game
-const int ships_size[] = {Ocean, Carrier, Battleship, Cruiser, Submarine, Destroyer};
-const int ships_id[] = {id_Ocean, id_Carrier, id_Battleship, id_Cruiser, id_Submarine, id_Destroyer};
+        //format to 0-w
+        y = toUpper(tmp) - 'A';
 
-// We dont have rand() in our problem, so we have an implementation
-int rand_for_dummies(){
-    return rand();
+        valid = (y <= w) &&  (x <= h) && (y >= 0) && (x >= 0) ;// &&
+                //(SHOOTS_T(board[at(y, x, w, h)] == 0));// check if have shoot there
+        // clear buffer 
+        while (getchar() != '\n');
+        if(!valid) printf("Invalid, try Again\n");
+    }
+    
+    *x_coordinate = x; 
+    *y_coordinate = y;
 }
 
 
@@ -95,7 +60,58 @@ void display_board(int w, int h,
         printf("\n");
     }
     for_x(2*h) printf("---"); printf("\n\n");
+}
 
+
+int total_damage(int x_coordinate, int y_coordinate, board_game *board)
+/*
+    Input  coordinates (x,y) to check for ship health(if it really has a ship)
+    returns: 
+    -1: is ocean, so no damage
+     0-size(ship): stamina from the boat
+*/
+{
+    int ans = 0;
+    
+    const int h=HEIGHT, w=WIDTH;
+    const int pos_board = SHIPS_ID(board->board[at(x_coordinate, y_coordinate, w, h)]);
+    
+    // Returns the ship type predefined
+    const int type = SHIP_TYPE(pos_board);
+    const int size = ships_size[type];
+
+    if(type == id_Ocean) return -1;
+    
+    //search for the boat (horizontal)
+    for (int x = x_coordinate; x  < w 
+         && type == SHIP_TYPE(board->board[at(x, y_coordinate, w, h)]) ; x++) 
+    {
+        int ship_status = SHIPS_ID(board->board[at(x, y_coordinate, w, h)]);
+        ans += ship_status == INCLUDE_HIT(ship_status) ? 1: 0;
+    }
+    for (int x = x_coordinate - 1; x >= 0 
+         && type == SHIP_TYPE(board->board[at(x, y_coordinate, w, h)]) ; x--) 
+    {
+        int ship_status = SHIPS_ID(board->board[at(x, y_coordinate, w, h)]);
+        ans += ship_status == INCLUDE_HIT(ship_status) ? 1: 0;
+    }
+   
+    for (int y = y_coordinate + 1; y  < h 
+         && type ==  SHIP_TYPE(board->board[at(x_coordinate, y, w, h)]); y++)
+    {
+        int ship_status = SHIPS_ID(board->board[at(x_coordinate, y, w, h)]);
+        ans += ship_status == INCLUDE_HIT(ship_status) ? 1: 0;
+    }
+
+    for (int y = y_coordinate - 1; y >= 0 
+         && type ==  SHIP_TYPE(board->board[at(x_coordinate, y, w, h)]); y--)
+    {
+        int ship_status = SHIPS_ID(board->board[at(x_coordinate, y, w, h)]);
+        ans += ship_status == INCLUDE_HIT(ship_status) ? 1: 0;
+    }
+
+    
+    return ans;
 }
 
 
@@ -127,30 +143,9 @@ int ship_is_sunk(int w, int h,char board[],int coordX, int coordY )
     return acc >= size;
 }
 
-void input_coord(int *cd_x, int *cd_y,int w, int h, char board[])
-{
-    
-    bool valid= false;
-    char tmp;
-    int x,y;
-    while(!valid){
-        printf("\nInsert Coordinates[xy]: ");
-        scanf("%[A-Za-z]%i",&tmp, &x);
 
-        //format to 0-w
-        y = toUpper(tmp) - 'A';
 
-        valid = (y <= w) &&  (x <= h) && (y >= 0) && (x >= 0) ;// &&
-                //(SHOOTS_T(board[at(y, x, w, h)] == 0));// check if have shoot there
-        // clear buffer 
-        while (getchar() != '\n');
-        if(!valid) printf("Invalid, try Again\n");
-    }
-    
-    *cd_x = x; 
-    *cd_y = y;
 
-}
 bool hit(char player1[], char player2[], int x, int y, int w, int h)
 {
     //Insert pos shot - Log
@@ -182,130 +177,120 @@ int shoot_player(int w, int h, /* board_size */
     return ship_is_sunk(w, h , player1, x, y);
 }
 
+void DEBUG(board_game *player)
+{
+    const int h = HEIGHT; 
+    const int w = WIDTH;
 
-void game(int w, int h, char player1[], char player2[])
+    printf("Remaining Ships: %i\n", remaining_ships(player));
+    printf("Stamina from each Ship:\n");
+    for(int i =1; i < total_ships; i++){
+        printf("Type [ %c ] = %s \n",'A'-1 + ships_id[i],  ships_names[i]);
+        printf("Health      = %i / %i \n", player->stamina[i], ships_size[i]);
+        printf("Local[x,y]  = [%c, %i]\n",'A' + player->my_ships[i].y, player->my_ships[i].x );
+        
+        printf("----------\n");
+    }
+    display_board_game(player);
+
+
+
+
+}
+
+void game(board_game *player1, board_game *player2)
 {
 
-    //stores status for player
     int num_player = 0;
-    int cd_x, cd_y;
-    int sunk_ships[2] = {0};
+    const int h = HEIGHT;
+    const int w = WIDTH;
 
-    while(sunk_ships[0] != TOTAL_SHIPS && sunk_ships[1] != TOTAL_SHIPS )
+    coordinate coord = {-1,-1};
+
+
+    while(remaining_ships(player1) != 0 && remaining_ships(player2) !=0)
     {
-        // Read coordinates
-        input_coord(&cd_x, &cd_y, w, h,  player1);
-        
-        sunk_ships[num_player] += shoot_player(w, h, cd_x, cd_y,(int)num_player, player1, player2);
-        // wait_response();
-        // refresh_boards();
-        //  change player!
-        printf(".......First Player.......\n");
-        printf("Remaining Ships: %i\n", TOTAL_SHIPS - sunk_ships[1]);
-        display_board(w,h,player1);
-        
-        printf(".......Scond Player.......\n");
-        printf("Remaining Ships: %i\n", TOTAL_SHIPS - sunk_ships[0]);
-        display_board(w,h,player2);
-        
-        num_player = (num_player+1)%2;
-    }
-}
-
-void shuffle_board(int w, int h,
-        char board[])
-{   
-    int ptr_ships = 1;
-    while(ptr_ships != TOTAL_SHIPS+1){
-        bool filled = false;
-        do{
-            int pos_y = rand_for_dummies()%w;
-            int pos_x = rand_for_dummies()%h;
-            int orientation = rand_for_dummies()%2;
-            int tmp[5] = {0}; //temporary array to store values in board
-            int size = ships_size[ptr_ships]; //size of actual ship
-            int id = ships_id[ptr_ships];
-            int aval_space = 0;
+        // TODO: create comm to send value via UART
+        if(num_player == 0){
+            read_coordinates(player1, &coord);
+            bool hit_succesfull = send_missiles(player1, player2, coord);
             
-            // if already selected, try again
-            if(board[at(pos_x, pos_y, w, h)]!= 0) continue;
-        
-            // TODO: make it a single function
-            switch (orientation)
-            {
-                case HORIZONTAL:
-                {
-                    int left = pos_x-1;
-                    int right = pos_x;
+        } else {
+            read_coordinates(player2, &coord);
+            bool hit_succesfull = send_missiles(player2, player1, coord);
+            
+        }
 
-                    // Check if  positions are available (left and right)
-                    while((left > 0)         &&
-                        (aval_space < size)  &&
-                        (board[at(left, pos_y, w, h)] == 0)) tmp[aval_space++] = left--;
-                    while((right < h)        &&
-                        (aval_space < size)  &&
-                        (board[at(right, pos_y, w, h)] == 0)) tmp[aval_space++] = right++;
-                        
-                    // Fill board
-                    if(aval_space == size){
-                        while(aval_space--){
-                            board[at(tmp[aval_space], pos_y, w, h)] = ships_id[ptr_ships];
-                            // printf("(%i,%i), ",tmp[aval_space], pos_y);
-                        }
-                        // printf("\n");
-                        filled = true;
-                    }
-                    break;
-                }    
-                case VERTICAL:
-                {
-                    int up = pos_y-1;
-                    int down = pos_y;
+        //change round
+        num_player += num_player%2;
 
-                    // Check if  positions are available (up and down)
-                    while((up > 0)           &&
-                        (aval_space < size)  &&
-                        (board[at(up, pos_y, w, h)] == 0)) tmp[aval_space++] = up--;
-                    while((down < h)         &&
-                        (aval_space < size)  &&
-                        (board[at(down, pos_y, w, h)] == 0)) tmp[aval_space++] = down++;
+        printf(".......First Player.......\n");
+        DEBUG(player1);
 
-                    // Fill board
-                    if(aval_space == size){
-                        while(aval_space--){
-                            board[at(pos_x, tmp[aval_space], w, h)] = ships_id[ptr_ships];
-                            //printf("(%i,%i), ", pos_y,tmp[aval_space]);
-                        }
-                        // printf("\n");
-                        filled = true;
-                    }   
-                     break;
-                }
-            }
-        }while(!filled);
-        ptr_ships++;
+        printf(".......Second Player.......\n");
+        DEBUG(player2);
+
+
     }
+
+    if(remaining_ships(player1 ) == 0 )
+        printf("Victory, Player 2 wins! \n");
+    else
+        printf("Victory, Player 1 wins! \n");
+
 }
+
+
+// void game(int w, int h, char player1[], char player2[])
+// {
+
+//     //stores status for player
+//     int num_player = 0;
+//     int cd_x, cd_y;
+//     int sunk_ships[2] = {0};
+//     const int h = HEIGHT;
+//     const int w = WIDTH;
+
+//     while(sunk_ships[0] != TOTAL_SHIPS && sunk_ships[1] != TOTAL_SHIPS )
+//     {
+//         // Read coordinates
+//         input_coord(&cd_x, &cd_y, w, h,  player1);
+        
+//         sunk_ships[num_player] += shoot_player(w, h, cd_x, cd_y,(int)num_player, player1, player2);
+//         // wait_response();
+//         // refresh_boards();
+//         //  change player!
+//         printf(".......First Player.......\n");
+//         printf("Remaining Ships: %i\n", TOTAL_SHIPS - sunk_ships[1]);
+//         display_board(w,h,player1);
+        
+//         printf(".......Scond Player.......\n");
+//         printf("Remaining Ships: %i\n", TOTAL_SHIPS - sunk_ships[0]);
+//         display_board(w,h,player2);
+        
+//         num_player = (num_player+1)%2;
+//     }
+// }
 
 
 int main() 
 {
     const int width = 10; 
     const int height = 10;
-    char board_p1[100] = {0};
-    char board_p2[100] = {0};
-    // srand(777);
-    // // Shuffle  boards befor game starts
-    shuffle_board(width, height, board_p1);
-    shuffle_board(width, height, board_p2);
-    display_board(width, height, board_p1);
-    display_board(width, height, board_p2);
+    srand(777);
+    struct board_game player1, player2;
+
+    // // Shuffle  boards before game starts
+    shuffle_board(&player1);
+    shuffle_board(&player2);
+
+    
+    DEBUG(&player1);
+    DEBUG(&player2);
     
 
-    while(1)
-    {
-        game(width, height, board_p1, board_p2);
-    }
+    game(&player1, &player2);
+
 
     int a,b;
     // while (1)
